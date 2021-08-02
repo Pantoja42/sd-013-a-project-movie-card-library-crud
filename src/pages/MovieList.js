@@ -12,6 +12,10 @@ class MovieList extends Component {
     };
   }
 
+  componentDidMount() {
+    const { getMovies } = movieAPI;
+  }
+
   render() {
     const { movies } = this.state;
 
@@ -19,6 +23,7 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list">
+        <h1>Lista</h1>
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
