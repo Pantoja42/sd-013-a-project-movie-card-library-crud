@@ -14,6 +14,7 @@ class MovieDetails extends Component {
       shouldRedirect: false,
     };
     this.showMovie = this.showMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
