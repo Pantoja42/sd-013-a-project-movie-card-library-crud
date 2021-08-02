@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
@@ -10,17 +10,17 @@ class MovieDetails extends Component {
 
     this.state = {
       loading: true,
-      pokemon: {},
+      movie: {},
     };
   }
 
   componentDidMount() {
-    const { match: {params: {id}} } = this.props;
+    const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id)
       .then((data) => {
         this.setState({
           loading: false,
-          pokemon: data,
+          movie: data,
         });
       });
   }
@@ -30,7 +30,7 @@ class MovieDetails extends Component {
     const { loading } = this.state;
     if (loading) return <Loading />;
 
-    const { pokemon: {
+    const { movie: {
       id,
       title,
       storyline,
@@ -58,5 +58,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
