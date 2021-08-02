@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import style from './style.module.css';
 
 class MovieCard extends React.Component {
@@ -17,13 +18,13 @@ class MovieCard extends React.Component {
     } = movie;
     return (
       <section className={ style.card } data-testid="movie-card">
-        <h2>
-          {title}
-        </h2>
+        <h2>{title}</h2>
         {storyline}
-        <div>
-          {subtitle}
-        </div>
+        <div>{subtitle}</div>
+        <div>{rating}</div>
+        <img src={ imagePath } alt="" />
+        <div>{bookmarked && 'Favoritado'}</div>
+        <div>{genre}</div>
         <article>
           <Link to={ `/movies/${id}` }>VER DETALHES</Link>
         </article>
@@ -31,5 +32,18 @@ class MovieCard extends React.Component {
     );
   }
 }
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    storyline: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    imagePath: PropTypes.string.isRequired,
+    bookmarked: PropTypes.bool.isRequired,
+    genre: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default MovieCard;

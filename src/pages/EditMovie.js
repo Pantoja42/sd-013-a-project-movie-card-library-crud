@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { Loading, MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
@@ -49,5 +50,9 @@ class EditMovie extends Component {
     return <div data-testid="edit-movie">{renderList}</div>;
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({ params: { id: PropTypes.number.isRequired } }).isRequired,
+};
 
 export default withRouter(EditMovie);
