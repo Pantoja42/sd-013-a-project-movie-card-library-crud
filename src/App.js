@@ -15,7 +15,7 @@ function App() {
           <NewMovie />
         </Route>
         <Route exact path="/movies/:id">
-          <MovieDetails />
+          {(RouterProps) => <MovieDetails { ...RouterProps } />}
         </Route>
         <Route exact path="/movies/:id/edit">
           <EditMovie />

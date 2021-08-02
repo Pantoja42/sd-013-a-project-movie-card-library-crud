@@ -10,14 +10,14 @@ class MovieList extends Component {
       movies: [],
       loading: true,
     };
-    this.fetchMovieApi = this.fetchMovieApi.bind(this);
+    this.fetchMoviesApi = this.fetchMoviesApi.bind(this);
   }
 
   componentDidMount() {
-    this.fetchMovieApi();
+    this.fetchMoviesApi();
   }
 
-  fetchMovieApi = async () => {
+  fetchMoviesApi = async () => {
     const movies = await movieAPI.getMovies();
     this.setState({
       movies, loading: false,
