@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Rating from './Rating';
+// import Rating from './Rating';
 
 class MovieCard extends Component {
   render() {
@@ -19,7 +19,7 @@ class MovieCard extends Component {
         </div>
         <footer className="movie-card-rating">
           <Link to={ `/movies/${id}` } className="rating">VER DETALHES</Link>
-          <Rating rating={ rating } />
+          <span className="rating">{ rating }</span>
         </footer>
       </div>
     );
@@ -34,7 +34,9 @@ MovieCard.propTypes = {
     subtitle: PropTypes.string.isRequired,
     storyline: PropTypes.string.isRequired,
     imagePath: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
+    rating: PropTypes.oneOfType([
+      PropTypes.number.isRequired,
+      PropTypes.string.isRequired]),
   }).isRequired,
 };
 
