@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter , Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import { MovieDetails, MovieList, NewMovie, EditMovie, NotFound } from './pages';
 
@@ -14,7 +14,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-// enviar primeiro commit
 
 export default App;
