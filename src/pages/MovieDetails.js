@@ -17,6 +17,10 @@ class MovieDetails extends Component {
     this.changeState = this.changeState.bind(this);
   }
 
+  componentDidMount() {
+    this.changeState();
+  }
+
   async changeState() {
     const { match: { params: { id } } } = this.props;
     const oneMovie = await movieAPI.getMovie(id);
@@ -26,10 +30,6 @@ class MovieDetails extends Component {
     });
   }
 
-  componentDidMount() {
-    this.changeState();
-  }
-
   render() {
     const { movie, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
@@ -37,17 +37,18 @@ class MovieDetails extends Component {
     return (
       <div data-testid="movie-details">
         {loading
-        ? <Loading />
-        : <div>
-          <img alt="Movie Cover" src={ `../${imagePath}` } />
-          <p>{ `Title: ${title}` }</p>
-          <p>{ `Subtitle: ${subtitle}` }</p>
-          <p>{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
-          <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-          <Link to={`/`}>VOLTAR</Link>
-        </div>}
+          ? <Loading />
+          : (
+            <div>
+              <img alt="Movie Cover" src={ `../${imagePath}` } />
+              <p>{ `Title: ${title}` }</p>
+              <p>{ `Subtitle: ${subtitle}` }</p>
+              <p>{ `Storyline: ${storyline}` }</p>
+              <p>{ `Genre: ${genre}` }</p>
+              <p>{ `Rating: ${rating}` }</p>
+              <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+              <Link to="/">VOLTAR</Link>
+            </div>)}
       </div>
     );
   }
@@ -55,10 +56,10 @@ class MovieDetails extends Component {
 
 MovieDetails.propTypes = {
   match: PropTypes.shape({
-  params: PropTypes.shape({
-  id: PropTypes.string.isRequired,
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
     }),
   }).isRequired,
-}; 
+};
 
 export default MovieDetails;
