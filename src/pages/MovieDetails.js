@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 
-import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
+// import * as movieAPI from '../services/movieAPI';
+// import { Loading } from '../components';
 
 class MovieDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+    };
+  }
+
   render() {
+    const { loading } = this.state;
+    if (loading) return <loading />;
     // Change the condition to check the state
     // if (true) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    const { storyline, imagePath, genre, rating, subtitle } = {}; // title
 
     return (
       <div data-testid="movie-details">
