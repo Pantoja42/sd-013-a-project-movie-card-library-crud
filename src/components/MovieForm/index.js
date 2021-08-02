@@ -151,7 +151,7 @@ class MovieForm extends React.Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={ (e) => e.preventDefault() }>
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
           {this.renderImagePathInput()}

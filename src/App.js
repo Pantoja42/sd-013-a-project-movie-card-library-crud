@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
       <div>Movie Card Library CRUD</div>
-      <Navbar links={ linksInfo } />
+      <Navbar />
       <Switch>
         {linksInfo.map(({ url, component }) => (
           <Route key={ url } exact path={ url }>

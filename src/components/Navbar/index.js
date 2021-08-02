@@ -6,12 +6,14 @@ class Navbar extends React.Component {
   render() {
     const { links } = this.props;
     return (
-      links.map((link) => (
-        <Link
-          key={ link.url }
-          to={ link.url }
-        />
-      ))
+      <nav>
+        <div>
+          <Link to="/">HOME</Link>
+        </div>
+        <div>
+          <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        </div>
+      </nav>
     );
   }
 }
