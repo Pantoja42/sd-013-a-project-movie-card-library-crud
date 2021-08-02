@@ -52,6 +52,11 @@ a {
   text-align: justify;
 }
 
+.loading {
+  margin-top: 50px;
+  text-align: center;
+}
+
 .add-movie-btn {
   color: orange;
   margin-bottom: 20px;
@@ -98,4 +103,9 @@ a {
 
 .form-btn {
   margin-top: 10px;
+}
+
+.NotFound {
+  margin-top: 50px;
+  text-align: center;
 }

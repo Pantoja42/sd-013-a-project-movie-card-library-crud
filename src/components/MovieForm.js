@@ -5,19 +5,18 @@ class MovieForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...props.movie };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {
+  handleSubmit = () => {
     const { onSubmit } = this.props;
     onSubmit(this.state);
   }
 
-  updateMovie(field, newValue) {
+  updateMovie = (field, newValue) => {
     this.setState({ [field]: newValue });
   }
 
-  renderTitleInput() {
+  renderTitleInput = () => {
     const { title } = this.state;
 
     return (
@@ -38,7 +37,7 @@ class MovieForm extends React.Component {
     );
   }
 
-  renderSubtitleInput() {
+  renderSubtitleInput = () => {
     const { subtitle } = this.state;
 
     return (
@@ -58,7 +57,7 @@ class MovieForm extends React.Component {
     );
   }
 
-  renderImagePathInput() {
+  renderImagePathInput = () => {
     const { imagePath } = this.state;
 
     return (
@@ -78,7 +77,7 @@ class MovieForm extends React.Component {
     );
   }
 
-  renderStorylineInput() {
+  renderStorylineInput = () => {
     const { storyline } = this.state;
 
     return (
@@ -96,7 +95,7 @@ class MovieForm extends React.Component {
     );
   }
 
-  renderGenreSelection() {
+  renderGenreSelection = () => {
     const { genre } = this.state;
     return (
       <div className="form-label">
@@ -118,7 +117,7 @@ class MovieForm extends React.Component {
     );
   }
 
-  renderRatingInput() {
+  renderRatingInput= () => {
     const { rating } = this.state;
     return (
       <div className="form-label">
@@ -140,18 +139,16 @@ class MovieForm extends React.Component {
     );
   }
 
-  renderSubmitButton() {
-    return (
-      <div className="form-btn">
-        <button
-          type="button"
-          onClick={ this.handleSubmit }
-        >
-          Submit
-        </button>
-      </div>
-    );
-  }
+  renderSubmitButton = () => (
+    <div className="form-btn">
+      <button
+        type="button"
+        onClick={ this.handleSubmit }
+      >
+        Submit
+      </button>
+    </div>
+  );
 
   render() {
     return (
