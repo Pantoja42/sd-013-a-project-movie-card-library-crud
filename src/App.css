@@ -16,7 +16,6 @@ body {
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  height: 450px;
   margin: 5px;
   overflow: hidden;
   width: 300px;
@@ -38,14 +37,12 @@ body {
   margin: 0 0 12px;
 }
 
-.movie-card-subtitle {
-  color: #6c757d;
-  font-size: 16px;
-  font-weight: 500;
-  margin: 0 0 8px;
-}
-
 .movie-card-storyline {
   font-size: 14px;
   text-align: justify;
+}
+
+.details {
+  color: orange;
+  margin: 0 0 10px 20px;
 }
