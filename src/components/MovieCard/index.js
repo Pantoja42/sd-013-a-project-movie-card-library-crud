@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import style from './style.module.css';
 
 class MovieCard extends React.Component {
   render() {
@@ -17,7 +16,7 @@ class MovieCard extends React.Component {
       genre,
     } = movie;
     return (
-      <section className={ style.card } data-testid="movie-card">
+      <section data-testid="movie-card">
         <h2>{title}</h2>
         {storyline}
         <div>{subtitle}</div>
