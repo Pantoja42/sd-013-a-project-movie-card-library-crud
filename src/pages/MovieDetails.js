@@ -22,6 +22,10 @@ class MovieDetails extends Component {
     this.getMovie(id);
   }
 
+  componentWillUnmount() {
+    this.setState = () => {};
+  }
+
   getMovie(movieId) {
     movieAPI.getMovie(movieId)
       .then((response) => {
@@ -55,18 +59,27 @@ class MovieDetails extends Component {
     if (isLoading) return <Loading />;
 
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Título: ${title}` }</p>
-        <p>{ `Subtítulo: ${subtitle}` }</p>
-        <p>{ `Sinopse: ${storyline}` }</p>
-        <p>{ `Gênero: ${genre}` }</p>
-        <p>{ `Avaliação: ${rating}` }</p>
-        <Link to="/" className="rating">VOLTAR</Link>
-        <Link to={ `/movies/${id}/edit` } className="rating">EDITAR</Link>
-        <Link to="/#" onClick={ () => this.deleteMovie(id) } className="rating">
-          DELETAR
-        </Link>
+      <div data-testid="movie-details" className="movie-card-details">
+        <img
+          alt="Movie Cover"
+          src={ `../${imagePath}` }
+          className="movie-card-image"
+        />
+        <div className="movie-card-body">
+
+          <p className="movie-card-title">{ `Título: ${title}` }</p>
+          <p className="movie-card-subtitle">{ `Subtítulo: ${subtitle}` }</p>
+          <p className="movie-card-storyline">{ `Sinopse: ${storyline}` }</p>
+          <p>{ `Gênero: ${genre}` }</p>
+          <p>{ `Avaliação: ${rating}` }</p>
+        </div>
+        <footer className="movie-card-rating">
+          <Link to="/" className="rating">VOLTAR</Link>
+          <Link to={ `/movies/${id}/edit` } className="rating">EDITAR</Link>
+          <Link to="/#" onClick={ () => this.deleteMovie(id) } className="rating">
+            DELETAR
+          </Link>
+        </footer>
       </div>
     );
   }

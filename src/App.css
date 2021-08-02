@@ -37,12 +37,22 @@ body {
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  height: 450px;
   margin: 5px;
   overflow: hidden;
   width: 300px;
 }
 
+.movie-card-details {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  max-width: 720px;
+  overflow: hidden;
+  width: 90vw;
+}
 
 .movie-card-image {
   width: 100%;
@@ -78,6 +88,7 @@ body {
   font-size: 16px;
   font-weight: 700;
   padding: 3px 9px;
+  text-decoration: none;
 }
 
 .movie-card-rating {
@@ -86,4 +97,71 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 12px 20px;
+}
+
+.add-button {
+  left: 30px;
+  position: absolute;
+  text-decoration: none;
+  top: 10px;
+}
+
+.loading {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.edit-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 600px;
+  width: 90vw;
+}
+
+.edit-form div {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.edit-form div label {
+  display: flex;
+  flex-direction: column-reverse;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+
+.genre {
+  flex-direction: column;
+}
+
+.edit-form input, .edit-form select {
+  height: 30px;
+  margin-top: 8px;
+}
+
+.edit-form textarea {
+  height: 100px;
+  margin-top: 8px;
+  resize: none;
+}
+
+.edit-form button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: 700;
+  height: 30px;
+  outline: none;
+  width: 100%;
+}
+
+.edit-form button:hover {
+  background-color: #116bcc;
 }

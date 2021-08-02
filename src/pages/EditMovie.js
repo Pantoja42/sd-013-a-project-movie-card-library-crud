@@ -25,6 +25,10 @@ class EditMovie extends Component {
       });
   }
 
+  componentWillUnmount() {
+    this.setState = () => {};
+  }
+
   async handleSubmit(movie) {
     await movieAPI.updateMovie(movie);
     const { history } = this.props;
