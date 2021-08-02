@@ -14,6 +14,7 @@ function App() {
           render={ (props) => <MovieDetails { ...props } /> }
         />
         <Route
+          exact
           path="/movies/:id/edit"
           component={ (props) => <EditMovie { ...props } /> }
         />
