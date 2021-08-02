@@ -12,6 +12,7 @@ class MovieList extends Component {
       movies: [],
       loading: true,
     };
+    this.showMovies = this.showMovies.bind(this);
   }
 
   async componentDidMount() {
@@ -23,12 +24,16 @@ class MovieList extends Component {
       });
   }
 
-  render() {
-    const { loading, movies } = this.state;
-    const showMovies = movies.map((movie) => (
+  showMovies() {
+    const { movies } = this.state;
+    return movies.map((movie) => (
       <MovieCard key={ movie.title } movie={ movie } />
     ));
-    const renderList = loading ? <Loading /> : showMovies;
+  }
+
+  render() {
+    const { state: { loading }, showMovies } = this;
+    const renderList = loading ? <Loading /> : showMovies();
 
     return (
       <div data-testid="movie-list">
