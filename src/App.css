@@ -3,6 +3,10 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 .movie-list-container {
   align-items: center;
   display: flex;
@@ -59,6 +63,7 @@ body {
 }
 
 .details-page {
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -70,4 +75,27 @@ body {
 .details-page .link {
   color: orange;
   margin: 0 10px;
+}
+
+.movie-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.movie-form input, .movie-form select {
+  margin: 5px 0;
+  width: 300px;
+}
+
+.movie-form textarea {
+  height: 150px;
+  margin: 5px 0;
+  width: 300px;
+}
+
+.form-btn {
+  margin-top: 10px;
 }
