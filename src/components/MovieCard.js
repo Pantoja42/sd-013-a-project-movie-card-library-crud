@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 
 class MovieCard extends React.Component {
   render() {
@@ -11,3 +11,4 @@ class MovieCard extends React.Component {
 }
 
 export default MovieCard;
+ */
