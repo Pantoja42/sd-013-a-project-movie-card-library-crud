@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -10,6 +10,7 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
       loading: true,
+      shouldRedirect: false,
     };
     this.showMovie = this.showMovie.bind(this);
   }
@@ -24,8 +25,16 @@ class MovieDetails extends Component {
       });
   }
 
+  deleteMovie(id) {
+    movieAPI
+      .deleteMovie(id)
+      .then(() => {
+        this.setState({ shouldRedirect: true });
+      });
+  }
+
   showMovie() {
-    const { movie } = this.state;
+    const { state: { movie }, deleteMovie } = this;
     const { id, title, subtitle, storyline, genre, rating, imagePath } = movie;
     return (
       <>
@@ -36,13 +45,17 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <p><Link to={ `/movies/${id}/edit` }>EDITAR</Link></p>
+        <p><button type="button" onClick={ () => deleteMovie(id) }>DELETAR</button></p>
       </>
     );
   }
 
   render() {
-    const { state: { loading }, showMovie } = this;
+    const { state: { loading, shouldRedirect }, showMovie } = this;
     const renderList = loading ? <Loading /> : showMovie();
+    if (shouldRedirect) {
+      return (<Redirect to="/" />);
+    }
     return (
       <div data-testid="movie-details">
         {renderList}
