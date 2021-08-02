@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// import Rating from './Rating';
+import Rating from './Rating';
 
 class MovieCard extends Component {
   render() {
@@ -17,10 +17,10 @@ class MovieCard extends Component {
           <h5 className="movie-card-subtitle">{ subtitle }</h5>
           <p className="movie-card-storyline">{ storyline }</p>
         </div>
-        <footer>
-          <Link to={ `/movies/${id}` }>VER DETALHES</Link>
+        <footer className="movie-card-rating">
+          <Link to={ `/movies/${id}` } className="rating">VER DETALHES</Link>
+          <Rating rating={ rating } />
         </footer>
-        {/* <Rating rating={ rating } /> */}
       </div>
     );
     // return <h1>Card</h1>;
