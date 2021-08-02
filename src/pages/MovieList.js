@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Loading from '../components/Loading';
-import MovieCard from '../components/MovieCard';
-
 import * as movieAPI from '../services/movieAPI';
+import { Loading, MovieCard } from '../components';
 
 class MovieList extends Component {
   constructor() {
@@ -19,7 +17,6 @@ class MovieList extends Component {
     await movieAPI
       .getMovies()
       .then((data) => {
-        // console.log(data);
         this.setState({ movies: data, loading: false });
       });
   }
@@ -34,7 +31,6 @@ class MovieList extends Component {
   render() {
     const { state: { loading }, showMovies } = this;
     const renderList = loading ? <Loading /> : showMovies();
-
     return (
       <div data-testid="movie-list">
         {renderList}
