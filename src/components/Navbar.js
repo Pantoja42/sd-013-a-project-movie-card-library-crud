@@ -10,7 +10,6 @@ class Navbar extends React.Component {
         <Link
           key={ link.url }
           to={ link.url }
-          Component={ link.component }
         />
       ))
     );
