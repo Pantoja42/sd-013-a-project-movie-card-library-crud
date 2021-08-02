@@ -20,8 +20,12 @@ class MovieList extends Component {
   }
 
   FetchMovies = async () => {
-    const movies = await movieAPI.getMovies();
-    this.setState({ movies, loading: false });
+    try {
+      const movies = await movieAPI.getMovies();
+      this.setState({ movies, loading: false });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   render() {
