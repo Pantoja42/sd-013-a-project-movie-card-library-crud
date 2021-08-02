@@ -14,24 +14,17 @@ class MovieList extends Component {
     };
   }
 
-  // https://www.valentinog.com/blog/await-react/
-  async componentDidMount() {
-    const response = await movieAPI.getMovie();
-    console.log(response);
-    const json = await response.json();
-    this.setState({
-      movies: json,
-      isLoading: false,
-    });
+  componentDidMount() {
+    movieAPI.getMovies().then((res) => this.setState({ movies: res, isLoading: false }));
   }
 
   render() {
-    const { movies } = this.state;
+    const { movies, isLoading } = this.state;
 
     // Render Loading here if the request is still happening
     return (
       <div data-testid="movie-list">
-        { isLoading && <Loading /> }
+        {isLoading && <Loading />}
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
