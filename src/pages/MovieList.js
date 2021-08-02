@@ -13,23 +13,26 @@ class MovieList extends Component {
     };
   }
 
-  componentDidMount() {
-    movieAPI.getMovies();
-  }
-
-  componentDidUpdate() {
-    const { movies } = this.state;
-    return (
-      <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-      </div>
-    );
+  async componentDidMount() {
+    await movieAPI.getMovies().then((filmes) => (
+      this.setState({
+        movies: filmes,
+      })
+    ));
   }
 
   render() {
+    const { movies } = this.state;
+    if (movies.length === 0) {
+      return (
+        <div>
+          <Loading />
+        </div>
+      );
+    }
     return (
-      <div>
-        <Loading />
+      <div data-testid="movie-list">
+        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
       </div>
     );
   }
