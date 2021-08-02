@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -7,10 +7,11 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor() {
     super();
-
+    this.handleRemove = this.handleRemove.bind(this);
     this.state = {
       loading: true,
       movie: {},
+      shouldRedirect: false,
     };
   }
 
@@ -25,9 +26,20 @@ class MovieDetails extends Component {
       });
   }
 
+  handleRemove() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id)
+      .then(() => {
+        this.setState({
+          shouldRedirect: true,
+        });
+      });
+  }
+
   render() {
     // Change the condition to check the state
-    const { loading } = this.state;
+    const { loading, shouldRedirect } = this.state;
+    if (shouldRedirect) return <Redirect to="/" />;
     if (loading) return <Loading />;
 
     const { movie: {
@@ -53,6 +65,9 @@ class MovieDetails extends Component {
         </button>
         <button type="button">
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        </button>
+        <button type="button">
+          <Link to="/" onClick={ this.handleRemove }>DELETAR</Link>
         </button>
       </div>
     );
