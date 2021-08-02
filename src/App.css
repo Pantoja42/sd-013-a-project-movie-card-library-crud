@@ -3,6 +3,12 @@ body {
   box-sizing: border-box;
 }
 
+.movie-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .movie-list {
   display: flex;
   flex-flow: row wrap;
@@ -40,6 +46,11 @@ body {
 .movie-card-storyline {
   font-size: 14px;
   text-align: justify;
+}
+
+.add-movie-btn {
+  color: orange;
+  margin-bottom: 20px;
 }
 
 .details-link {
