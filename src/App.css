@@ -42,7 +42,21 @@ body {
   text-align: justify;
 }
 
-.details {
+.details-link {
   color: orange;
   margin: 0 0 10px 20px;
+}
+
+.details-page {
+  text-align: center;
+}
+
+.details-page .details-storyline {
+  max-width: 300px;
+  margin: auto;
+}
+
+.details-page .link {
+  color: orange;
+  margin: 0 10px;
 }
