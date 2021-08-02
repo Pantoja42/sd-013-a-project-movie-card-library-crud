@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MovieList, MovieDetails, EditMovie, NewMovie, NotFound } from './pages';
 
+import './App.css';
+
 function App() {
   return (
     <BrowserRouter>
