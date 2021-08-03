@@ -32,6 +32,11 @@ class MovieDetails extends Component {
     const { movie, loaded } = this.state;
     const renderMovieOrLoading = () => {
       if (loaded) {
+        if (movie === undefined ) {
+          return (
+            <p>erro</p>
+          )
+        }
         const { id, imagePath, title, subtitle, storyline, genre, rating } = movie;
         return (
           <div data-testid="movie-details">
@@ -49,7 +54,6 @@ class MovieDetails extends Component {
         return <Loading />
       }
     }
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
 
     return (
       renderMovieOrLoading()
