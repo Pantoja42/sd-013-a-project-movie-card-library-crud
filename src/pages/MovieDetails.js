@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ProptTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -52,6 +53,12 @@ class MovieDetails extends Component {
       </div>
     );
   }
+}
+
+MovieDetails.propTypes = {
+  match: ProptTypes.string.isRequired,
+  params: ProptTypes.string.isRequired,
+  id: ProptTypes.string.isRequired,
 }
 
 export default MovieDetails;
