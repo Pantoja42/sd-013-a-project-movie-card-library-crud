@@ -3,3 +3,57 @@ body {
   box-sizing: border-box;
 }
 
+h2{
+  color: black;
+}
+
+.loading{
+  margin-top: 10%;
+  text-align: center;
+  font-size: 100px;
+  color: red;
+  font-style: oblique;
+}
+
+.movie-card{
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 3px 2px 3px 2px grey;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 10px 15px;
+  min-height: 450px;
+  overflow: hidden;
+  padding: 5px;
+  text-align: center;
+  width: 300px;
+  color: whitesmoke;
+}
+
+.movie-card:hover{
+  width: 20%;
+  color: black;
+}
+
+.links{
+  align-self: center;
+  box-shadow: 3px 2px 3px 2px grey;
+  color: black;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 7px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 40%;
+}
+
+.movie-card, linksAdd{
+  text-align: center;
+}
+
+.links:hover{
+  background-color: grey;
+  color: black;
+}
