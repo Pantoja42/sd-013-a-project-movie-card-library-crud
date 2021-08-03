@@ -30,7 +30,7 @@ class MovieList extends Component {
 
   render() {
     const { movies, loading } = this.state;
-    const addCard = <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+    const addCard = <Link to="/movies/new">ADICIONAR CARTÃO</Link>;
 
     return (
       <div data-testid="movie-list">
