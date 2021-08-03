@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 class MovieCard extends React.Component {
   render() {
-    const { movie } = this.props;
-    const { title, storyline, id } = movie;
+    const { movie } = this.props; // Acessando movie via props
+    const { title, storyline, id } = movie; // Desconstruindo exatamente as props que usaremos dentro do return
     return (
       <div data-testid="movie-card">
         <p>{title}</p>
@@ -19,6 +19,8 @@ class MovieCard extends React.Component {
   }
 }
 
+// https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html
+// An object taking on a particular shape:
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,
@@ -28,3 +30,5 @@ MovieCard.propTypes = {
 };
 
 export default MovieCard;
+
+// Requisito 3 feito com a ajuda do aluno Pedro Delicolli
