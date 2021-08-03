@@ -1,10 +1,14 @@
+// React
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// Validation
 import PropTypes from 'prop-types';
 
+// Services
 import * as movieAPI from '../services/movieAPI';
 
+// Child Components
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -60,11 +64,11 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { loading } = this.state;
+    const { state: { loading }, renderMovie } = this;
 
     return (
       <div data-testid="movie-details">
-        { loading ? <Loading /> : this.renderMovie() }
+        { loading ? <Loading /> : renderMovie() }
         <Link to="/">VOLTAR</Link>
       </div>
     );
