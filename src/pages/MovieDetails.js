@@ -30,6 +30,7 @@ class MovieDetails extends Component {
   render() {
     const { movie, loading } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { deleteMovie } = movieAPI;
     return (
       <div className="details-page" data-testid="movie-details">
         { loading ? <Loading /> : (
@@ -41,7 +42,8 @@ class MovieDetails extends Component {
             <p>{ `Genre: ${genre}` }</p>
             <p>{ `Rating: ${rating}` }</p>
             <div>
-              <Link className="link" to={ `/movies/${id}/edit` }>EDITAR</Link>
+              <Link className="" to={ `/movies/${id}/edit` }>EDITAR</Link>
+              <Link className="" to="/" onClick={ () => deleteMovie(id) }>DELETAR</Link>
               <Link className="link" to="/">VOLTAR</Link>
             </div>
           </>
