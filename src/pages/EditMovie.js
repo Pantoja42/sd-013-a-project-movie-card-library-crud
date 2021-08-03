@@ -42,13 +42,13 @@ class EditMovie extends Component {
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;
+    const { shouldRedirect, movie, loading } = this.state;
     if (shouldRedirect) {
       return <Redirect to="/" />;
     }
 
-    if (status === 'loading') {
-      return <div ata-testid="edit-movie"><Loading /></div>
+    if (loading) {
+      return <Loading />;
     }
 
     return (

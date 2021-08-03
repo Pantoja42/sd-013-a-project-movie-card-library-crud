@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
-import Loading from '../components/Loading';
+import React, { Component } from "react";
+import MovieCard from "../components/MovieCard";
+import Loading from "../components/Loading";
 
-import * as movieAPI from '../services/movieAPI';
+import * as movieAPI from "../services/movieAPI";
 
 class MovieList extends Component {
   constructor() {
@@ -29,15 +29,20 @@ class MovieList extends Component {
 
   render() {
     const { movies, loading } = this.state;
-    
+
     if (loading === true) {
-      return <div data-testid="movie-list"><Loading /></div>;
+      return (
+        <div data-testid="movie-list">
+          <Loading />
+        </div>
+      );
     }
 
     return (
       <div data-testid="movie-list">
-        
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        {movies.map((movie) => (
+          <MovieCard key={movie.title} movie={movie} />
+        ))}
       </div>
     );
   }

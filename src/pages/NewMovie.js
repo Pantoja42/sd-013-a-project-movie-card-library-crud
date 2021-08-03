@@ -23,7 +23,7 @@ class NewMovie extends Component {
 
   render() {
     const { shouldRedirect } = this.state;
-    if(shouldRedirect) {
+    if (shouldRedirect) {
       return <div data-testid="new-movie"><Redirect to="/" /></div>;
     }
     return (
