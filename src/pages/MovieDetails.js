@@ -8,8 +8,12 @@ class MovieDetails extends Component {
   constructor() {
     super();
 
+    this.removeMovie = this.removeMovie.bind(this);
+
     this.state = {
       movie: '',
+      // loading: true,
+      // shouldRedirect: false,
     };
   }
 
@@ -18,17 +22,19 @@ class MovieDetails extends Component {
     movieAPI.getMovie(id).then((resp) => {
       this.setState({
         movie: resp,
+        // loading: false,
       });
     });
   }
 
-  deleteMovie() {
+  removeMovie() {
     const { match: { params: { id } } } = this.props;
-    movieAPI.deleteMovie(id).then((response) => {
-      this.setState({
-        movie: response,
+    movieAPI.deleteMovie(id)
+      .then(() => {
+        this.setState({
+          movie: '',
+        });
       });
-    });
   }
 
   render() {
@@ -48,7 +54,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
+        <Link to="/" onClick={ this.removeMovie }>DELETAR</Link>
       </div>
     );
   }
