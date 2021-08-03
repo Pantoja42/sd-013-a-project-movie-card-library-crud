@@ -21,14 +21,9 @@ class MovieDetails extends Component {
   }
 
   // Função feita com ajuda de Gustavo Mauricio e monitoria do Sugando
-  deleteMovie() {
-    console.log('testando o click');
+  async deleteMovie() {
     const { match: { params: { id } } } = this.props;
-    movieAPI.deleteMovie(id).then((res) => {
-      this.setState({
-        movie: res,
-      });
-    });
+    movieAPI.deleteMovie(id);
   }
 
   // Função feita com ajuda de Luiza Antiques
