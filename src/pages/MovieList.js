@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
 
 import * as movieAPI from '../services/movieAPI';
+
+import { MovieCard, Loading } from '../components';
 
 class MovieList extends Component {
   constructor() {
@@ -9,16 +10,33 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      loading: true,
     };
   }
 
-  render() {
-    const { movies } = this.state;
+  componentDidMount() {
+    movieAPI.getMovies()
+    // Resolves
+      .then((movies) => this.setState({
+        movies,
+        loading: false,
+      }))
+    // Rejects
+      .catch((error) => console.error(error));
+  }
 
-    // Render Loading here if the request is still happening
+  render() {
+    const { movies, loading } = this.state;
+
+    /* Explicação da estrutura condicional e uso do "&&" aposto à "?", ":" :
+    https://reactjs.org/docs/conditional-rendering.html */
 
     return (
       <div data-testid="movie-list">
+        {/* Loading Message */}
+        { loading && <Loading /> }
+
+        {/* Movie list */}
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
