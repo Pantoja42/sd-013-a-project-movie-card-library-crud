@@ -14,6 +14,7 @@ class MovieDetails extends Component {
     };
 
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -26,11 +27,17 @@ class MovieDetails extends Component {
       .then((response) => this.setState({ movie: response, isLoading: false }));
   }
 
+  deleteMovie() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id)
+      .then((response) => this.setState({ movie: response }));
+  }
+
   render() {
     const { movie, isLoading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
-    if (isLoading === true) {
+    if (isLoading) {
       return (
         <Loading />
       );
@@ -50,6 +57,9 @@ class MovieDetails extends Component {
         <Link to="/">
           VOLTAR
         </Link>
+        <Link onClick={ this.deleteMovie } to="/">
+          DELETAR
+        </Link>
       </div>
     );
   }
@@ -64,3 +74,6 @@ MovieDetails.propTypes = {
 };
 
 export default MovieDetails;
+
+// Projeto feito com ajuda das Estudantes:
+// Lanai, Aline, Débora, Luiza, Julia,
