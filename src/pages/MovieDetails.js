@@ -23,16 +23,21 @@ class MovieDetails extends Component {
   fetchMovie() {
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id)
-      .then((res) => this.setState({ movie: res, isLoading: false }));
+      .then((response) => this.setState({ movie: response, isLoading: false }));
   }
 
   render() {
     const { movie, isLoading } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
 
+    if (isLoading === true) {
+      return (
+        <Loading />
+      );
+    }
+
     return (
       <div data-testid="movie-details">
-        {isLoading && <Loading />}
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <h2>{ `Title: ${title}` }</h2>
         <p>{ `Subtitle: ${subtitle}` }</p>
