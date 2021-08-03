@@ -11,6 +11,7 @@ class MovieDetails extends Component {
     this.state = {
       loading: true,
       movie: {},
+      redirect: false,
     };
     this.deleteMovie = this.deleteMovie.bind(this);
     this.renderMovie = this.renderMovie.bind(this);
@@ -26,6 +27,7 @@ class MovieDetails extends Component {
     const { match: { params: { id } } } = this.props;
     movieAPI.deleteMovie(id).then((res) => this.setState({ movie: res }));
     e.preventDefault();
+    this.setState({ redirect: true });
   }
 
   renderMovie() {
@@ -48,7 +50,11 @@ class MovieDetails extends Component {
 
   render() {
     const { match: { params: { id } } } = this.props;
-    const { loading } = this.state;
+    const { loading, redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to="/" />;
+    }
     return (
       <div data-testid="movie-details">
         { loading ? <Loading /> : this.renderMovie() }
