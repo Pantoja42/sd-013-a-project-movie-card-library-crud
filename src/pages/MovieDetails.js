@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -12,7 +12,7 @@ class MovieDetails extends Component {
       loading: true,
       movie: {},
     };
-
+    this.deleteMovie = this.deleteMovie.bind(this);
     this.renderMovie = this.renderMovie.bind(this);
   }
 
@@ -20,6 +20,12 @@ class MovieDetails extends Component {
     // pega id pela URL
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((res) => this.setState({ movie: res, loading: false }));
+  }
+
+  deleteMovie(e) {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id).then((res) => this.setState({ movie: res }));
+    e.preventDefault();
   }
 
   renderMovie() {
@@ -41,12 +47,14 @@ class MovieDetails extends Component {
   }
 
   render() {
+    const { match: { params: { id } } } = this.props;
     const { loading } = this.state;
     return (
       <div data-testid="movie-details">
         { loading ? <Loading /> : this.renderMovie() }
         <Link to="/">VOLTAR</Link>
-        <Link to="/movies/:id/edit">EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
