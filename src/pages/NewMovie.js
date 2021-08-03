@@ -1,18 +1,45 @@
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router';
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
 class NewMovie extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      shouldRedirect: false,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(newMovie) {
+  async handleSubmit(newMovie) {
+    await movieAPI.createMovie(newMovie);
+    this.setState = {
+      shouldRedirect: true,
+    };
   }
 
+  // async getMovieId() {
+  //   const movieList = await movieAPI.getMovies();
+  //   console.log(movieList);
+  //   // const length = movieList.length;
+  //   // this.setState = {
+  //   //   id: length,
+  //   // };
+  // }
+
+  // https://reactrouter.com/web/api/Redirect
+  // https://www.codegrepper.com/code-examples/javascript/%27Redirect%27+is+not+defined+react%2Fjsx-no-undef
+
   render() {
+    const { shouldRedirect } = this.state;
+
+    if (shouldRedirect) {
+      return (
+        <Redirect to="/" />
+      );
+    }
+
     return (
       <div data-testid="new-movie">
         <MovieForm onSubmit={ this.handleSubmit } />
