@@ -7,21 +7,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <MovieList />
-        </Route>
-        <Route exact path="/movies/new">
-          <NewMovie />
-        </Route>
-        <Route exact path="/movies/:id">
-          { (RouterProps) => <MovieDetails { ...RouterProps } /> }
-        </Route>
-        <Route exact path="/movies/:id/edit">
-          <EditMovie />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
+        <Route exact path="/" render={ () => <MovieList /> } />
+        <Route exact path="/movies/new" render={ () => <NewMovie /> } />
+        <Route exact path="/movies/:id" render={ (p) => <MovieDetails { ...p } /> } />
+        <Route exact path="/movies/:id/edit" render={ (p) => <EditMovie { ...p } /> } />
+        <Route exact path="*" render={ () => <NotFound /> } />
       </Switch>
     </Router>
   );

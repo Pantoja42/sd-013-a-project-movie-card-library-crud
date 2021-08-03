@@ -37,11 +37,13 @@ class MovieDetails extends Component {
             <img alt="Movie Cover" src={ `../${imagePath}` } />
             <p>{ `Title: ${title}` }</p>
             <p>{ `Subtitle: ${subtitle}` }</p>
-            <p className="details-storyline">{ `Storyline: ${storyline}`}</p>
-            <p>{ `Genre: ${genre}`}</p>
+            <p className="details-storyline">{ `Storyline: ${storyline}` }</p>
+            <p>{ `Genre: ${genre}` }</p>
             <p>{ `Rating: ${rating}` }</p>
-            <Link className="link" to={ `/movies/${id}/edit` }>EDITAR</Link>
-            <Link className="link" to="/">VOLTAR</Link>
+            <div>
+              <Link className="link" to={ `/movies/${id}/edit` }>EDITAR</Link>
+              <Link className="link" to="/">VOLTAR</Link>
+            </div>
           </>
         ) }
       </div>
