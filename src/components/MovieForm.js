@@ -8,12 +8,14 @@ class MovieForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // chama a funçao handleSubmit da pagina <EditMovie /> ou da pagina <NewMovie /> com as atulizaçoes salva no state desse componente
   handleSubmit() {
     const { onSubmit } = this.props;
     onSubmit(this.state);
   }
 
-  updateMovie = async (field, newValue) => {
+  // atualiza o state desse pagina quando recebe uma mudança do input
+  updateMovie = (field, newValue) => {
     this.setState({ [field]: newValue });
   }
 

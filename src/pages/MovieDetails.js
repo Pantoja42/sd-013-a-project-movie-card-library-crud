@@ -16,20 +16,32 @@ class MovieDetails extends Component {
     };
   }
 
+  // crio uma condição para quando a pagina for montada verificar se a rota não e "movies/new" pois quando a rota for essa deve ser renderizada a pagina <NewMovie />
   componentDidMount() {
-    const { match: { params: { id } } } = this.props;
+    const { match: { params: { id } } } = this.props; // props recebida do route
     return (id === 'new'
       ? this.newMovie()
-      : this.findMovie()
+      : this.findMovie(id)
     );
   }
 
+  // função que simula uma requesição na api para obter como resposta o objeto com o "id" igual ao requerido em seguida o state movie recebe esse objeto e status de loading recebe true
+  findMovie = async (id) => {
+    const response = await movieAPI.getMovie(id);
+    this.setState({
+      movie: response,
+      status: true,
+    });
+  }
+
+  // funçao para retirar a tela de carregamento <Loading /> quando a rota for "movies/new"
   newMovie = () => {
     this.setState({
       status: true,
     });
   }
 
+  // função para deletar filme, recebe o id do filme que deve ser deletado
   deleteMovie = (movieId) => {
     movieAPI.deleteMovie(movieId);
     this.setState({
@@ -37,6 +49,8 @@ class MovieDetails extends Component {
     });
   }
 
+  // função que renderiza a pagina <MovieDetails />
+  // fiz a rederização condicional pois essa pagina so deve ser renderizada quando receber um resposta da api ou quando a rota não for "movies/new"
   movieDetailsRender = () => {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
@@ -54,15 +68,6 @@ class MovieDetails extends Component {
         <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
-  }
-
-  findMovie = async () => {
-    const { match: { params: { id } } } = this.props;
-    const response = await movieAPI.getMovies();
-    this.setState({
-      movie: response.find((movie) => movie.id === parseInt(id, 10)),
-      status: true,
-    });
   }
 
   render() {

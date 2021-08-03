@@ -11,10 +11,11 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      data: false,
+      status: false,
     };
   }
 
+  // ao final da montagem do componente executa a função que ir requerer a resposta da API
   componentDidMount() {
     this.responseApi();
   }
@@ -23,14 +24,14 @@ class MovieList extends Component {
     const response = await movieAPI.getMovies();
     this.setState(() => ({
       movies: response,
-      data: true,
+      status: true,
     }));
   }
 
   render() {
-    const { data, movies } = this.state;
+    const { status, movies } = this.state;
     // Render Loading here if the request is still happening
-    if (data === false) {
+    if (status === false) {
       return <Loading />;
     }
     return (

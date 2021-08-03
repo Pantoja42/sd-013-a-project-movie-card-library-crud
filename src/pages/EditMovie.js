@@ -16,19 +16,21 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // no final da montagem do componente executa a função findMovie com o parametro id encontrado na props do react-router-dom
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     this.findMovie(id);
   }
 
+  // executa a funçao updateMovie do arquivo movieAPI para atualizar os dados do filme, depois altera o status de shouldRedirect que agora aciona uma condicional que podera retornar a pagina <MovieList />
   handleSubmit(updatedMovie) {
-    movieAPI.updateMovie(updatedMovie); // depois de 3 sem saber oque fazer descobri que existia uma funçao no services que atualizava o filme
+    movieAPI.updateMovie(updatedMovie);
     this.setState({
       shouldRedirect: true,
     });
   }
 
-  // fiz a funcao para requerir apenas o filme desejado antes de descobrir que ja tinha uma funcao feita no services
+  // executa a função getMovie do arquivo MovieAPI que tem como objetivo filtrar o objeto filme que possui o mesmo id que foi passado como parametro na funçao
   findMovie = async (id) => {
     const response = await movieAPI.getMovie(id);
     this.setState({

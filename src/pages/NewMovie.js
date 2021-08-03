@@ -15,6 +15,7 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // executa a função createMovie do arquivo movieAPI que criara um novo filme na pagina <MovieList /> e no final muda o state do shouldRedirect para 'true' que habilita a condicional de que redicionará a rota para <MovieList />
   handleSubmit(newMovie) {
     movieAPI.createMovie(newMovie);
     this.setState({
