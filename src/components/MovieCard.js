@@ -22,7 +22,7 @@ MovieCard.propTypes = {
     name: PropTypes.string,
     title: PropTypes.string,
     storyline: PropTypes.string,
-    id: PropTypes.string,
+    id: PropTypes.number,
   }),
 };
 
