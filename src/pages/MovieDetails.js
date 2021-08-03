@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -9,7 +9,7 @@ class MovieDetails extends Component {
     super();
 
     this.state = {
-      movie: undefined,
+      movie: [],
       loaded: false,
     }
   }
@@ -24,6 +24,11 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     this.fetchMovie();
+  }
+
+  async handleDelete(movie) {
+    const { id } = movie;
+    await movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -48,6 +53,7 @@ class MovieDetails extends Component {
             <p>{ `Rating: ${rating}` }</p>
             <Link to="/">VOLTAR</Link>
             <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+            <Link to='/' onClick={ () => this.handleDelete(this.state.movie) }>DELETAR</Link>
           </div>
         )
       } else {
