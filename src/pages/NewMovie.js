@@ -22,7 +22,7 @@ class NewMovie extends Component {
   }
 
   render() {
-    const { shouldRedirect } = this.setState;
+    const { shouldRedirect } = this.state;
     const forms = (
       <div data-testid="new-movie">
         <MovieForm onSubmit={ this.handleSubmit } />
@@ -34,4 +34,5 @@ class NewMovie extends Component {
     );
   }
 }
+
 export default NewMovie;
