@@ -43,16 +43,23 @@ class MovieDetails extends Component {
       subtitle,
       id } = filme;
     const pikxu = (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ title }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
+      <div data-testid="movie-details" className="movie-card">
+        <img className="movie-card-image" alt="Movie Cover" src={ `../${imagePath}` } />
+        <p className="movie-card-title">{ title }</p>
+        <p className="movie-card-subtitle">{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <Link to="/">VOLTAR</Link>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to="/" onClick={ () => this.deletarFilmes(id) }>DELETAR</Link>
+        <p className="rating">{ `Rating: ${rating}` }</p>
+        <Link to="/" className="botao">VOLTAR</Link>
+        <Link to={ `/movies/${id}/edit` } className="botao">EDITAR</Link>
+        <Link
+          to="/"
+          onClick={ () => this
+            .deletarFilmes(id) }
+          className="botao"
+        >
+          DELETAR
+        </Link>
       </div>
     );
 
