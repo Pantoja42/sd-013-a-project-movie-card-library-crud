@@ -13,10 +13,22 @@ class MovieDetails extends Component {
       isLoading: true,
     };
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
     this.fetchMovie();
+  }
+
+  // Função feita com ajuda de Gustavo Mauricio e monitoria do Sugando
+  deleteMovie() {
+    console.log('testando o click');
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id).then((res) => {
+      this.setState({
+        movie: res,
+      });
+    });
   }
 
   // Função feita com ajuda de Luiza Antiques
@@ -29,12 +41,19 @@ class MovieDetails extends Component {
     });
   }
 
+  // Função feita com ajuda de Gustavo Mauricio
+  // async deletehMovie() {
+  //   const { match: { params: { id } } } = this.props;
+  //   const movie = await movieAPI.deleteMovie(id);
+  //   this.setState({
+  //     movie,
+  //   });
+  // }
+
   render() {
     // Change the condition to check the state
-    // if (true) return <Loading />;
     const { movie, isLoading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    // const { match: { params: { id } } } = this.props;
 
     return (
       <div data-testid="movie-details">
@@ -47,6 +66,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }

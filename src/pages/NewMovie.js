@@ -8,15 +8,17 @@ class NewMovie extends Component {
     super(props);
     this.state = {
       shouldRedirect: false,
+      // movie: {},
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async handleSubmit(newMovie) {
     await movieAPI.createMovie(newMovie);
-    this.setState = {
+    this.setState({
       shouldRedirect: true,
-    };
+    });
+    console.log(newMovie);
   }
 
   // async getMovieId() {

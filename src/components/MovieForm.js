@@ -6,6 +6,7 @@ class MovieForm extends React.Component {
     super(props);
     this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateMovie = this.updateMovie.bind(this);
   }
 
   handleSubmit() {
@@ -26,6 +27,7 @@ class MovieForm extends React.Component {
           <input
             placeholder="Insira o título"
             id="movie_title"
+            name="movie_title"
             type="text"
             className="validate"
             value={ title }
@@ -46,6 +48,7 @@ class MovieForm extends React.Component {
           <input
             placeholder="Insira o subtítulo"
             id="movie_subtitle"
+            name="movie_subtitle"
             type="text"
             value={ subtitle }
             onChange={ (event) => this.updateMovie('subtitle', event.target.value) }
@@ -65,6 +68,7 @@ class MovieForm extends React.Component {
           <input
             placeholder="Insira o caminho da imagem"
             id="movie_image"
+            name="movie_image"
             type="text"
             value={ imagePath }
             onChange={ (event) => this.updateMovie('imagePath', event.target.value) }
@@ -83,6 +87,7 @@ class MovieForm extends React.Component {
         <label htmlFor="movie_storyline">
           <textarea
             id="movie_storyline"
+            name="movie_storyline"
             value={ storyline }
             onChange={ (event) => this.updateMovie('storyline', event.target.value) }
           />
@@ -100,6 +105,7 @@ class MovieForm extends React.Component {
           Gênero
           <select
             id="movie_genre"
+            name="movie_genre"
             value={ genre }
             onChange={ (event) => this.updateMovie('genre', event.target.value) }
           >
@@ -121,6 +127,7 @@ class MovieForm extends React.Component {
           <input
             placeholder="Dê a avaliação do filme"
             id="movie_rating"
+            name="movie_rating"
             type="number"
             step={ 0.1 }
             min={ 0 }
@@ -180,7 +187,16 @@ MovieForm.propTypes = {
 };
 
 MovieForm.defaultProps = {
-  movie: {},
+  movie: {
+    id: 0,
+    title: '',
+    subtitle: '',
+    storyline: '',
+    rating: 0,
+    imagePath: '',
+    bookmarked: false,
+    genre: '',
+  },
 };
 
 export default MovieForm;
