@@ -11,20 +11,25 @@ class MovieList extends Component {
       movies: [],
     };
     
-    this.fetchMovie = this.fetchMovie.bind(this);
+    this.fetchMovie = this.fetchMovies.bind(this);
   }
 
-  fetchMovie() {
-    movieAPI.getMovies()
-      .then((data) => (
-        this.setState({
-          movies: data,
-        })
-      ))
+  async fetchMovies() {
+    // movieAPI.getMovies()
+    //   .then((data) => (
+    //     this.setState({
+    //       movies: data,
+    //     })
+    //   ))
+    const moviesData = await movieAPI.getMovies();
+
+    this.setState({
+      movies: moviesData,
+    })
   }
 
   componentDidMount() {
-    this.fetchMovie();
+    this.fetchMovies();
   }
 
   render() {
