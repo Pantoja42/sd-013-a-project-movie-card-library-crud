@@ -50,6 +50,7 @@ class MovieDetails extends Component {
             <p>{ `Rating: ${rating}` }</p>
             <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
             <Link exact to="/">VOLTAR</Link>
+            {/* <Link exact to="/">DELETAR</Link> */ }
           </div>
         ) }
       </div>
