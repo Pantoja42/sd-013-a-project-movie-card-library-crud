@@ -14,9 +14,9 @@ class App extends React.Component {
           <Route path="/movies/:id" component={ MovieDetails } />
           <Route path="*" component={ NotFound } />
         </Switch>
-          <nav>
-            <Link to="/movies/new">ADICIONAR CARTÃO</Link>
-          </nav>
+        <nav>
+          <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        </nav>
       </BrowserRouter>
     );
   }

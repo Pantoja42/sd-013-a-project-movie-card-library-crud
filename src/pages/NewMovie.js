@@ -7,9 +7,9 @@ class NewMovie extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state ={
+    this.state = {
       shouldRedirect: false,
-    }
+    };
   }
 
   async handleSubmit(newMovie) {
@@ -23,7 +23,7 @@ class NewMovie extends Component {
   render() {
     const { shouldRedirect } = this.state;
     if (shouldRedirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
     return (
       <div data-testid="new-movie">
