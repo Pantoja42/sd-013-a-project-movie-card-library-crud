@@ -58,9 +58,15 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <br />
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
         { /* </React.Fragment> */ }
       </>
     );
+  }
+
+  deleteMovie = () => {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id);
   }
 
   render() {
