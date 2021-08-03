@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { getMovie as movieAPI } from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
-      movie: {}, /*: {
-       title: '',
-       storyline: '',
-       imagePath: '',
-       genre: '',
-       rating: 0,
-       subtitle: '',
-       id: 0,
-      }, */
+      movie: '',
       loading: true,
     };
 
@@ -45,12 +38,15 @@ class MovieDetails extends Component {
 
   render() {
     const { movie, loading } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     const movieDetails = (
       <div>
         <h1>{ `Title: ${title}` }</h1>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <br />
+        <Link to="/">VOLTAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
