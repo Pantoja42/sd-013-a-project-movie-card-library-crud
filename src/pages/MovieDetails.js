@@ -10,10 +10,10 @@ class MovieDetails extends Component {
 
     this.state = {
       movie: {},
-      loading: true,
+      loading: 'loading',
     };
 
-    this.fetchMovie = this.fetchMovie.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this); // Fazendo bind pois não fiz uma função formato arrow function
   }
 
   componentDidMount() {
@@ -22,7 +22,7 @@ class MovieDetails extends Component {
 
   // Função que faz o fetch nos filmes:
   async fetchMovie() {
-    const { match: { params: { id } } } = this.props; // Acessando o id através de props que vem no propsReactRouter: https://reactrouter.com/web/api/match
+    const { match: { params: { id } } } = this.props; // Acessando o id através de props que vem nas propriedades do propsReactRouter: https://reactrouter.com/web/api/match
     movieAPI.getMovie(id).then((result) => {
       this.setState({
         movie: result,
