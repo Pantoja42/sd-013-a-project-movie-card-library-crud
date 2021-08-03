@@ -21,8 +21,8 @@ class MovieList extends Component {
       this.setState({
         movies: data,
         load: false,
-      })
-    })
+      });
+    });
   }
 
   render() {

@@ -19,29 +19,26 @@ class EditMovie extends Component {
     movieAPI.updateMovie(updatedMovie).then((updatedMovie) => {
       this.setState({
         shouldRedirect: true,
-      })
-    })
-    // updateMovie(updatedMovie.then(() => {
-    //   this.setState({shouldRedirect: true})
-    // }))
+      });
+    });
   }
 
   componentDidMount() {
-    const {match: {params: {id}}} = this.props;
-    movieAPI.getMovie(id).then((movie) =>{
-      console.log(movie)
+    const { match: { params: { id } } } = this.props;
+    movieAPI.getMovie(id).then((movie) => {
+      console.log(movie);
       this.setState({
-        status:true,
+        status: true,
         movie,
-      })
-    })
+      });
+    });
   }
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
       // Redirect
-      return <Redirect to='/' />
+      return <Redirect to="/" />;
     }
 
     if (status === false) {
