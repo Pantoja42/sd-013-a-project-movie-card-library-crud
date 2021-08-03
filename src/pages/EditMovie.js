@@ -18,7 +18,6 @@ class EditMovie extends Component {
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    console.log(movieAPI.getMovie(id));
     this.findMovie(id);
   }
 

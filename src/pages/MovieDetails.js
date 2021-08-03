@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import NewMovie from './NewMovie';
 import * as movieAPI from '../services/movieAPI';
@@ -11,7 +11,8 @@ class MovieDetails extends Component {
     super();
     this.state = {
       movie: '',
-      data: false,
+      status: false,
+      shouldRedirect: false,
     };
   }
 
@@ -25,7 +26,14 @@ class MovieDetails extends Component {
 
   newMovie = () => {
     this.setState({
-      data: true,
+      status: true,
+    });
+  }
+
+  deleteMovie = (movieId) => {
+    movieAPI.deleteMovie(movieId);
+    this.setState({
+      shouldRedirect: true,
     });
   }
 
@@ -43,6 +51,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }
@@ -52,7 +61,7 @@ class MovieDetails extends Component {
     const response = await movieAPI.getMovies();
     this.setState({
       movie: response.find((movie) => movie.id === parseInt(id, 10)),
-      data: true,
+      status: true,
     });
   }
 
@@ -60,9 +69,13 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
     const { match: { params: { id } } } = this.props;
-    const { data } = this.state;
+    const { status, shouldRedirect } = this.state;
 
-    if (data === false) {
+    if (shouldRedirect === true) {
+      return <Redirect to="/" />;
+    }
+
+    if (status === false) {
       return <Loading />;
     }
 
