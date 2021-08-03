@@ -18,30 +18,31 @@ class MovieList extends Component {
     this.getData();
   }
 
-  getData = () => {
-    this.setState({ loading: true }, async () => {
-      const data = await movieAPI.getMovies();
-      this.setState({
-        loading: false,
-        movies: data,
-      });
+  async getData() {
+    this.setState({
+      loading: true,
     });
-  };
+
+    const data = await movieAPI.getMovies();
+
+    this.setState({
+      loading: false,
+      movies: data,
+    });
+  }
 
   render() {
     const { movies, loading } = this.state;
 
     return (
       <div>
-        {loading ? (
-          <Loading />
-        ) : (
-            <div data-testid="movie-list">
-              {movies.map((movie) => (
-                <MovieCard key={movie.title} movie={movie} />
-              ))}
-            </div>
-          )}
+        { loading ? (<Loading />) : (
+          <div data-testid="movie-list">
+            { movies.map((movie) => (
+              <MovieCard key={ movie.title } movie={ movie } />
+            )) }
+          </div>
+        ) }
       </div>
     );
   }
