@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import '../../src/App.css'
 
 class MovieDetails extends Component {
   constructor() {
@@ -23,14 +22,15 @@ class MovieDetails extends Component {
     });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     const { match: { params: { id } } } = this.props;
-    movieAPI.deleteMovie(id).then((resp) => {
+    movieAPI.deleteMovie(id).then((response) => {
       this.setState({
-        movie:resp,
-      })
-    })
+        movie: response,
+      });
+    });
   }
+
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
@@ -40,7 +40,7 @@ class MovieDetails extends Component {
     if (movie === '') return <Loading />;
     return (
       <div data-testid="movie-details">
-        <img className='image'alt="Movie Cover" src={ `../${imagePath}` } />
+        <img className="image" alt="Movie Cover" src={ `../${imagePath}` } />
         <h4>{ `Title: ${title}` }</h4>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
@@ -48,7 +48,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <Link to="/"onclick={ this.componentWillUnmount }>DELETAR</Link>
+        <Link to="/" onclick={ this.componentWillUnmount }>DELETAR</Link>
       </div>
     );
   }
