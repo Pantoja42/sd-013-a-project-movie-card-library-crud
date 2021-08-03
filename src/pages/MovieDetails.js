@@ -13,8 +13,6 @@ class MovieDetails extends Component {
       movie: '',
       loading: true,
     };
-
-    // this.movieDetailsFunc.this.movieDetailsFunc.bind(this);
   }
 
   componentDidMount() {

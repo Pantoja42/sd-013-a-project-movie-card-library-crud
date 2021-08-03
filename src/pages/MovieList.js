@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Loading, MovieCard } from '../components';
 import { getMovies as movieAPI } from '../services/movieAPI';
 
@@ -32,12 +34,16 @@ class MovieList extends Component {
   render() {
     const { movies, loading } = this.state;
     const { title } = movies;
-    const movieMap = movies
-      .map((movie) => <MovieCard key={ title } movie={ movie } />);
+    const movieCard = (
+      <div>
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        {movies.map((movie) => <MovieCard key={ title } movie={ movie } />)}
+      </div>
+    );
 
     return (
       <div data-testid="movie-list">
-        { loading ? <Loading /> : movieMap }
+        { loading ? <Loading /> : movieCard }
       </div>
     );
   }
