@@ -3,3 +3,86 @@ body {
   box-sizing: border-box;
 }
 
+/* MovieList */
+.container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 40px;
+}
+
+.div-btn {
+  margin: 50px 0 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-add {
+  background-color: gray;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn-add:hover {
+  background-color: lightslategray;
+  transition: 0.2s;
+}
+
+/* MovieCard */
+.cards img {
+  max-width: 400px;
+}
+
+.cards {
+  border: 1px solid gray;
+  margin: 10px 5px;
+  max-width: 400px;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.cards:hover {
+  box-shadow: 0 0 15px gray;
+  transition: 0.2s;
+}
+
+.btn-links {
+  color: dimgray;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.btn-links:hover {
+  color: gray;
+}
+
+/* MovieForm */
+.container-form {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  min-width: 300px;
+}
+
+.form input, select, textarea {
+  height: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form textarea {
+  height: 100px;
+}
+
+/* MovieDetails */
+.container-btns {
+  display: flex;
+  justify-content: space-between;
+}

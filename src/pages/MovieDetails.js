@@ -42,16 +42,18 @@ class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     if (loading) return <Loading />;
     return (
-      <div data-testid="movie-details">
+      <div data-testid="movie-details" className="cards">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <h1>{ title }</h1>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${id}/edit` }> EDITAR </Link>
-        <Link to="/" onClick={ () => this.deleteMovie(id) }> DELETAR </Link>
-        <Link to="/"> VOLTAR </Link>
+        <div className="container-btns">
+          <Link to={ `/movies/${id}/edit` } className="btn-links"> EDITAR </Link>
+          <Link to="/" onClick={ () => this.deleteMovie(id) } className="btn-links"> DELETAR </Link>
+          <Link to="/" className="btn-links"> VOLTAR </Link>
+        </div>
       </div>
     );
   }
