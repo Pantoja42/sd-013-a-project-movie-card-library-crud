@@ -1,4 +1,7 @@
+// React
 import React from 'react';
+
+// Validation
 import PropTypes from 'prop-types';
 
 class MovieForm extends React.Component {
@@ -163,5 +166,19 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    imagePath: PropTypes.string,
+    bookmarked: PropTypes.bool,
+    genre: PropTypes.string,
+  }),
+  onSubmit: PropTypes.func,
+}.isRequired;
 
 export default MovieForm;
