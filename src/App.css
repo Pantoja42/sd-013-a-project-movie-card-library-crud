@@ -2,18 +2,13 @@ body {
   background-color: whitesmoke;
   box-sizing: border-box;
 }
-.conteiner{
+.conteiner {
   display: flex;  
   width: 50%;
   border: 1px solid black;
   margin: 20px;
 }
-.movie-box{
-  
 
-}
-
-.image{
+.image {
   width: 90%;
-
 }
