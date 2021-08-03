@@ -15,10 +15,16 @@ class MovieDetails extends Component {
     };
 
     this.changeState = this.changeState.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.changeState();
+  }
+
+  async handleClick() {
+    const { match: { params: { id } } } = this.props;
+    await movieAPI.deleteMovie(id);
   }
 
   async changeState() {
@@ -48,6 +54,7 @@ class MovieDetails extends Component {
               <p>{ `Rating: ${rating}` }</p>
               <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
               <Link to="/">VOLTAR</Link>
+              <Link to="/" onClick={ this.handleClick }>DELETAR</Link>
             </div>)}
       </div>
     );
