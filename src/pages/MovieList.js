@@ -19,6 +19,8 @@ class MovieList extends Component {
 
   fetchMovie = async () => {
     const movies = await movieAPI.getMovies();
+    const { location: { del } } = this.props;
+    await movieAPI.deleteMovie(del);
     this.setState({ loading: false, movies });
   }
 

@@ -36,6 +36,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }> EDITAR </Link>
         <Link to="/"> VOLTAR </Link>
+        <Link to={ (location) => ({ ...location, pathname: '/', del: id }) }>DELETAR</Link>
       </div>
     );
   }
