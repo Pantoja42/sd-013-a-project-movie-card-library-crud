@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Loading, MovieCard } from '../components';
-
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
@@ -14,7 +13,8 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    movieAPI.getMovies().then((res) => this.setState({ movies: res, loading: false }));
+    movieAPI.getMovies()
+      .then((res) => this.setState({ movies: res, loading: false }));
   }
 
   render() {
