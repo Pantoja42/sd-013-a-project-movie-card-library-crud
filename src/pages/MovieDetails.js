@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import ProptTypes from "prop-types";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import ProptTypes from 'prop-types';
 
-import * as movieAPI from "../services/movieAPI";
-import { Loading } from "../components";
+import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
@@ -31,8 +31,7 @@ class MovieDetails extends Component {
 
   render() {
     const { movieDetails } = this.state;
-    const { title, storyline, imagePath, genre, rating, id, subtitle } =
-      movieDetails;
+    const { title, storyline, imagePath, genre, rating, id, subtitle } = movieDetails;
     const { loading } = this.state;
     if (loading) {
       return <Loading />;
@@ -40,23 +39,23 @@ class MovieDetails extends Component {
 
     return (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Title: ${title}`}</p>
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
+        <img alt="Movie Cover" src={`../${ imagePath }`} />
+        <p>{`Title: ${ title }`}</p>
+        <p>{`Subtitle: ${ subtitle }`}</p>
+        <p>{`Storyline: ${ storyline }`}</p>
+        <p>{`Genre: ${ genre }`}</p>
+        <p>{`Rating: ${ rating }`}</p>
         <div className="movie-det-btns">
           <Link className="movie-det-btn" to="/">
             VOLTAR
           </Link>
-          <Link className="movie-det-btn" to={`${id}/edit`}>
+          <Link className="movie-det-btn" to={ `${id}/edit` }>
             EDITAR
           </Link>
           <Link
             className="movie-det-btn"
             to="/"
-            onClick={() => movieAPI.deleteMovie(id)}
+            onClick={ () => movieAPI.deleteMovie(id) }
           >
             DELETAR
           </Link>
