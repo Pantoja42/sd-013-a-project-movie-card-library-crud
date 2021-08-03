@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
-
 import * as movieAPI from '../services/movieAPI';
+import '../components/Add-card.css';
 
 class MovieList extends Component {
   constructor() {
@@ -27,9 +28,23 @@ class MovieList extends Component {
     const { movies, loading } = this.state;
     console.log(movies);
     const loadingElement = <h1>Carregando...</h1>;
-    const renderMovies = <div data-testid="movie-list">{movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}</div>;
+    if (loading) return loadingElement;
     return (
-      loading ? loadingElement : renderMovies
+      <section>
+        <div
+          data-testid="movie-list"
+        >
+          {movies
+            .map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        </div>
+        <div className="add-card">
+          <Link
+            to="/movies/new"
+          >
+            ADICIONAR CARTÃO
+          </Link>
+        </div>
+      </section>
     );
   }
 }

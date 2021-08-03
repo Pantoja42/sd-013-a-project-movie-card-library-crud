@@ -1,0 +1,12 @@
+.add-card {
+  background-color: rgb(32, 31, 31);
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.add-card a {
+  color: white;
+  text-decoration: none;
+}
