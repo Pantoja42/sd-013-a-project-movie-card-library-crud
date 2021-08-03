@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { EditMovie, MovieDetails, MovieList, NewMovie, NotFound } from './pages/index';
+// Agradecimentos especiais aos meus amigos: Duarte, Rogério , Josué e Camillo por compartilharem seus conhecimentos comigo todos os dias.
 
 function App() {
   return (
