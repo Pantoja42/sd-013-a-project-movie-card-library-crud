@@ -21,7 +21,6 @@ class EditMovie extends Component {
     this.editMovie();
   }
 
-
   async handleSubmit(updatedMovie) {
     this.setState({
       loading: false,
@@ -45,11 +44,11 @@ class EditMovie extends Component {
   render() {
     const { shouldRedirect, movie, loading } = this.state;
     if (shouldRedirect) {
-      return <Redirect to="/" />;
+      return <div><Redirect exact path="/" /></div>;
     }
 
     if (loading) {
-      return <Loading />;
+      return <div><Loading /></div>;
     }
 
     return (
@@ -63,7 +62,7 @@ class EditMovie extends Component {
 EditMovie.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.string.isRequired,
     }),
   }).isRequired,
 };
