@@ -25,6 +25,7 @@ class MovieDetails extends Component {
     movieAPI.getMovie(id)
       .then((response) => this.setState({ movie: response, isLoading: false }));
   }
+
   render() {
     const { movie, isLoading } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
@@ -61,6 +62,5 @@ MovieDetails.propTypes = {
     }),
   }).isRequired,
 };
-
 
 export default MovieDetails;

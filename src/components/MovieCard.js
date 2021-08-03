@@ -7,12 +7,20 @@ class MovieCard extends React.Component {
     const { title, storyline, id } = movie;
     return (
       <div data-testid="movie-card">
-        <p>{title}</p>
-        <p>{storyline}</p>
-        <p><Link to={`movies/${id}`}>VER DETALHES</Link></p>
+        <p>{ title }</p>
+        <p>{ storyline }</p>
+        <p><Link to={ `movies/${id}` }>VER DETALHES</Link></p>
       </div>
     );
   }
 }
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    storyline: PropTypes.string,
+  }).isRequired,
+};
 
 export default MovieCard;
