@@ -17,10 +17,12 @@ class EditMovie extends Component {
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
+    console.log(id);
     movieAPI.getMovie(id)
       .then((data) => {
+        console.log(data);
         this.setState({
-          movie: data,
+          movie: { ...data },
           status: 'loaded',
         });
       });

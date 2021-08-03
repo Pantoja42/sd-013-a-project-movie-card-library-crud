@@ -22,7 +22,7 @@ class MovieDetails extends Component {
     });
   }
 
-  componentWillUnmount() {
+  deleteMovie() {
     const { match: { params: { id } } } = this.props;
     movieAPI.deleteMovie(id).then((response) => {
       this.setState({
@@ -48,7 +48,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <Link to="/" onclick={ this.componentWillUnmount }>DELETAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
