@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -11,15 +12,7 @@ class MovieDetails extends Component {
     this.state = {
       movie: [],
       loaded: false,
-    }
-  }
-  async fetchMovie() {
-    const { id } = this.props.match.params;
-    const requestedMovie = await movieAPI.getMovie(id);
-    this.setState({
-      movie: requestedMovie,
-      loaded: true,
-    });
+    };
   }
 
   componentDidMount() {
@@ -31,16 +24,25 @@ class MovieDetails extends Component {
     await movieAPI.deleteMovie(id);
   }
 
+  async fetchMovie() {
+    const { match: { params: { id } } } = this.props;
+    const requestedMovie = await movieAPI.getMovie(id);
+    this.setState({
+      movie: requestedMovie,
+      loaded: true,
+    });
+  }
+
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
     const { movie, loaded } = this.state;
     const renderMovieOrLoading = () => {
       if (loaded) {
-        if (movie === undefined ) {
+        if (movie === undefined) {
           return (
             <p>erro</p>
-          )
+          );
         }
         const { id, imagePath, title, subtitle, storyline, genre, rating } = movie;
         return (
@@ -52,19 +54,32 @@ class MovieDetails extends Component {
             <p>{ `Genre: ${genre}` }</p>
             <p>{ `Rating: ${rating}` }</p>
             <Link to="/">VOLTAR</Link>
-            <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-            <Link to='/' onClick={ () => this.handleDelete(this.state.movie) }>DELETAR</Link>
+            <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+            <Link
+              to="/"
+              onClick={ () => this.handleDelete(movie) }
+            >
+              DELETAR
+            </Link>
           </div>
-        )
-      } else {
-        return <Loading />
+        );
       }
-    }
-
+      return (
+        <Loading />
+      );
+    };
     return (
       renderMovieOrLoading()
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
