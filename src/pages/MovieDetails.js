@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
@@ -15,18 +16,6 @@ class MovieDetails extends Component {
     };
   }
 
-  onClick = () => {
-    const { match: { params: { id } } } = this.props;
-    // console.log(id);
-    movieAPI.deleteMovie(id).then(() => {
-      this.setState({
-        shouldRedirect: true,
-      })
-    })
-    
-
-  }
-
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((movie) => {
@@ -37,17 +26,27 @@ class MovieDetails extends Component {
     });
   }
 
+  onClick = () => {
+    const { match: { params: { id } } } = this.props;
+    // console.log(id);
+    movieAPI.deleteMovie(id).then(() => {
+      this.setState({
+        shouldRedirect: true,
+      });
+    });
+  }
+
   render() {
     // Change the condition to check the state
-    const { movie: { title, storyline, imagePath, genre, rating, subtitle, id }, load, shouldRedirect } = this.state;
+    const { movie: { title, storyline, imagePath, genre, rating, subtitle, id },
+      load, shouldRedirect } = this.state;
     if (load) return <Loading />;
-    
+
     if (shouldRedirect) {
-      return <Redirect to= "/" />
+      return <Redirect to="/" />;
     }
 
     return (
-
 
       <div data-testid="movie-details">
         {/* {load && <Loading/>} */}
@@ -59,10 +58,18 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link onClick={this.onClick} to="/">DELETAR</Link>
+        <Link onClick={ this.onClick } to="/">DELETAR</Link>
       </div>
     );
   }
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
