@@ -28,7 +28,7 @@ class MovieDetails extends Component {
   }
 
   async deletarFilmes(id) {
-    const filmeDeletado = await movieAPI.deleteMovie(id);
+    await movieAPI.deleteMovie(id);
   }
 
   montaDetalhes = () => {
