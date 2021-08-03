@@ -24,7 +24,6 @@ class MovieForm extends React.Component {
       <div>
         <label htmlFor="movie_title">
           <input
-            placeholder="Insira o título"
             id="movie_title"
             type="text"
             className="validate"
@@ -163,5 +162,15 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: PropTypes.shape({}),
+  onSubmit: PropTypes.func,
+};
+
+MovieForm.defaultProps = {
+  movie: {},
+  onSubmit: () => {},
+};
 
 export default MovieForm;
