@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { MovieCard ,Loading } from '../components';
 import { Link } from 'react-router-dom';
+import { MovieCard, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
@@ -10,8 +10,11 @@ class MovieList extends Component {
     this.state = {
       movies: [],
     };
-    
     this.fetchMovie = this.fetchMovies.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchMovies();
   }
 
   async fetchMovies() {
@@ -25,11 +28,7 @@ class MovieList extends Component {
 
     this.setState({
       movies: moviesData,
-    })
-  }
-
-  componentDidMount() {
-    this.fetchMovies();
+    });
   }
 
   render() {
