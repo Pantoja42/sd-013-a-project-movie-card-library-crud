@@ -13,9 +13,9 @@ function App() {
         <Route path="/movies/new">
           <NewMovie />
         </Route>
-        <Route exact path="/movies/:id">
-          <MovieDetails />
-        </Route>
+        <Route exact path="/movies/:id" commponent={ MovieDetails } />
+          {/* <MovieDetails />
+        </Route> */}
         <Route path="/movies/:id/edit">
           <EditMovie />
         </Route>
