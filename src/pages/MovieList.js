@@ -10,17 +10,17 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      load: false,
+      load: true,
     };
   }
   
   // Prciso definir o movies como a api, por isso crio uma função fora, pois se criar uma unica não terá como chamar dentro dela mesmo, além de não poder usar o this.
 
   fetchAPI = async () => {
-    const response = await movieAPI.getMovies();
+    const filmes = await movieAPI.getMovies();
     this.setState(() => ({
-      movies: response,
-      load: true,
+      movies: filmes,
+      load: false,
     }));
 
   }
@@ -33,7 +33,7 @@ class MovieList extends Component {
     const { movies , load} = this.state;
    // Render Loading here if the request is still happening (dica de ouro)
 
-    if(load === false){
+    if(load === true){
       return <Loading />;
     }
 
