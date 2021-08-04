@@ -35,7 +35,7 @@ class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     return (
-      <div data-testid="movie-details">
+      <div>
         {load ? <Loading />
           : (
             <div data-testid="movie-details">
