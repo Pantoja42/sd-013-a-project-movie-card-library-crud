@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -12,30 +13,32 @@ class MovieDetails extends Component {
     }
   }
   
-
-
+  
+  
   componentDidMount() {
     const { match: { params: {id} } } = this.props;
+    const { getMovie } = movieAPI;    
     
     getMovie(id).then((mov) => {
       this.setState({
-        movie: {...mov},
+        movie: mov,
         loading: false
       });
     });
-  }
-  
-  async fetchMovieBy(id) {
-  const { getMovie } = movieAPI;    
-  
-  const 
+    
   }
 
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
+    const { title, storyline, imagePath, genre, rating, subtitle} = this.state.movie;
+    const { match: { params: {id} } } = this.props;
+    const {loading} = this.state;
 
-    const { title, storyline, imagePath, genre, rating, subtitle} = {};
+    if (loading) {
+      return (<Loading />);
+    }
+
 
     return (
       <div data-testid="movie-details">
@@ -45,6 +48,8 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <Link to={"/"}>VOLTAR</Link>
+        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
       </div>
     );
   }

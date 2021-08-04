@@ -10,12 +10,10 @@ function App() {
         <Route exact path="/">
           <MovieList />
         </Route>
-        <Route path="/movies/new">
+        <Route exact path="/movies/new">
           <NewMovie />
         </Route>
-        <Route exact path="/movies/:id" commponent={ MovieDetails } />
-          {/* <MovieDetails />
-        </Route> */}
+        <Route path="/movies/:id" component={ MovieDetails } />
         <Route path="/movies/:id/edit">
           <EditMovie />
         </Route>
