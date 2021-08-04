@@ -1,5 +1,5 @@
-/* import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import propTypes from 'prop-types';
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -164,5 +164,9 @@ class MovieForm extends React.Component {
   }
 }
 
+MovieForm.propTypes = {
+  movie: propTypes.string.isRequired,
+  onSubmit: propTypes.func.isRequired,
+};
+
 export default MovieForm;
- */
