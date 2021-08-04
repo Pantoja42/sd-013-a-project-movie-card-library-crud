@@ -171,6 +171,7 @@ MovieForm.propTypes = {
     storyline: PropTypes.string,
     rating: PropTypes.number,
     imagePath: PropTypes.string,
+    genre: PropTypes.string,
   }),
   onSubmit: PropTypes.func,
 };
