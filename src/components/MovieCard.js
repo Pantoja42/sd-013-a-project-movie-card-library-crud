@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './MovieCard.css';
 
-class MovieCard extends React.Component {
+class MovieCard extends Component {
   render() {
     const { movie: { title, storyline, id, imagePath, subtitle } } = this.props;
     return (
