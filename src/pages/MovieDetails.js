@@ -31,11 +31,9 @@ class MovieDetails extends Component {
     // if (true) return <Loading />;
     const { title, storyline, imagePath, genre, rating, subtitle} = this.state.movie;
     const { match: { params: {id} } } = this.props;
-    const {loading} = this.state;
+    const { loading } = this.state;
 
-    if (loading) {
-      return (<Loading />);
-    }
+    if (loading) return (<Loading />);
 
     return (
       <div data-testid="movie-details">
@@ -45,8 +43,8 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={"/"}>VOLTAR</Link>
-        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to={ "/" }>VOLTAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
       </div>
     );
   }

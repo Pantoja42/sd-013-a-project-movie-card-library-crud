@@ -13,10 +13,8 @@ function App() {
         <Route exact path="/movies/new">
           <NewMovie />
         </Route>
+        <Route path="/movies/:id/edit" component={ EditMovie } />
         <Route path="/movies/:id" component={ MovieDetails } />
-        <Route path="/movies/:id/edit">
-          <EditMovie />
-        </Route>
         {/* Com base em: https://ui.dev/react-router-v5-handling-404-pages/ */}
         <Route path="*">
           <NotFound />
