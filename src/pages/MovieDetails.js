@@ -34,7 +34,7 @@ class MovieDetails extends Component {
 
   render() {
     const { movie, loading } = this.state;
-    const { storyline, imagePath, genre, rating, subtitle } = movie;
+    const { storyline, imagePath, genre, rating, subtitle, id, title } = movie;
 
     console.log(movie);
 
@@ -45,13 +45,14 @@ class MovieDetails extends Component {
       <div>
         <div data-testid="movie-details">
           <img alt="Movie Cover" src={ `../${imagePath}` } />
+          <p>{ `Title: ${title}` }</p>
           <p>{ `Subtitle: ${subtitle}` }</p>
           <p>{ `Storyline: ${storyline}` }</p>
           <p>{ `Genre: ${genre}` }</p>
           <p>{ `Rating: ${rating}` }</p>
           <Link to="/">VOLTAR</Link>
         </div>
-        <Link to="/movies/:id/edit">EDITAR</Link>
+        <Link to={ `${id}/edit` }>EDITAR</Link>
       </div>
     );
   }
