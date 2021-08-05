@@ -1,14 +1,40 @@
 import React, { Component } from 'react';
 
-import * as movieAPI from '../services/movieAPI';
+import { getMovies } from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor() {
+    super();
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    this.state = {
+      movies: [],
+      loading: true,
+    };
+  }
+
+  componentDidMount() {
+    this.fetch(getMovies);
+  }
+
+  async fetch(get) {
+    const promise = await get();
+    const { id } = this.props.match.params;
+    const srcMovieId = Object.values(promise).find((movie) => movie.id === id);
+    this.setState({
+      movies: srcMovieId,
+      loading: false,
+    });
+  }
+
+  render() {
+    const { movies, loading } = this.state;
+
+    const loadingShow = () => {
+      const loadingCondition = (loading) ? <Loading /> : undefined;
+      return loadingCondition;
+    };
+    const { title, storyline, imagePath, genre, rating, subtitle } = movies;
 
     return (
       <div data-testid="movie-details">
@@ -17,6 +43,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        {loadingShow()}
       </div>
     );
   }
