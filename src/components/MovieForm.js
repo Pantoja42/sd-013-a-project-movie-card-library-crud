@@ -164,6 +164,7 @@ class MovieForm extends React.Component {
   }
 }
 
+// Última coisa que fiz no projeto foi colocar as prop aqui:
 MovieForm.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,

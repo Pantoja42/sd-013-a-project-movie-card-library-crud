@@ -21,6 +21,7 @@ const simulateRequest = (response) => (callback) => {
   }, TIMEOUT);
 };
 
+// Função utilizada na Page MovieList.js - Requisito 2
 export const getMovies = () => (
   new Promise((resolve) => {
     const movies = readMovies();
@@ -28,6 +29,7 @@ export const getMovies = () => (
   })
 );
 
+// Função utilizada na Page MovieDetails.js - Requisito 4
 export const getMovie = (movieId) => {
   const movie = readMovies().find((mov) => mov.id === parseInt(movieId, 10));
   return new Promise((resolve) => {
@@ -35,6 +37,7 @@ export const getMovie = (movieId) => {
   });
 };
 
+// Função utilizada na Page EditMovie.js - Requisito 5
 export const updateMovie = (updatedMovie) => (
   new Promise((resolve) => {
     const movies = readMovies().map((movie) => {
@@ -48,6 +51,7 @@ export const updateMovie = (updatedMovie) => (
   })
 );
 
+// Função utilizada na Page NewMovie.js - Requisito 6
 export const createMovie = (movieData) => (
   new Promise((resolve) => {
     let movies = readMovies();
