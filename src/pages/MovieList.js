@@ -18,7 +18,6 @@ class MovieList extends Component {
     const { getMovies } = movieAPI;
     const response = await getMovies();
     this.setEstado(response);
-    console.log(response);
   }
 
   setEstado(valor) {
