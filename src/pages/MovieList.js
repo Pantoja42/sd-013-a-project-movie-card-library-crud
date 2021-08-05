@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
+import Loading  from '../components/Loading';
 
 import * as movieAPI from '../services/movieAPI';
 
@@ -9,7 +10,18 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      infoLoading: true,
     };
+  }
+
+  async componentDidMount() {
+    const infoMovies = await movieAPI.getMovie();
+    console.log(infoMovies);
+    const json = await infoMovies.json();
+    this.setState({
+      movies: json,
+      infoLoading: false,
+    });
   }
 
   render() {
@@ -19,6 +31,7 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list">
+        { infoLoading && <Loading /> }
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
