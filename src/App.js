@@ -1,15 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import MovieList from './pages/MovieList';
-import MovieDetails from './pages/MovieDetails';
-import NewMovie from './pages/NewMovie';
-import EditMovie from './pages/EditMovie';
-import NotFound from './pages/NotFound';
+import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages';
 
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <main>
         <BrowserRouter>
           <Route path="/" component={ MovieList } />
           <Route path="/movies/:id" component={ MovieDetails } />
@@ -17,7 +13,7 @@ class App extends React.Component {
           <Route path="/movies/:id/edit" component={ EditMovie } />
           <Route path="" component={ NotFound } />
         </BrowserRouter>
-      </div>
+      </main>
     );
   }
 }

@@ -19,7 +19,7 @@ const renderPath = (path) => {
   return { ...resources };
 };
 
-describe.only('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () => {
+describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () => {
 
   test('Será validado se a rota `/` renderiza a página MovieList', async () => {
     const { unmount, getByTestId } = renderPath('/');
