@@ -163,7 +163,7 @@ class MovieForm extends React.Component {
     );
   }
 }
-
+// Julia foi na monitoria e conversando com ela, ela disse que no plantão disseram que seria legal deixar já valores padrões.
 MovieForm.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,
@@ -192,3 +192,4 @@ MovieForm.defaultProps = {
 };
 
 export default MovieForm;
+// Você pode definir valores padrão (default)

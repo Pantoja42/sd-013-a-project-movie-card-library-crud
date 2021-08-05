@@ -43,3 +43,4 @@ class MovieList extends Component {
 }
 
 export default MovieList;
+// o link renderiza só aquele componente, se eu usar a tag a, renderiza toda a página.

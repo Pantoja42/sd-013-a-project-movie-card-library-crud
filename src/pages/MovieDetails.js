@@ -7,28 +7,28 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor() {
     super();
-    this.fetchMovie = this.fetchMovie.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this);// como chamou sem arrow function preicsa do bind para enxergar a propria funcao
     this.delete = this.delete.bind(this);
 
-    this.state = {
+    this.state = { // perceber que this.state chama com igual e chaves.
       movie: {},
       loading: true,
     };
   }
 
   componentDidMount() {
-    this.fetchMovie();
+    this.fetchMovie(); // Por ser chamada quando o componente termina de ser renderizado, comumente a componentDidMount() é usada para fazer requisições a APIs.
   }
 
   async delete() {
-    const { match: { params: { id } } } = this.props;
+    const { match: { params: { id } } } = this.props; // pegando id da url que fica salva em params
     await movieAPI.deleteMovie(id);
   }
 
   async fetchMovie() {
     const { match: { params: { id } } } = this.props;
-    const onlyMovie = await movieAPI.getMovie(id);
-    this.setState({
+    const onlyMovie = await movieAPI.getMovie(id); // funcao que pega um so filme
+    this.setState({ // setState chama com ({
       movie: onlyMovie,
       loading: false,
     });
@@ -63,4 +63,4 @@ MovieDetails.propTypes = {
   id: PropTypes.string.isRequired,
 };
 export default MovieDetails;
-// id chega como string
+// id chega como string dá para ver isso no params
