@@ -42,7 +42,6 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        {console.log(this.state)}
         <label htmlFor="movie_subtitle">
           <input
             placeholder="Insira o subtítulo"
