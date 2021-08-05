@@ -19,7 +19,7 @@ function App() {
             {(props) => <MovieDetails { ...props } />}
           </Route>
           <Route exact path="/movies/:id/edit">
-            <EditMovie />
+            {(props) => <EditMovie { ...props } />}
           </Route>
           <Route path="*">
             <NotFound />
