@@ -6,7 +6,6 @@ import '../App.css';
 
 import * as movieAPI from '../services/movieAPI';
 
-
 class MovieList extends Component {
   constructor(props) {
     super(props);
