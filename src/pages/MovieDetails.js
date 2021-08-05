@@ -5,27 +5,25 @@ import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       loading: true,
-      movie: {}
-    }
+      movie: {},
+    };
   }
-  
-  
-  
+
   componentDidMount() {
     const { match: { params: {id} } } = this.props;
-    const { getMovie } = movieAPI;    
-    
+    const { getMovie } = movieAPI;
+
     getMovie(id).then((mov) => {
       this.setState({
         movie: mov,
         loading: false
       });
     });
-    
+
   }
 
   render() {
@@ -38,7 +36,6 @@ class MovieDetails extends Component {
     if (loading) {
       return (<Loading />);
     }
-
 
     return (
       <div data-testid="movie-details">
