@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
-
+import { MovieCard, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
@@ -9,17 +8,27 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      load: true,
     };
   }
 
+  // Usei o trecho do codigo do exercicio de fixacao do dia 13.01, atividade (my-interdimensional- ricky and Morty), para conseguir extrair a simulacao da API, so nao usei o json pois estava dando erro, uma vez nao sendo uma API de verdade.
+
+  componentDidMount() {
+    movieAPI.getMovies()
+      .then((data) => this.setState({ movies: data, load: false }));
+  }
+
   render() {
-    const { movies } = this.state;
+    const { movies, load } = this.state;
 
     // Render Loading here if the request is still happening
 
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+
+        { load ? <Loading />
+          : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
   }
