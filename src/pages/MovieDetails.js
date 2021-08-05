@@ -14,10 +14,17 @@ class MovieDetails extends Component {
     };
 
     this.fetchMovieById = this.fetchMovieById.bind(this);
+    this.movieDelete = this.movieDelete.bind(this);
   }
 
   componentDidMount() {
     this.fetchMovieById();
+  }
+
+  movieDelete() {
+    const { movie } = this.state;
+    const { id } = movie;
+    movieAPI.deleteMovie(id);
   }
 
   async fetchMovieById() {
@@ -53,6 +60,7 @@ class MovieDetails extends Component {
           <Link to="/">VOLTAR</Link>
         </div>
         <Link to={ `${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.movieDelete }>DELETAR</Link>
       </div>
     );
   }
