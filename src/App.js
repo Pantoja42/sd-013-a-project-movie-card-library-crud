@@ -15,7 +15,6 @@ function App() {
         <Route path="/movies/new" component={ NewMovie } />
         <Route path="/movies/:id/edit" component={ EditMovie } />
         <Route path="" component={ NotFound } />
-
       </BrowserRouter>
     </main>
   );
