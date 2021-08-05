@@ -14,25 +14,33 @@ class MovieList extends Component {
     };
   }
 
-  async componentDidMount() {
-    const infoMovies = await movieAPI.getMovie();
-    console.log(infoMovies);
-    const json = await infoMovies.json();
-    this.setState({
-      movies: json,
-      infoLoading: false,
+  componentDidMount() {
+    this.infoMovies();
+  }
+
+  infoMovies = async () => {
+    const dataMovie = await movieAPI.getMovies();
+    this.setState({ infoLoading: true }, () => {
+      this.setState((previous) => ({
+        movies: [...previous.movies, ...dataMovie],
+        infoLoading: false,
+      }));
     });
   }
 
   render() {
-    const { movies } = this.state;
+    const { movies, infoLoading } = this.state;
+    const movieCard = (
+      <div data-testid="movie-list">
+        { movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+      </div>
+    );
 
     // Render Loading here if the request is still happening
 
     return (
-      <div data-testid="movie-list">
-        { infoLoading && <Loading /> }
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+      <div>
+        { infoLoading ? <Loading />: movieCard }
       </div>
     );
   }
