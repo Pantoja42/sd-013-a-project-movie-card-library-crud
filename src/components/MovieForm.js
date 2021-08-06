@@ -9,8 +9,9 @@ class MovieForm extends React.Component {
   }
 
   handleSubmit() {
-    const { onSubmit } = this.props;
+    const { onSubmit, controllerState } = this.props;
     onSubmit(this.state);
+    controllerState(this.state);
   }
 
   updateMovie(field, newValue) {
@@ -163,5 +164,11 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  controllerState: PropTypes.func.isRequired,
+};
 
 export default MovieForm;
