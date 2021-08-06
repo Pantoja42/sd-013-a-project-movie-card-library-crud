@@ -10,8 +10,14 @@ import {
 function App() {
   return (
     <BrowserRouter>
-      <div>Movie Card Library CRUD</div>
-      <Link to="/movies/new" test="teste">ADICIONAR CARTÃO</Link>
+      <div className="title-page">
+        Movie Card Library CRUD
+      </div>
+      <section className="nav-bar">
+        <Link to="/" test="teste">Home</Link>
+        <Link to="/movies/new" test="teste">ADICIONAR CARTÃO</Link>
+      </section>
+
       <Switch>
         <Route exact path="/" component={ MovieList } />
         <Route exact path="/movies/new" component={ NewMovie } />
