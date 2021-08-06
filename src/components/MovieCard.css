@@ -1,14 +1,21 @@
 :root {
-  --bgColor: #27222F;
-  --movieSubtitle: #65567E;
+
+  --bgColor: #27222f;
+
+  --movieSubtitle: #65567e;
+
   --movieTitle: #af96df;
-  --storylineBg: #0F0B16;
+
+  --storylineBg: #0f0b16;
+
   --storylineColor: #5e17e2;
+
   --movieDetails: #846658;
+
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
