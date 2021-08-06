@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Loading } from '../components';
+import matchParamsId from '../propTypes/MatchParamsId';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieDetails extends Component {
@@ -24,16 +25,16 @@ class MovieDetails extends Component {
     this.keepMovie(movie);
   }
 
+  async handleDeletion(id) {
+    const response = await movieAPI.deleteMovie(id);
+    if (response.status === 'OK') this.setState({ redirect: true });
+  }
+
   keepMovie(movie) {
     this.setState({
       movie,
       loading: false,
     });
-  }
-
-  async handleDeletion(id) {
-    const response = await movieAPI.deleteMovie(id);
-    if (response.status === 'OK') this.setState({ redirect: true });
   }
 
   render() {
@@ -62,5 +63,7 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = matchParamsId;
 
 export default MovieDetails;
