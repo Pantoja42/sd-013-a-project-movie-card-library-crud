@@ -32,8 +32,6 @@ class MovieList extends Component {
       </div>
     );
 
-    // Render Loading here if the request is still happening
-
     return (
       <div>
         {loading ? <Loading /> : movieCard}

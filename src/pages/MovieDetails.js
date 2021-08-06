@@ -4,15 +4,40 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor(props) {
+    super(props);
+    this.state = {
+      movie: {},
+      isLoading: true,
+    };
+  }
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  async fetchData() {
+    const { match: { params: { id } } } = this.props;
+    const movie = await movieAPI.getMovie(id);
+    this.setState({ movie, isLoading: false });
+  }
+
+  render() {
+    const { movie: {
+      title,
+      storyline,
+      imagePath,
+      genre,
+      rating,
+      subtitle,
+      id }, isLoading } = this.state;
+
+    if (isLoading) return <Loading />;
 
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
