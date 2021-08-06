@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages';
 import './App.css';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div>Movie Card Library CRUD</div>
       <Switch>
         <Route exact path="/" component={ MovieList } />
@@ -14,7 +14,7 @@ function App() {
         <Route exact path="/movies/:id/edit" component={ EditMovie } />
         <Route component={ NotFound } />
       </Switch>
-    </Router>
+    </BrowserRouter>
   );
 }
 
