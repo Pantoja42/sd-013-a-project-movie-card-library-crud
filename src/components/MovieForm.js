@@ -1,17 +1,17 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { ...props.movie };
+    this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // handleSubmit() {
-  //   const { onSubmit } = this.props;
-  //   onSubmit(this.state);
-  // }
+  handleSubmit() {
+    const { onSubmit } = this.props;
+    onSubmit(this.state);
+  }
 
   updateMovie(field, newValue) {
     this.setState({ [field]: newValue });
@@ -163,5 +163,17 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: propTypes.shape({
+    title: propTypes.string.isRequired,
+    subtitle: propTypes.string.isRequired,
+    storyline: propTypes.string.isRequired,
+    rating: propTypes.number.isRequired,
+    imagePath: propTypes.string.isRequired,
+    genre: propTypes.string.isRequired,
+  }).isRequired,
+  onSubmit: propTypes.func.isRequired,
+};
 
 export default MovieForm;
