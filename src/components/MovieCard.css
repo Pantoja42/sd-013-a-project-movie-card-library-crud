@@ -5,6 +5,7 @@
   height: 400px;
   transition: 0.3s;
   width: 350px;
+  margin: 20px;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -29,4 +30,8 @@
 .card-image {
   border-radius: 15px;
   width: 100%;
+}
+
+.card-storyline {
+  min-height: 110px;
 }

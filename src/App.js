@@ -15,7 +15,7 @@ function App() {
         Movie Card Library CRUD
       </div>
       <section className="nav-bar">
-        <Link to="/" test="teste">Home</Link>
+        <Link to="/" test="teste">HOME</Link>
         <Link to="/movies/new" test="teste">ADICIONAR CARTÃO</Link>
       </section>
 
