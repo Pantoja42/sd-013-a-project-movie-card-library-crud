@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Link,
 } from 'react-router-dom';
 
 import MovieList from './pages/MovieList';
@@ -15,7 +16,7 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <Router>
-
+      <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       <Switch>
         <Route exact path="/movies/:id/edit" component={ EditMovie } />
         <Route exact path="/movies/new" component={ NewMovie } />
