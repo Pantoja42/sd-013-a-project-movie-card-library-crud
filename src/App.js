@@ -12,10 +12,10 @@ function App() {
         <Route exact path="/movies/new">
           <NewMovie />
         </Route>
-        <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
         <Route path="/movies/:id/edit">
           <EditMovie />
         </Route>
+        <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
         <Route path="*">
           <NotFound />
         </Route>
