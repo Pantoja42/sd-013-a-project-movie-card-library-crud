@@ -12,6 +12,7 @@ class EditMovie extends Component {
       status: 'loading',
       shouldRedirect: false,
     };
+    // this.handleSubmit = this.handleSubmit.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
   }
 
@@ -19,10 +20,16 @@ class EditMovie extends Component {
     this.fetchApi();
   }
 
+  handleSubmit(event) {
+    event = 0;
+    return console.log(event);
+  }
+
   controllerState = async (param) => {
     const updatedMovie = await updateMovie(param);
     this.setState({ shouldRedirect: true });
     return updatedMovie;
+    // console.log(param);
   }
 
   fetchApi = async () => {
