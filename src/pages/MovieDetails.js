@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -17,6 +17,7 @@ class MovieDetails extends Component {
     if (!this.state) return <Loading />;
     const { filme: { title, storyline, imagePath,
       genre, rating, subtitle, id } } = this.state;
+
     return (
 
       <div data-testid="movie-details">
@@ -27,11 +28,26 @@ class MovieDetails extends Component {
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
         <Link to="/">VOLTAR</Link>
+        <br />
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        {/* Source: https://stackoverflow.com/questions/42800815/how-to-use-onclick-event-on-react-link-component */}
+        <Link
+          to="/"
+          onClick={ () => {
+            const { deleteMovie } = movieAPI;
+            deleteMovie(id);
+          } }
+        >
+          DELETAR
+
+        </Link>
+
       </div>
 
     );
   }
 }
-
+MovieDetails.propTypes = {
+  match: PropTypes.object,
+}.isRequired;
 export default MovieDetails;
