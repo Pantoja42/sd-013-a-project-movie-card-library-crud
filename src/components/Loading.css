@@ -1,0 +1,29 @@
+/*
+https://stackoverflow.com/questions/19026884/
+flexbox-center-horizontally-and-vertically
+*/
+
+/* https://speckyboy.com/css-loading-spinner-snippets/ */
+.loading {
+  animation: spin 1s ease-in-out infinite;
+  border: 3px solid white;
+  border-radius: 50%;
+  border-top-color: black;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+
+.loading-main {
+  align-items: center;     /* center items horizontally, in this case */
+  display: flex;           /* establish flex container */
+  flex-direction: column;  /* make main axis vertical */
+  height: 300px;
+  justify-content: center; /* center items vertically, in this case */
+}
+
+@keyframes spin {
+
+  to { transform: rotate(360deg); }
+}
+
