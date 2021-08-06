@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-
-import { NavLink, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
     super();
-
     this.state = {
       movie: {},
       loading: false,
     };
+    this.movieDetailsButtons = this.movieDetailsButtons.bind(this);
+    this.movieDetailsCard = this.movieDetailsCard.bind(this);
   }
 
   componentDidMount() {
@@ -29,29 +30,45 @@ class MovieDetails extends Component {
     );
   }
 
-  // preventDefault = (e) => e.preventDefault
-  render() {
-    const { loading, movie } = this.state;
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
-    // console.log(movie.id);
-    if (loading) { return <Loading />; }
+  movieDetailsButtons(movieID) {
     return (
-      <div data-testid="movie-details">
+      <div className="buttonContainer">
+        <NavLink to="/" className="buttonLink"> VOLTAR </NavLink>
+        <NavLink to={ `/movies/${movieID}/edit` } className="buttonLink">
+          EDITAR
+        </NavLink>
+      </div>
+
+    );
+  }
+
+  movieDetailsCard(movie) {
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
+    return (
+      <div data-testid="movie-details" className="movie-details-page">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{ `title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <div className="buttonContainer">
-          <NavLink to="/" className="buttonLink"> VOLTAR </NavLink>
-          <NavLink to={ `/movies/${id}/edit` } className="buttonLink">
-            EDITAR
-          </NavLink>
-        </div>
+        {this.movieDetailsButtons(id)}
       </div>
     );
   }
+
+  render() {
+    const { loading, movie } = this.state;
+    return (loading ? <Loading /> : this.movieDetailsCard(movie));
+  }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
