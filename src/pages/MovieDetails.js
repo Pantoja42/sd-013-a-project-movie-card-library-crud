@@ -55,6 +55,7 @@ class MovieDetails extends Component {
     if (redirect) {
       return <Redirect to="/" />;
     }
+
     return (
       <div data-testid="movie-details">
         { loading ? <Loading /> : this.renderMovie() }
