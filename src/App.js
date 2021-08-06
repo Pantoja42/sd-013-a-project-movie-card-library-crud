@@ -7,7 +7,7 @@ function App() {
   return (
 
     <div>
-      <p>Movie Card Library</p>
+      <h1 className="page-title">Movie Card Library</h1>
       <Switch>
         <Route path="/movies/:id/edit" component={ EditMovie } />
         <Route path="/movies/new" component={ NewMovie } />
