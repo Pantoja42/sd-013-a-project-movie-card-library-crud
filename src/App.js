@@ -1,21 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './App.css';
-import { MovieList, MovieDetails, EditMovie, NewMovie, NotFound} from './pages';
-
+import { EditMovie, MovieDetails, MovieList, NewMovie, NotFound } from './pages';
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" Component={ MovieList} />
-        <Route exact path="/movies/:id" Component={ MovieDetails} />
-        <Route exact path="/movies/new" Component={ NewMovie } />
-        <Route exact path="/movies/:id/edit" Component={ EditMovie } />
-        <Route Component={ NotFound } />
+        <Route path="/movies/new" component={ NewMovie } />
+        <Route path="/movies/:id/edit" component={ EditMovie } />
+        <Route path="/movies/:id" component={ MovieDetails } />
+        <Route exact path="/" component={ MovieList } />
+        <Route path="*" component={ NotFound } />
       </Switch>
     </BrowserRouter>
-   
   );
 }
 

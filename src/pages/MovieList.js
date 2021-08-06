@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
-
-import * as movieAPI from '../services/movieAPI';
+import { getMovies } from '../services/movieAPI';
+// import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
   constructor() {
@@ -10,6 +10,14 @@ class MovieList extends Component {
     this.state = {
       movies: [],
     };
+  }
+
+  componentDidMount() {
+    getMovies().then((response) => {
+      this.setState({
+        movies: [...response ]
+      });
+    });
   }
 
   render() {
