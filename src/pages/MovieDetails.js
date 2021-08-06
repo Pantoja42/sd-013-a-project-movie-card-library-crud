@@ -19,6 +19,10 @@ class MovieDetails extends Component {
     }));
   }
 
+  apagaMovie = (idMovie) => {
+    movieAPI.deleteMovie(idMovie);
+  }
+
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
@@ -39,6 +43,12 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${infoMovie.rating}` }</p>
         <Link to={ `/movies/${infoMovie.id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link
+          onClick={ () => { this.apagaMovie(`${infoMovie.id}`); } }
+          to="/"
+        >
+          DELETAR
+        </Link>
       </div>
     );
   }
