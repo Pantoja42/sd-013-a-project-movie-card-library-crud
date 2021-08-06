@@ -70,3 +70,25 @@ body {
   justify-content: center;
   padding: 12px 20px;
 }
+
+.buttonContainer {
+  display:flex;
+  
+}
+
+.buttonLink {
+  background-color: rgb(31, 31, 72);
+  font-weight: 500;
+  color:white;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.buttonLink:hover {
+  background-color: rgb(60, 60, 146);
+  text-decoration: none;
+}
