@@ -55,7 +55,7 @@ class MovieDetails extends Component {
 
     return (
       <div>
-        {infoLoading ? <Loading />: movieRender}
+        {infoLoading ? <Loading /> : movieRender}
       </div>
     );
   }

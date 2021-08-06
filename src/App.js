@@ -6,7 +6,6 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-      <div>Movie Card Library CRUD</div>
       <Switch>
         <Route exact path="/" component={ MovieList } />
         <Route exact path="/movies/:id" component={ MovieDetails } />
