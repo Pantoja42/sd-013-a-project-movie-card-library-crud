@@ -15,7 +15,7 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    this.fetchGetMovie();
+    this.fetchGetMovies();
   }
 
   async fetchGetMovies() {
