@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
@@ -23,6 +24,7 @@ class NewMovie extends Component {
     const { shouldRedirect } = this.state;
     if (shouldRedirect) {
       // Redirect
+      return <Redirect to="/" />;
     }
     return (
       <div data-testid="new-movie">
