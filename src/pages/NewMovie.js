@@ -21,7 +21,7 @@ class NewMovie extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div data-testid="new-movie">
+      <div data-testid="new-movie" className="movie-form-main">
         <MovieForm onSubmit={ this.handleSubmit } />
       </div>
     );
