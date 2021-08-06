@@ -4,13 +4,9 @@
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  height: 450px;
-  margin: 5px;
+  height: 500px;
+  margin: 10px;
   overflow: hidden;
-  width: 300px;
-}
-
-.movie-card-image {
   width: 100%;
 }
 
@@ -23,6 +19,7 @@
   font-size: 24px;
   font-weight: 500;
   margin: 0 0 12px;
+  padding: 10px;
 }
 
 .movie-card-subtitle {
@@ -30,9 +27,23 @@
   font-size: 16px;
   font-weight: 500;
   margin: 0 0 8px;
+  padding: 10px;
 }
 
 .movie-card-storyline {
   font-size: 14px;
+  height: 122px;
+  padding: 10px;
   text-align: justify;
+}
+
+.details {
+  background-color: rgba(46, 136, 240, 0.747);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 12px;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
 }

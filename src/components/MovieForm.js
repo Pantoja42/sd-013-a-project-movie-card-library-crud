@@ -1,4 +1,5 @@
 import React from 'react';
+import './MovieForm.css';
 import PropTypes from 'prop-types';
 
 class MovieForm extends React.Component {
@@ -80,7 +81,10 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        <label htmlFor="movie_storyline">
+        <label
+          htmlFor="movie_storyline"
+          className="input-textarea"
+        >
           <textarea
             id="movie_storyline"
             value={ storyline }
@@ -96,9 +100,10 @@ class MovieForm extends React.Component {
     const { genre } = this.state;
     return (
       <div>
-        <label htmlFor="movie_genre">
+        <label htmlFor="movie_genre" className="input-select">
           Gênero
           <select
+            className="input-select"
             id="movie_genre"
             value={ genre }
             onChange={ (event) => this.updateMovie('genre', event.target.value) }
@@ -165,7 +170,6 @@ class MovieForm extends React.Component {
 }
 
 MovieForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
   movie: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
@@ -176,6 +180,10 @@ MovieForm.propTypes = {
     bookmarked: PropTypes.bool,
     genre: PropTypes.string,
   }).isRequired,
+};
+
+MovieForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default MovieForm;

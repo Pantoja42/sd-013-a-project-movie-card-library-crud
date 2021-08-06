@@ -9,12 +9,12 @@ class MovieCard extends Component {
     return (
       <div data-testid="movie-card" className="movie-card">
         <img src={ imagePath } alt={ title } className="movie-card-image" />
-        <div className="movie-card-body">
+        <div>
           <h4 className="movie-card-title">{title}</h4>
           <h5 className="movie-card-subtitle">{subtitle}</h5>
           <p className="movie-card-storyline">{storyline}</p>
-          <Link id={ id } to={ `/movies/${id}` }>VER DETALHES</Link>
         </div>
+        <Link id={ id } to={ `/movies/${id}` } className="details">VER DETALHES</Link>
       </div>
     );
   }

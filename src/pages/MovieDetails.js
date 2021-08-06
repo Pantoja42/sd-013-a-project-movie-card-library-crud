@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Loading } from '../components';
+import './MovieDetails.css';
 
 import * as movieAPI from '../services/movieAPI';
 
@@ -53,19 +54,19 @@ class MovieDetails extends Component {
     }
 
     const movieDetails = (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <div>
-          <h2>{ `Title: ${title}` }</h2>
-          <h3>{ `Subtitle: ${subtitle}` }</h3>
-          <p>{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
-          <div>
-            <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-            <Link to="/">VOLTAR</Link>
-            <Link onClick={ this.deleteMovie } to="/">DELETAR</Link>
-          </div>
+      <div data-testid="movie-details" className="movie-card-details">
+        <div className="container-image">
+          <img alt="Movie Cover" src={ `../${imagePath}` } className="image-details" />
+        </div>
+        <div className="body-details">
+          <h2 className="title-details space">{ `Title: ${title}` }</h2>
+          <h3 className="subtitle-details space">{ `Subtitle: ${subtitle}` }</h3>
+          <p className="storyline-details space">{ `Storyline: ${storyline}` }</p>
+          <p className="storyline-details space">{ `Genre: ${genre}` }</p>
+          <p className="storyline-details space">{ `Rating: ${rating}` }</p>
+          <Link to={ `/movies/${id}/edit` } className="buttons">EDITAR</Link>
+          <Link to="/" className="buttons">VOLTAR</Link>
+          <Link onClick={ this.deleteMovie } to="/" className="buttons">DELETAR</Link>
         </div>
       </div>
     );
