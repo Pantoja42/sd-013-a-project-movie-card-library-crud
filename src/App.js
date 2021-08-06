@@ -22,3 +22,5 @@ class App extends Component {
   }
 }
 export default App;
+
+// This project it was possible to be done thanks to Lucas Lima, Leandro Liduvino and Bruno Pinho
