@@ -17,15 +17,14 @@ header {
   display: flex;
   font-size: 3em;
   height: 65px;
-  justify-content: center;
   justify-content: space-between;
-  padding: 0 20px 0px 20px;
+  padding: 0 20px 0 20px;
 }
 
 header a {
   background-color: #121212;
   border-radius: 3%;
-  color: #fff;
+  color: white;
   display: flex;
   font-size: medium;
   padding: 10px;
@@ -40,8 +39,7 @@ header a:hover {
 
 .flex {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: wrap;
   justify-content: center;
 }
 
@@ -77,7 +75,7 @@ footer a {
   background-color: rgb(0, 26, 255);
   border: 1px solid wheat;
   border-radius: 4%;
-  color: #fff;
+  color: white;
   display: flex;
   font-size: 20px;
   justify-content: center;
@@ -119,7 +117,7 @@ img {
 }
 
 .container .card:hover .content p {
-  color: #fff;
+  color: white;
   font-size: 1.5em;
   letter-spacing: 1px;
   opacity: 0.5;
@@ -132,7 +130,7 @@ img {
 }
 .container .card:hover .content a
 {
-  background-color: #fff;
+  background-color: white;
   color: #0c002b;
   display: inline-block;
   font-weight: 600;
