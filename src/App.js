@@ -27,10 +27,9 @@ function App() {
         render={ (props) => <EditMovie { ...props } /> }
       />
 
-      <Route exact path="/" render={ (props) => <MovieList { ...props } /> } />
+      <Route exact path="/" component={ MovieList } />
 
-      <Route exact path="" render={ (props) => <NotFound { ...props } /> } />
-
+      <Route exact path="" component={ NotFound } />
     </BrowserRouter>
   );
 }

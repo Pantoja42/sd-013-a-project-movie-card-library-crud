@@ -5,8 +5,8 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       loading: true,
       movie: {},
@@ -14,10 +14,10 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    this.requestDetais();
+    this.requestDetails();
   }
 
-  requestDetais = async () => {
+  requestDetails = async () => {
     const { getMovie } = movieAPI;
     const { match: { params: { id } } } = this.props;
     const requestResult = await getMovie(id);
@@ -27,17 +27,23 @@ class MovieDetails extends Component {
     });
   }
 
+  removeMovie = async () => {
+    const { deleteMovie } = movieAPI;
+    const { match: { params: { id } } } = this.props;
+    await deleteMovie(id);
+  }
+
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-
-    const { movie:
-      { title, storyline, imagePath, genre, rating, subtitle } } = this.state;
-    const { loading } = this.state;
-
+    const { loading,
+      movie: { title, storyline, imagePath, genre, rating, subtitle } } = this.state;
+    console.log(this.state);
     const { match: { params: { id } } } = this.props;
 
-    const elements = (
+    if (loading) {
+      return <Loading />;
+    }
+
+    return (
       <div data-testid="movie-details">
         <h4>{ title }</h4>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -45,16 +51,13 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-      </div>
-    );
-
-    return (
-      <div>
-        {loading ? <Loading /> : elements }
         <Link to="/">VOLTAR</Link>
         <button type="submit">
           <Link to={ `/movies/${id}/edit` }>
             EDITAR
+          </Link>
+          <Link to="/">
+            DELETAR
           </Link>
         </button>
       </div>
@@ -67,7 +70,15 @@ MovieDetails.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.number,
     }),
-  }).isRequired,
+  }),
+};
+MovieDetails.defaultProps = {
+  match: {
+    params: {
+      id: 0,
+    },
+  },
+
 };
 
 export default MovieDetails;
