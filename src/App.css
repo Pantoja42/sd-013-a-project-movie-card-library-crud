@@ -18,7 +18,7 @@ header {
   font-size: 3em;
   height: 65px;
   justify-content: space-between;
-  padding: 0 20px 0 20px;
+  padding: 0 20px;
 }
 
 footer a {
@@ -74,7 +74,7 @@ footer {
   background-color: #e50914c0;
   display: flex;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial , Helvetica , sans-serif;
   font-size: 24px;
   height: auto;
   justify-content: center;
@@ -89,10 +89,10 @@ img {
 
 .container .card::before {
   background-color: rgba(255,255,2555,0.1);
-  content: ''; 
+  content: '';
   left: 2px;
-  pointer-events: none; 
-  position: absolute; 
+  pointer-events: none;
+  position: absolute;
   top: 2px;
 }
 
@@ -148,7 +148,7 @@ img {
   opacity: 1;
 }
 
-.container .card span:nth-child(1) {
+.container .card span:nth-child( 1 ) {
   animation: animate1 2s linear infinite;
   background: linear-gradient(to right, transparent, #e50914d0);
   height: 3px;
@@ -163,12 +163,13 @@ img {
   0% {
     transform: translatex(-100%);
   }
+
   100% {
     transform: translatex(100%);
   }
 }
 
-.container .card span:nth-child(2) {
+.container .card span:nth-child( 2 ) {
   animation: animate2 2s linear infinite;
   animation-delay: 1s;
   background: linear-gradient(to bottom, transparent, #e50914d0);
@@ -180,15 +181,17 @@ img {
 }
 
 @keyframes animate2 {
+
   0% {
     transform: translateY(-100%);
   }
+
   100% {
     transform: translateY(100%);
   }
 }
 
-.container .card span:nth-child(3) {
+.container .card span:nth-child( 3 ) {
   animation: animate3 2s linear infinite;
   background: linear-gradient(to left, transparent, #e50914d0);
   bottom: 0;
@@ -199,15 +202,17 @@ img {
 }
 
 @keyframes animate3 {
+
   0% {
     transform: translatex(100%);
   }
+
   100% {
     transform: translatex(-100%);
   }
 }
 
-.container .card span:nth-child(4) {
+.container .card span:nth-child( 4 ) {
   animation: animate4 2s linear infinite;
   animation-delay: 1s;
   background: linear-gradient(to top, transparent, #e50914d0);
@@ -219,10 +224,12 @@ img {
 }
 
 @keyframes animate4 {
+
   0% {
-    transform: translateY(100%);
+    transform: translateY( 100% );
   }
+  
   100% {
-    transform: translateY(-100%);
+    transform: translateY( -100% );
   }
 }
