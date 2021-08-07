@@ -10,7 +10,6 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       voltar: false,
-      movie: [],
     };
   }
 
@@ -20,13 +19,13 @@ class NewMovie extends Component {
       .then((data) => {
         this.setState({
           voltar: true,
-          movie: data,
         });
+        return data;
       });
   }
 
   render() {
-    const { voltar, movie } = this.state;
+    const { voltar } = this.state;
     if (voltar) {
       return (
         <Redirect path="/" />
