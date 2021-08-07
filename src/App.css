@@ -1,6 +1,4 @@
-
-*
-{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -13,8 +11,7 @@ body {
   min-height: 100vh;
 }
 
-header
-{
+header {
   align-items: center;
   background-color: #e50914;
   display: flex;
@@ -35,8 +32,7 @@ header a {
   text-decoration: none;
 }
 
-header a:hover
-{
+header a:hover {
   color: #e56c09;
   font-size: 20px;
   transition: 0.5s;
@@ -49,8 +45,7 @@ header a:hover
   justify-content: center;
 }
 
-.container .card 
-{
+.container .card {
   align-items: center;
   background-color: rgb(37, 37, 37);
   height: 550px;
@@ -92,10 +87,9 @@ footer a {
 img {
   height: 383px;
   width: 590px;
-} 
+}
 
-.container .card::before
-{
+.container .card::before {
   background-color: rgba(255,255,2555,0.1);
   content: '';
   left: 2px;
@@ -104,41 +98,36 @@ img {
   top: 2px;
 }
 
-.container .card .content
-{
+.container .card .content {
   padding: 5px;
   text-align: center;
 }
 
-.container .card .content h2
-{
+.container .card .content h2 {
   color: #e50914;
   font-size: 4em;
   font-weight: 800;
-  position: absolute;
   opacity: 0;
+  position: absolute;
   right: 30px;
   transition: 0.5s;
 }
 
-.container .card:hover .content h2
-{
+.container .card:hover .content h2 {
   opacity: 1;
   transform: translateY(-70px);
 }
 
-.container .card:hover .content p
-{
+.container .card:hover .content p {
   color: #fff;
   font-size: 1.5em;
-  position: relative;
   letter-spacing: 1px;
   opacity: 0.5;
+  position: relative;
   transition: 0.5s;
 }
 
-.container .card .content a
-{
+.container .card .content a {
   display: none;
 }
 .container .card:hover .content a
@@ -152,41 +141,34 @@ img {
   text-transform: uppercase;
 }
 
-.container .card span 
-{
+.container .card span {
   opacity: 0;
   transition: 0.5s;
 }
 
-.container .card:hover span
-{
+.container .card:hover span {
   opacity: 1;
 }
 
-.container .card span:nth-child(1)
-{
+.container .card span:nth-child(1) {
   animation: animate1 2s linear infinite;
   background: linear-gradient(to right, transparent, #e50914d0);
-  position: absolute;
   height: 3px;
   left: 0;
+  position: absolute;
   top: 0;
   width: 100%;
 }
 
-@keyframes animate1
-{
-  0%
-  {
+@keyframes animate1 {
+  0% {
     transform: translatex(-100%);
   }
-  100%
-  {
+  100% {
     transform: translateX(100%);
   }
 }
-.container .card span:nth-child(2)
-{
+.container .card span:nth-child(2) {
   animation: animate2 2s linear infinite;
   animation-delay: 1s;
   background: linear-gradient(to bottom, transparent, #e50914d0);
@@ -197,20 +179,16 @@ img {
   width: 3px;
 }
 
-@keyframes animate2
-{
-  0%
-  {
+@keyframes animate2 {
+  0% {
     transform: translateY(-100%);
   }
-  100%
-  {
+  100% {
     transform: translateY(100%);
   }
 }
 
-.container .card span:nth-child(3)
-{
+.container .card span:nth-child(3) {
   animation: animate3 2s linear infinite;
   background: linear-gradient(to left, transparent, #e50914d0);
   bottom: 0;
@@ -220,20 +198,16 @@ img {
   width: 100%;
 }
 
-@keyframes animate3
-{
-  0%
-  {
+@keyframes animate3 {
+  0% {
     transform: translatex(100%);
   }
-  100%
-  {
+  100% {
     transform: translateX(-100%);
   }
 }
 
-.container .card span:nth-child(4)
-{
+.container .card span:nth-child(4) {
   animation: animate4 2s linear infinite;
   animation-delay: 1s;
   background: linear-gradient(to top, transparent, #e50914d0);
@@ -244,14 +218,11 @@ img {
   width: 3px;
 }
 
-@keyframes animate4
-{
-  0%
-  {
+@keyframes animate4 {
+  0% {
     transform: translateY(100%);
   }
-  100%
-  {
+  100% {
     transform: translateY(-100%);
   }
 }
