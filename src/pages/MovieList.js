@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Loading } from '../components';
+import Footerr from '../components/Footerr';
+import Headery from '../components/Header';
 import MovieCard from '../components/MovieCard';
 
 import * as movieAPI from '../services/movieAPI';
@@ -34,9 +35,14 @@ class MovieList extends Component {
     return (
       <div data-testid="movie-list">
         <div>
-          <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+          <Headery />
         </div>
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
+        <div className="flex">
+          {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
+        </div>
+        <div>
+          <Footerr />
+        </div>
       </div>
     );
   }

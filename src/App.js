@@ -7,7 +7,6 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div>Movie Card Library CRUD</div>
         <Switch>
           <Route exact path="/" component={ MovieList } />
           <Route exact path="/movies/new" component={ NewMovie } />
