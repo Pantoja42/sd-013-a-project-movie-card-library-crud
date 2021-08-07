@@ -87,8 +87,8 @@ img {
   width: 590px;
 }
 
-.container .card::before {
-  background-color: rgba(255,255,2555,0.1);
+.container .card:before {
+  background-color: rgba(255, 255, 2555, 0.1);
   content: '';
   left: 2px;
   pointer-events: none;
@@ -161,11 +161,11 @@ img {
 @keyframes animate1 {
 
   0% {
-    transform: translatex(-100%);
+    transform: translateX(-100%);
   }
 
   100% {
-    transform: translatex(100%);
+    transform: translateX(100%);
   }
 }
 
@@ -204,11 +204,11 @@ img {
 @keyframes animate3 {
 
   0% {
-    transform: translatex(100%);
+    transform: translateX(100%);
   }
 
   100% {
-    transform: translatex(-100%);
+    transform: translateX(-100%);
   }
 }
 
@@ -226,10 +226,9 @@ img {
 @keyframes animate4 {
 
   0% {
-    transform: translateY( 100% );
+    transform: translateY(100%);
   }
-  
   100% {
-    transform: translateY( -100% );
+    transform: translateY(-100%);
   }
 }
