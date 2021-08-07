@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getMovie } from '../services/movieAPI';
-import Loading from '../components/Loading';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
@@ -18,6 +19,8 @@ class MovieDetails extends Component {
   }
 
   async fetch(newGetMovie) {
+    const { match: { params } } = this.props;
+    const { id } = params;
     const receivePromise = await newGetMovie(id);
     this.setState({
       movies: receivePromise,
@@ -27,7 +30,7 @@ class MovieDetails extends Component {
 
   render() {
     const { movies, loading } = this.state;
-    const { title, subtitle, storyline, imagePath, genre, rating } = movies;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movies;
     const showRender = () => {
       const verifyLoadState = (loading) ? <Loading /> : undefined;
       return verifyLoadState;
@@ -41,12 +44,20 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to="/movies/:id/edit">EDITAR</Link>
+        <Link to={ `${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         { showRender() }
       </div>
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }),
+}.isRequired;
 
 export default MovieDetails;
