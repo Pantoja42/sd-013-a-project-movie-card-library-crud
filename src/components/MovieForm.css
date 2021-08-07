@@ -1,14 +1,14 @@
-.form-main{
+.form-main {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  max-width: 428px;
   height: 60%;
+  justify-content: center;
+  max-width: 428px;
 
 
 }
 
-label{
+label {
   color: #405c60;
   position: relative;
 }
@@ -17,73 +17,75 @@ input {
   outline: none;
 }
 
-input:not([type="checkbox"]){
-  width: 95%;
-  margin-top: 4px;
-  padding: 10px;  
+input:not( [ type = 'checkbox' ] ) {
   border: 1px solid #b2b2b2;
   border-radius: 3px;
-  box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+  box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset;
+  margin-top: 4px;
+  padding: 10px;
   transition: all 0.2s linear;
+  width: 95%;
 }
 
-/*estilo do botão submit */
+/* estilo do botão submit */
 button {
-  width: 100%!important;
-  cursor: pointer;  
   background: black;
-  padding: 8px 5px;
-  color: #fff;
-  font-size: 20px;  
-  border: 1px solid #fff; 
-  margin-bottom: 10px;  
-  text-shadow: 0 1px 1px #333;
-  
-  -webkit-border-radius: 5px;
+  border: 1px solid white;
   border-radius: 5px;
-  
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 8px 5px;
+  text-shadow: 0 1px 1px #333;
   transition: all 0.2s linear;
+  width: 100%;
 }
-button:hover{
+
+button:hover {
   background: #4ab3c6;
 }
 
-/*marcando os links para mudar de um formulário para outro */
-.link{
-  position: absolute;
+/* marcando os links para mudar de um formulário para outro */
+.link {
   background: #e1eaeb;
-  color: #7f7c7c;
-  left: 0px;
-  height: 20px;
-  width: 440px;
-  padding: 17px 30px 20px 30px;
-  font-size: 16px;
-  text-align: right;
-  border-top: 1px solid #dbe5e8;
-
-  -webkit-border-radius: 0 0  5px 5px;
   border-radius: 0 0  5px 5px;
+  border-top: 1px solid #dbe5e8;
+  color: #7f7c7c;
+  font-size: 16px;
+  height: 20px;
+  left: 0;
+  padding: 17px 30px 20px;
+  position: absolute;
+  text-align: right;
+  width: 440px;
 }
 
 
-/*fadeInLeft*/
+/* fadeInLeft */
+
 @keyframes fadeInLeft {
+
   0% {
     opacity: 0;
     transform: translateX(-20px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-/*fadeOutLeft*/
+/* fadeOutLeft */
+
 @keyframes fadeOutLeft {
+
   0% {
     opacity: 1;
     transform: translateX(0);
   }
+
   100% {
     opacity: 0;
     transform: translateX(-20px);

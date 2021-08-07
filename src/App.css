@@ -19,6 +19,14 @@ body {
   width: 100%;
 }
 
+a {
+  color: black;
+  font-weight: 400;
+  margin: 45px;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
 .nav-bar {
   background: black;
   font-size: 16px;
@@ -32,16 +40,75 @@ body {
   text-decoration: none;
 }
 
-.movie-form-main {
+.movie-form-main, .edit-movie {
   display: flex;
   justify-content: center;
-  margin-top:100px;
+  margin-top: 70px;
 }
 
-.movie-lista-main{
+.movie-lista-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+  margin-top: 100px;
+}
+
+/* https://developer.mozilla.org/pt-BR/docs/
+Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container */
+
+.movie-d {
+  align-items: center;
   display: flex;
   justify-content: center;
-  margin-top:100px;
-  flex-wrap: wrap;
-  margin: 20px;
 }
+
+.movie-d-card {
+  margin: 20px;
+  width: 600px;
+}
+
+.movie-d-image {
+  border-radius: 5px;
+  margin: 15px;
+  max-width: 550px;
+}
+
+.movie-d-title {
+  font-size: xx-large;
+  text-transform: capitalize;
+}
+
+.movie-d-subtitle {
+  font-size: large;
+  text-transform: capitalize;
+}
+
+.movie-d-storyline {
+  font-size: small;
+  margin: 15px;
+  text-transform: capitalize;
+}
+
+.movie-d-rating {
+  font-size: medium;
+  margin-bottom: 30px;
+  text-transform: capitalize;
+}
+
+.movie-d-genre {
+  font-size: medium;
+  text-transform: capitalize;
+}
+
+.movie-d-button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+
+.movie-d-button-del:hover {
+  color: red;
+}
+

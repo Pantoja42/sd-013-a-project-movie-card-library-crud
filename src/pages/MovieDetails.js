@@ -32,16 +32,30 @@ class MovieDetails extends Component {
     const { match: { params: { id } } } = this.props;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{`title: ${title}`}</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${id}/edit` }> EDITAR </Link>
-        <Link to="/"> VOLTAR </Link>
-        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
+      <div data-testid="movie-details" className="movie-d">
+        <div className="movie-d-card">
+          <img className="movie-d-image" alt="Movie Cover" src={ `../${imagePath}` } />
+          <p className="movie-d-title">{`title: ${title}`}</p>
+          <p className="movie-d-subtitle">{ `Subtitle: ${subtitle}` }</p>
+          <p className="movie-d-storyline">{ `Storyline: ${storyline}` }</p>
+          <p className="movie-d-genre">{ `Genre: ${genre}` }</p>
+          <p className="movie-d-rating">{ `Rating: ${rating}` }</p>
+          <div className="movie-d-button">
+            <div className="movie-d-links">
+              <Link to="/"> VOLTAR </Link>
+              <Link to={ `/movies/${id}/edit` }>
+                EDITAR
+              </Link>
+              <Link
+                className="movie-d-button-del"
+                to="/"
+                onClick={ () => this.deleteMovie(id) }
+              >
+                DELETAR
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
