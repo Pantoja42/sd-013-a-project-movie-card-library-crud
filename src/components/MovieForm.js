@@ -13,7 +13,6 @@ class MovieForm extends React.Component {
     const { genre } = this.state;
     if (genre === undefined) {
       await this.setState({ genre: 'action' });
-      // controllerState(this.state);
     }
     controllerState(this.state);
   }
@@ -171,7 +170,6 @@ class MovieForm extends React.Component {
 
 MovieForm.propTypes = {
   movie: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // onSubmit: PropTypes.func.isRequired,
   controllerState: PropTypes.func.isRequired,
 };
 

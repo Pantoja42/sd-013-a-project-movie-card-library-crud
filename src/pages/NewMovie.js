@@ -6,22 +6,16 @@ import { createMovie } from '../services/movieAPI';
 class NewMovie extends Component {
   constructor(props) {
     super(props);
-    // this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       shouldRedirect: false,
     };
   }
-
-  // handleSubmit(state) {
-  //   console.log(state);
-  // }
 
   controllerState = async (param) => {
     console.log(param);
     const updatedMovie = await createMovie(param);
     this.setState({ shouldRedirect: true });
     return updatedMovie;
-    // console.log(param);
   }
 
   render() {
