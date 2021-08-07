@@ -4,8 +4,16 @@ body {
   font-size: 16px;
 }
 
-.page-title {
+.navbar-header {
   background-color: #343a40;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.page-title {
   color: #f8f9fa;
   font-size: 28px;
   font-weight: 500;
@@ -24,11 +32,11 @@ body {
 .movie-card {
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 3px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   height: auto;
-  margin: 20px;
+  margin-top: 55px;
   overflow: hidden;
   width: 40%;
 }
@@ -43,11 +51,9 @@ body {
 }
 
 .movie-card-title {
-  color: white;
-  font-size: 24px;
-  font-weight: 400;
-  margin: 19% 0 0 1vmax;
-  position: absolute;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
 }
 
 .movie-card-storyline {
@@ -56,11 +62,17 @@ body {
 }
 
 .detail {
+  background-color: #343a40;
   border-radius: 25px;
-  color: orange;
-  font-size: 16px;
+  color: whitesmoke;
+  font-size: 14px;
   font-weight: 700;
-  padding: 3px 9px;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.detail:hover {
+  background-color: black;
 }
 
 .movie-card-detail {
@@ -73,11 +85,13 @@ body {
 
 .movie-details-page {
   border: 2px solid rgba(0, 0, 0, 0.125);
+  border-radius: 20px;
   display: flex;
-  flex-direction: column;
-  margin: 15px;
-  margin-left: 20%;
-  width: 60%;
+  flex-flow: column nowrap;
+  height: 40%;
+  margin: 150px;
+  overflow: hidden;
+  width: 40%;
 }
 
 .movie-details-page > p {
@@ -104,4 +118,24 @@ body {
 .buttonLink:hover {
   background-color: rgb(60, 60, 146);
   text-decoration: none;
+}
+
+.buttonLink.top {
+  background-color: whitesmoke;
+  color: black;
+  padding-top: 10px;
+}
+
+.background-video {
+  filter: opacity(90%);
+  height: 100%;
+  margin-left: -30px;
+  object-fit: fill;
+  padding: 0;
+  position: fixed;
+  z-index: -1;
+}
+
+.new-movie {
+  margin: 150px;
 }

@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages';
 
 function App() {
   return (
 
-    <div>
-      <h1 className="page-title">Movie Card Library</h1>
+    <div className="main">
+      <header className="navbar-header">
+        <h1 className="page-title">Movie Card Library CRUD</h1>
+        <NavLink to="/movies/new" className="buttonLink top"> ADICIONAR CARTÃO</NavLink>
+      </header>
       <Switch>
         <Route path="/movies/:id/edit" component={ EditMovie } />
         <Route path="/movies/new" component={ NewMovie } />
