@@ -13,10 +13,16 @@ class MovieDetails extends Component {
     };
     this.movieDetailsButtons = this.movieDetailsButtons.bind(this);
     this.movieDetailsCard = this.movieDetailsCard.bind(this);
+    this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
   }
 
   componentDidMount() {
     this.fetchMovie();
+  }
+
+  handleDeleteMovie() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id);
   }
 
   fetchMovie() {
@@ -36,6 +42,9 @@ class MovieDetails extends Component {
         <NavLink to="/" className="buttonLink"> VOLTAR </NavLink>
         <NavLink to={ `/movies/${movieID}/edit` } className="buttonLink">
           EDITAR
+        </NavLink>
+        <NavLink to="/" className="buttonLink" onClick={ this.handleDeleteMovie }>
+          DELETAR
         </NavLink>
       </div>
 
