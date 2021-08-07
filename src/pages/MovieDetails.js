@@ -1,6 +1,6 @@
-import React, { Component } from 'react'/* ;
+import React, { Component } from 'react';
 
-import * as movieAPI from '../services/movieAPI';
+/* import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components'; */
 
 class MovieDetails extends Component {
