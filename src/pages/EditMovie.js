@@ -20,10 +20,10 @@ class EditMovie extends Component {
     this.fetchApi();
   }
 
-  handleSubmit(event) {
-    event = 0;
-    return console.log(event);
-  }
+  // handleSubmit(event) {
+  //   event = 0;
+  //   return console.log(event);
+  // }
 
   controllerState = async (param) => {
     const updatedMovie = await updateMovie(param);
@@ -57,7 +57,7 @@ class EditMovie extends Component {
       <div data-testid="edit-movie">
         <MovieForm
           movie={ movie }
-          onSubmit={ () => this.handleSubmit(movie) }
+          // onSubmit={ () => this.handleSubmit(movie) }
           controllerState={ this.controllerState }
         />
       </div>

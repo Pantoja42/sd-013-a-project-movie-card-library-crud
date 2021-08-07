@@ -8,9 +8,13 @@ class MovieForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {
-    const { onSubmit, controllerState } = this.props;
-    onSubmit(this.state);
+  handleSubmit = async () => {
+    const { controllerState } = this.props;
+    const { genre } = this.state;
+    if (genre === undefined) {
+      await this.setState({ genre: 'action' });
+      // controllerState(this.state);
+    }
     controllerState(this.state);
   }
 
@@ -167,7 +171,7 @@ class MovieForm extends React.Component {
 
 MovieForm.propTypes = {
   movie: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  // onSubmit: PropTypes.func.isRequired,
   controllerState: PropTypes.func.isRequired,
 };
 
