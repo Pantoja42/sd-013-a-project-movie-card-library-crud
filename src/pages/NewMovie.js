@@ -26,7 +26,7 @@ class NewMovie extends Component {
   }
 
   render() {
-    const { voltar } = this.state;
+    const { voltar, movie } = this.state;
     if (voltar) {
       return (
         <Redirect path="/" />

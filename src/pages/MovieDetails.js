@@ -10,6 +10,7 @@ class MovieDetails extends Component {
     super();
 
     this.setApiDetails = this.setApiDetails.bind(this);
+    this.removeMovie = this.removeMovie.bind(this);
 
     this.state = {
       loading: true,
@@ -38,6 +39,12 @@ class MovieDetails extends Component {
     );
   }
 
+  removeMovie() {
+    const { deleteMovie } = movieAPI;
+    const { match: { params: { id } } } = this.props;
+    deleteMovie(id);
+  }
+
   render() {
     const { loading, data } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = data;
@@ -53,6 +60,7 @@ class MovieDetails extends Component {
           <p>{ `Rating: ${rating}` }</p>
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
           <Link to="/">VOLTAR</Link>
+          <Link to="/" onClick={ this.removeMovie }>DELETAR</Link>
         </div>
       )
     );

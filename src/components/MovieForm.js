@@ -165,6 +165,7 @@ class MovieForm extends React.Component {
 }
 
 MovieForm.propTypes = {
+  handleSubmit: PropTypes.func,
   movie: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -173,7 +174,6 @@ MovieForm.propTypes = {
     genre: PropTypes.string,
     rating: PropTypes.number,
   }),
-  handleSubmit: PropTypes.func,
 }.isRequired;
 
 export default MovieForm;
