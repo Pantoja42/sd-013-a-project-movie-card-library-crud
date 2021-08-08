@@ -35,6 +35,7 @@ class MovieDetails extends Component {
     };
 
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
   }
 
   componentDidMount() { // Passo 4: Chamando a função para que ela seja executada durante a atualização do componente
@@ -42,6 +43,11 @@ class MovieDetails extends Component {
   }
 
   // Passo 2: Função que faz o fetch nos filmes:
+
+  async handleDeleteMovie() {
+    const { match: { params: { id } } } = this.props; // Acessando o id através de props que vem nas propriedades do propsReactRouter: https://reactrouter.com/web/api/match
+    movieAPI.deleteMovie(id);
+  }
 
   fetchMovie() {
     const { match: { params: { id } } } = this.props; // Acessando o id através de props que vem nas propriedades do propsReactRouter: https://reactrouter.com/web/api/match
@@ -78,6 +84,9 @@ class MovieDetails extends Component {
         </Link>
         <Link to="/">
           VOLTAR
+        </Link>
+        <Link to="/" onClick={ this.handleDeleteMovie }>
+          DELETAR
         </Link>
       </div>
     );
