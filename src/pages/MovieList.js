@@ -9,6 +9,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      loading: true,
     };
   }
 
@@ -16,20 +17,21 @@ class MovieList extends Component {
     movieAPI.getMovies().then((data) => {
       this.setState({
         movies: [...data],
+        loading: false,
       });
     });
   }
 
   render() {
-    const { movies } = this.state;
+    const { movies, loading } = this.state;
 
-    if (movies.length === 0) {
+    if (loading) {
       return <Loading />;
     }
 
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        { movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
       </div>
     );
   }

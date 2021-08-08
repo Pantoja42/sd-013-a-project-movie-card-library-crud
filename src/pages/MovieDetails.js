@@ -9,26 +9,24 @@ class MovieDetails extends Component {
     super();
     this.state = {
       movie: {},
-      key: true,
+      loading: true,
     };
   }
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((data) => {
-      this.serState({
+      this.setState({
         movie: data,
-        key: false,
+        loading: false,
       });
     });
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-    const { movie, key } = this.state;
+    const { movie, loading } = this.state;
 
-    if (key) {
+    if (loading) {
       return <Loading />;
     }
 
@@ -40,7 +38,6 @@ class MovieDetails extends Component {
       genre,
       rating,
       subtitle } = movie;
-
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -65,5 +62,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
