@@ -23,36 +23,24 @@ class MovieDetails extends Component {
     const { match: { params } } = this.props;
     const { id } = params;
     const promise = await get(id);
-
-    this.setState({
-      movies: promise,
-      loading: false,
-    });
+    if (promise) {
+      this.setState({ movies: promise, loading: false });
+    } else {
+      this.setState({
+        movies: {
+          title: '',
+          subtitle: '',
+          imagePath: '',
+          storyline: '',
+          genre: '',
+          rating: 0,
+        },
+      });
+    }
   }
 
   render() {
     const { movies, loading } = this.state;
-
-    // const card = () => {
-    //   const div = document.createElement('div');
-    //   div.setAttribute('data-testid', 'movie-details');
-
-    //   const htmlCard = document.createTextNode(`<h4>{ title }</h4>
-    //   <img alt="Movie Cover" src={ \`../$\{imagePath}\` } />
-    //   <p>{ \`Subtitle: $\{subtitle}\` }</p>
-    //     <p>{ \`Storyline: $\{storyline}\` }</p>
-    //     <p>{ \`Genre: $\{genre}\` }</p>
-    //     <p>{ \`Rating: $\{rating}\` }</p>
-    //     <Link to="movies/:id/edit">EDITAR</Link>
-    //     <Link to="/">VOLTAR</Link>;`);
-    //   div.appendChild(htmlCard);
-
-    //   const srcDiv = document.getElementById('#movie-details');
-    //   const section = document.getElementById('#section-movie-details');
-    //   if (!srcDiv) {
-    //     section.appendChild(div);
-    //   }
-    // };
 
     const loadingShow = () => {
       const run = (loading) ? <Loading /> : undefined;

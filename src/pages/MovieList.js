@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
 
@@ -30,14 +31,14 @@ class MovieList extends Component {
     const { movies, loading } = this.state;
 
     const loadingShow = () => {
-      const loadingCondition = (loading) ? <Loading /> : undefined;
-      return loadingCondition;
+      if (loading) return <Loading />;
+      return movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />);
     };
 
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
         {loadingShow()}
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
   }

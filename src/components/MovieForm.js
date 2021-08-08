@@ -4,10 +4,21 @@ import PropTypes from 'prop-types';
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
+
     const { movie } = this.props;
-    // const { title, subtitle, imagePath, storyline , genre, rating } = movie;
-    this.state = movie;
-    // console.log(this.props.movie);
+    if (!movie) {
+      this.state = {
+        title: '',
+        subtitle: '',
+        imagePath: '',
+        storyline: '',
+        genre: '',
+        rating: 0,
+      };
+    } else {
+      this.state = movie;
+    }
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
