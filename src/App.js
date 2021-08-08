@@ -20,3 +20,5 @@ class App extends Component {
 }
 
 export default App;
+
+// Na linha 13: O que você colocar no lugar do ':id' é o que importa. Exemplo: Se você colocar '2' o path vai ser '/movies/2'.
