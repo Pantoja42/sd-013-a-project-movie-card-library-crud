@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...props.movie };
+    const { movie } = this.props;
+    this.state = movie;
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -21,7 +23,7 @@ class MovieForm extends React.Component {
     const { title } = this.state;
 
     return (
-      <div>
+      <div className="form">
         <label htmlFor="movie_title">
           <input
             placeholder="Insira o título"
@@ -41,7 +43,7 @@ class MovieForm extends React.Component {
     const { subtitle } = this.state;
 
     return (
-      <div>
+      <div className="form">
         <label htmlFor="movie_subtitle">
           <input
             placeholder="Insira o subtítulo"
@@ -163,5 +165,10 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: PropTypes.string,
+  onSubmit: PropTypes.func,
+}.isRequired;
 
 export default MovieForm;

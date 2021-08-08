@@ -12,6 +12,7 @@ class MovieList extends Component {
       loading: true,
       movies: [],
     };
+    this.fetch = this.fetch.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +34,7 @@ class MovieList extends Component {
       return verifyLonding;
     };
     return (
-      <div data-testid="movie-list">
+      <div className="movie-list" data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
         { showLonding() }
       </div>
