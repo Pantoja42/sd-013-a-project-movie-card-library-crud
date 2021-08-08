@@ -7,6 +7,8 @@ import NewMovie from './pages/NewMovie';
 import EditMovie from './pages/EditMovie';
 import NotFound from './pages/NotFound';
 
+// PROJETO FEITO COM A AJUDA DO COLEGA LEANDRO SANTOS
+
 function App() {
   return (
     <Router>
