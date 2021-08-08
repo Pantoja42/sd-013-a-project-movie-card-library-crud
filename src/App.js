@@ -24,3 +24,5 @@ function App() {
 }
 
 export default App;
+
+// Projeto feito com ajuda de Luiza, Gildo e Leonardo da turma 13, tribo A.
