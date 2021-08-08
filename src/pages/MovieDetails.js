@@ -16,8 +16,8 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     const { match } = this.props;
-    const { params } = match;
-    const { id } = params;
+    const { id } = match.params;
+
     movieAPI.getMovie(id).then((resolve) => this.setState({
       movie: resolve,
       loading: false,
@@ -25,23 +25,31 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie } = this.state;
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
-    const { loading } = this.state;
+    const { movie, loading } = this.state;
+    const { title, subtitle, imagePath, storyline, genre, rating, id } = movie;
 
     if (loading === true) {
       return <Loading />;
     }
+
     return (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Title: ${title}`}</p>
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
-        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-        <Link to="/">VOLTAR</Link>
+
+        <p>{ `Title: ${title}` }</p>
+        <p>{ `Subtitle: ${subtitle}` }</p>
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
+
+        <button type="button">
+          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        </button>
+
+        <button type="button">
+          <Link to="/">VOLTAR</Link>
+        </button>
+
       </div>
     );
   }
