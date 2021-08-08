@@ -7,9 +7,7 @@ import { createMovie } from '../services/movieAPI';
 class NewMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      sholdRedirect: false,
-    };
+    this.state = { shouldRedirect: false };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -19,7 +17,6 @@ class NewMovie extends Component {
 
   async fetch(create) {
     const promise = await create;
-    console.log(promise);
     if (promise === 'OK') this.setState({ shouldRedirect: true });
   }
 

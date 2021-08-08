@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-import { getMovie } from '../services/movieAPI';
+import { getMovie, deleteMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -12,11 +12,17 @@ class MovieDetails extends Component {
     this.state = {
       movies: [],
       loading: true,
+      shouldRedirect: false,
     };
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
     this.fetch(getMovie);
+  }
+
+  handleDelete() {
+    this.fetchDelete(deleteMovie);
   }
 
   async fetch(get) {
@@ -39,8 +45,18 @@ class MovieDetails extends Component {
     }
   }
 
+  async fetchDelete(deleteFunction) {
+    const { match: { params } } = this.props;
+    const { id } = params;
+    const promise = await deleteFunction(id);
+    const { status } = promise;
+    if (status === 'OK') this.setState({ shouldRedirect: true });
+  }
+
   render() {
-    const { movies, loading } = this.state;
+    const { movies, loading, shouldRedirect } = this.state;
+
+    if (shouldRedirect) return <Redirect to="/" />;
 
     const loadingShow = () => {
       const run = (loading) ? <Loading /> : undefined;
@@ -60,6 +76,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ { pathname: `${id}/edit` } }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to={ id } onClick={ this.handleDelete }>DELETAR</Link>
       </div>
     );
   }
