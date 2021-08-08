@@ -22,7 +22,6 @@ class EditMovie extends Component {
       this.setState({
         movie: response,
         status: 'false',
-       
       });
     });
   }
