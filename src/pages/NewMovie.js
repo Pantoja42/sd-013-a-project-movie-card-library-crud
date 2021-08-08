@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import MovieForm from '../components/MovieForm';
+// import MovieForm from '../components/MovieForm';
 // import { createMovie } from '../services/movieAPI';
 
 class NewMovie extends Component {
