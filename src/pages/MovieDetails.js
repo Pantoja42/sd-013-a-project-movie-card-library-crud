@@ -23,6 +23,7 @@ class MovieDetails extends Component {
     const { match: { params } } = this.props;
     const { id } = params;
     const promise = await get(id);
+
     this.setState({
       movies: promise,
       loading: false,
@@ -69,7 +70,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `${id}/edit` }>EDITAR</Link>
+        <Link to={ { pathname: `${id}/edit` } }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
