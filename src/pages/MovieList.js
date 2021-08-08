@@ -10,13 +10,13 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-    };
+    }; 
   }
 
   componentDidMount() {
-    movieAPI.getMovies().then((response) => {
+    movieAPI.getMovies().then((data) => {
       this.setState({
-        movies: [...response],
+        movies: [...data],
       });
     });
   }
