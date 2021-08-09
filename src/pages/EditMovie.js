@@ -30,7 +30,6 @@ class EditMovie extends Component {
     movieAPI.updateMovie(updatedMovie).then(() => {
       this.setState({
         shouldRedirect: true,
-
       });
     });
   }
