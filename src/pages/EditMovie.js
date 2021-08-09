@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { Redirect } from 'react-router';
 import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
-import { Redirect } from 'react-router';
 
 class EditMovie extends Component {
   constructor(props) {
@@ -13,7 +13,6 @@ class EditMovie extends Component {
       shouldRedirect: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   componentDidMount() {
@@ -32,7 +31,6 @@ class EditMovie extends Component {
     if (shouldRedirect) return <Redirect to="/" />;
 
     if (status === 'loading') return <Loading />;
-      // render Loading
 
     return (
       <div data-testid="edit-movie">
