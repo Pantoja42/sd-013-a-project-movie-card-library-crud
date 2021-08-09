@@ -13,16 +13,16 @@ class MovieList extends Component {
     };
   }
 
-  componentDidMount() { 
-    movieAPI.getMovies().then((movies) =>
-      this.setState({ loading: false, movies, }));
+  componentDidMount() {
+    movieAPI.getMovies().then((movies) => this.setState({ loading: false, movies }));
   }
 
   render() {
     const { movies, loading } = this.state;
     return (
       <div data-testid="movie-list">
-        { loading ? <Loading /> : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
+        { loading ? <Loading />
+          : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
       </div>
     );
   }
