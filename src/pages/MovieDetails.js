@@ -8,6 +8,7 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
 
+    const { id } = this.props.match.params;
     const { title, storyline, imagePath, genre, rating, subtitle } = {};
 
     return (
