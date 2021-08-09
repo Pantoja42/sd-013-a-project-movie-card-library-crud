@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Loading from '../components/Loading';
-import MovieCard from '../components/MovieCard';
+import { Loading, MovieCard } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
