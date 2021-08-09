@@ -41,15 +41,15 @@ class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     const movieRender = (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ 'Title: $4{title}' }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
+        <img alt="Movie Cover" src={`../${imagePath}`} />
+        <p>{'Title: $4{title}'}</p>
+        <p>{`Subtitle: ${subtitle}`}</p>
+        <p>{`Storyline: ${storyline}`}</p>
+        <p>{`Genre: ${genre}`}</p>
+        <p>{`Rating: ${rating}`}</p>
         <Link to="/">VOLTAR</Link>
-        <Link to={ '/movies/${id}/edit' }>EDITAR</Link>
-        <Link to="/" onClick={ this.linkDelete }>DELETAR</Link>
+        <Link to={'/movies/${id}/edit'}>EDITAR</Link>
+        <Link to="/" onClick={this.linkDelete}>DELETAR</Link>
       </div>
     );
 

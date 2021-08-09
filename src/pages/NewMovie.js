@@ -30,7 +30,7 @@ class NewMovie extends Component {
     );
     return (
       <div>
-        { redirect ? <Redirect to="/" />: movieForm}
+        {redirect ? <Redirect to="/" /> : movieForm}
       </div>
     );
   }
