@@ -21,6 +21,7 @@ const simulateRequest = (response) => (callback) => {
   }, TIMEOUT);
 };
 
+// Função utilizada no requisito 2 - Page MovieList.js - retorna uma promise
 export const getMovies = () => (
   new Promise((resolve) => {
     const movies = readMovies();

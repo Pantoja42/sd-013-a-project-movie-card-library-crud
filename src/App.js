@@ -11,6 +11,7 @@
 
 // ============================
 
+// Precisa importar todos os componentes que irão utilizar rotas, como: MovieList, MovieDetails, NewMovie, EditMovie e NotFound
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import MovieList from './pages/MovieList';
