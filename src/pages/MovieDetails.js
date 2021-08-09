@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -10,7 +10,6 @@ class MovieDetails extends Component {
     this.state = {
       loading: true,
       movie: {},
-      shouldRedirect: false,
     };
     this.getMovie = this.getMovie.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
@@ -34,23 +33,17 @@ class MovieDetails extends Component {
       });
   }
 
-  setShouldRedirect() {
-    this.setState(() => ({ shouldRedirect: true }));
-  }
-
   deleteMovie() {
     const { match } = this.props;
     const { params } = match;
     const { id } = params;
     movieAPI.deleteMovie(id);
-    this.setShouldRedirect();
   }
 
   render() {
     const { loading } = this.state;
     if (loading) return <Loading />;
-    const { movie, shouldRedirect } = this.state;
-    if (shouldRedirect) return <Redirect to="/" />;
+    const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     return (
@@ -63,8 +56,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <button type="submit" onClick={ this.deleteMovie }>DELETAR</button>
-        {/* <Link to={ `/movies/delete/${id}` }>DELETAR</Link> */}
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
