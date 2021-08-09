@@ -1,26 +1,50 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
+import { Link } from 'react-router-dom';
+import { MovieCard, Loading } from '../components';
 
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
   constructor() {
     super();
-
+    this.fetchMovies = this.fetchMovies.bind(this);
     this.state = {
       movies: [],
+      loading: true,
     };
   }
 
+  componentDidMount() {
+    this.fetchMovies();
+  }
+
+  fetchMovies() {
+    this.setState({ loading: true },
+      async () => {
+        const getMovies = await movieAPI.getMovies();
+        this.setState({
+          loading: false,
+          movies: getMovies,
+        });
+      });
+  }
+
   render() {
-    const { movies } = this.state;
-
-    // Render Loading here if the request is still happening
-
+    const { movies, loading } = this.state;
+    if (loading) return <Loading />;
     return (
-      <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-      </div>
+      <>
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        <div data-testid="movie-list" className="slide-container">
+          {movies.map((movie) => (<MovieCard
+            key={ movie.title }
+            movie={ movie }
+            next={ this.nextOrPreviousImg }
+            atualizaState={ this.setSlidesState }
+            show={ this.showImg }
+          />))}
+        </div>
+      </>
     );
   }
 }

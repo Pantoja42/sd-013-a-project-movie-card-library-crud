@@ -9,8 +9,9 @@ class MovieForm extends React.Component {
   }
 
   handleSubmit() {
-    const { onSubmit } = this.props;
+    const { onSubmit, redirect } = this.props;
     onSubmit(this.state);
+    redirect();
   }
 
   updateMovie(field, newValue) {
@@ -30,6 +31,7 @@ class MovieForm extends React.Component {
             className="validate"
             value={ title }
             onChange={ (event) => this.updateMovie('title', event.target.value) }
+            required
           />
           Título
         </label>
@@ -49,6 +51,7 @@ class MovieForm extends React.Component {
             type="text"
             value={ subtitle }
             onChange={ (event) => this.updateMovie('subtitle', event.target.value) }
+            required
           />
           Subtítulo
         </label>
@@ -68,6 +71,7 @@ class MovieForm extends React.Component {
             type="text"
             value={ imagePath }
             onChange={ (event) => this.updateMovie('imagePath', event.target.value) }
+            required
           />
           Imagem
         </label>
@@ -85,6 +89,7 @@ class MovieForm extends React.Component {
             id="movie_storyline"
             value={ storyline }
             onChange={ (event) => this.updateMovie('storyline', event.target.value) }
+            required
           />
           Sinopse
         </label>
@@ -127,6 +132,7 @@ class MovieForm extends React.Component {
             max={ 5 }
             value={ rating }
             onChange={ (event) => this.updateMovie('rating', event.target.value) }
+            required
           />
           Avaliação
         </label>
@@ -163,5 +169,33 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  redirect: PropTypes.func.isRequired,
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    storyline: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    imagePath: PropTypes.string.isRequired,
+    bookmarked: PropTypes.bool.isRequired,
+    genre: PropTypes.string.isRequired,
+  }),
+};
+
+MovieForm.defaultProps = {
+  movie: {
+    id: 0,
+    title: '',
+    subtitle: '',
+    storyline: '',
+    rating: 0,
+    imagePath: '',
+    bookmarked: false,
+    genre: '',
+  },
+};
 
 export default MovieForm;
