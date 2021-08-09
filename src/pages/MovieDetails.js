@@ -4,15 +4,43 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor() {
+    super();
+    this.state = {
+      movie: {},
+      loading: true,
+    };
+  }
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+  componentDidMount() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.getMovie(id).then((data) => {
+      this.setState({
+        movie: data,
+        loading: false,
+      });
+    });
+  }
+
+  render() {
+    const { movie, loading } = this.state;
+    const {
+      title,
+      storyline,
+      imagePath,
+      genre,
+      rating,
+      subtitle,
+    } = movie;
+
+    if (loading) {
+      return <Loading />;
+    }
 
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <h2>{ `Title: ${title}`}</h2>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
@@ -21,5 +49,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
