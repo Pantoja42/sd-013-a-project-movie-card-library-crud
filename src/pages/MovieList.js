@@ -12,12 +12,11 @@ class MovieList extends Component {
       movies: [],
       loading: true,
     };
-  } 
+  }
 
   componentDidMount() {
     this.handleState();
   }
-
 
   async handleState() {
     const moviesList = await movieAPI.getMovies();
@@ -25,9 +24,9 @@ class MovieList extends Component {
       movies: moviesList,
       loading: false,
     });
-  } 
+  }
 
-  render() { 
+  render() {
     const { loading, movies } = this.state;
     return (
       <div data-testid="movie-list">
