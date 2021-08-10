@@ -15,20 +15,20 @@ class MovieList extends Component {
     };
   }
 
-    async componentDidMount() {
-      const promise = await movieAPI.getMovies();
-      this.handleState(promise);
-    }
+  async componentDidMount() {
+    const promise = await movieAPI.getMovies();
+    this.handleState(promise);
+  }
 
-    handleState(movies) {
-      this.setState({
-        movies,
-        loading: false,
-      });
-    }
+  handleState(movies) {
+    this.setState({
+      movies,
+      loading: false,
+    });
+  }
 
-    render() {
-      const { movies, loading } = this.state;
+  render() {
+    const { movies, loading } = this.state;
     return (
       <div data-testid="movie-list">
         {loading ? <Loading />
