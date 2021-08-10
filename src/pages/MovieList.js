@@ -15,14 +15,11 @@ class MovieList extends Component {
     };
   }
 
-  render() {
-    const { movies } = this.state;
     async componentDidMount() {
       const promise = await movieAPI.getMovies();
       this.handleState(promise);
     }
 
-    // Render Loading here if the request is still happening
     handleState(movies) {
       this.setState({
         movies,
