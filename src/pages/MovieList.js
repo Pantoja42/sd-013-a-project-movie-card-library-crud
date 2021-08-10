@@ -16,6 +16,10 @@ class MovieList extends Component {
     this.LoadMovies = this.LoadMovies.bind(this);
   }
 
+  componentDidMount() {
+    this.LoadMovies();
+  }
+
   // Requisita a Lista de Filmes e atualiza os estados das chaves movies e load.
   async LoadMovies() {
     const request = await movieAPI.getMovies();
@@ -23,10 +27,6 @@ class MovieList extends Component {
       movies: request,
       load: true,
     });
-  }
-
-  componentDidMount() {
-    this.LoadMovies();
   }
 
   render() {
