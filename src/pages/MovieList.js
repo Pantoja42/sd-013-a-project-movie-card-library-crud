@@ -28,18 +28,18 @@ class MovieList extends React.Component {
 
     // Passo 1: setar o estado inicial
     this.state = {
-      movies: [],
+      movies: [], // já veio no projeto
       loading: true, // true pq enquanto a requisição não retorna a resposta, "carregando..." será exibido na tela
     };
 
-    this.handleState = this.handleState.bind(this); //pq do bind? - o constructor enxerga o this
+    this.handleState = this.handleState.bind(this); // pq do bind? - o constructor enxerga o this
   }
 
   render() {
     const { movies } = this.state;
 
     // Render Loading here if the request is still happening
-    // Passo 2: Fazer a requisição ao módulo movieAPI.js
+    // Passo 2: Fazer a requisição ao módulo movieAPI.js. Essa requisição também já atualiza o setState
 
     return (
       <div data-testid="movie-list">
