@@ -18,7 +18,7 @@ class MovieCard extends React.Component {
 }
 
 MovieCard.propTypes = {
-  movie: PropTypes.shape({
+  movie: PropTypes.shape({ // Shape usado quando se tem array ou objetivo, e declarar todas as chaves/valor
     id: PropTypes.number,
     title: PropTypes.string,
     storyline: PropTypes.string,

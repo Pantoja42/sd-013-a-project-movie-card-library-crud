@@ -38,7 +38,7 @@ class MovieDetails extends Component {
       subtitle,
     } = movie;
 
-    if (loading) {
+    if (loading) { // Quando loading for true, retorne <Loading />
       return <Loading />;
     }
 
