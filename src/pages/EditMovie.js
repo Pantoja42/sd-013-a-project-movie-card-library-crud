@@ -1,42 +1,6 @@
-// import React, { Component } from 'react';
-
-// import { MovieForm } from '../components';
-// import * as movieAPI from '../services/movieAPI';
-
-// class EditMovie extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-
-//   handleSubmit(updatedMovie) {
-//   }
-
-//   render() {
-//     const { status, shouldRedirect, movie } = this.state;
-//     if (shouldRedirect) {
-//       // Redirect
-//     }
-
-//     if (status === 'loading') {
-//       // render Loading
-//     }
-
-//     return (
-//       <div data-testid="edit-movie">
-//         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
-//       </div>
-//     );
-//   }
-// }
-
-// export default EditMovie;
-
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
-
 import { Loading, MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
@@ -79,7 +43,6 @@ class EditMovie extends Component {
       return (
         <Loading />
       );
-      // render Loading
     }
 
     return (
@@ -99,3 +62,5 @@ EditMovie.propTypes = {
 };
 
 export default EditMovie;
+
+// Projeto feito com auxilio de Leonardo Conceição dos Santos.
