@@ -19,7 +19,7 @@ class MovieDetails extends Component {
     this.LoadMovie();
   }
 
-  async LoadMovie() {
+  async LoadMovie (){
     const { match: { params: { id } } } = this.props;
     const request = await movieAPI.getMovie(id);
     this.setState({
@@ -33,16 +33,14 @@ class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     const aux = (
       <div data-testid="movie-details">
-        <div>
-          <img alt="Movie Cover" src={ `../${imagePath}` } />
-          <p>{ `Title: ${title}` }</p>
-          <p>{ `Subtitle: ${subtitle}` }</p>
-          <p>{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
-          <Link to={ `/movies/${id}/edit` }>EDITAR </Link>
-          <Link to="/">VOLTAR</Link>
-        </div>
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Title: ${title}` }</p>
+        <p>{ `Subtitle: ${subtitle}` }</p>
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${id}/edit` }>EDITAR </Link>
+        <Link to="/">VOLTAR</Link>
       </div>);
     return (
       load ? aux : <Loading />
