@@ -10,13 +10,13 @@ class MovieCard extends React.Component {
         <img src={ imagePath } alt={ title } />
         <h1>{title}</h1>
         <p>{storyline}</p>
-        <Link to={'/movies/${id}'}>VER DETALHES</Link>
+        <Link to={ `/movies/${id}` }>VER DETALHES</Link>
       </div>
     );
   }
 }
 
-MovieCard.PropTypes = {
+MovieCard.propTypes = {
   movie: PropTypes.shape({
     imagePath: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
