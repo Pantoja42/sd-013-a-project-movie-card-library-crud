@@ -4,7 +4,7 @@ import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
 import EditMovie from './pages/EditMovie';
-import NotFoud from './pages/NotFound';
+import NotFound from './pages/NotFound';
 import './App.css';
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
           />
           <Route
             path="*"
-            component={ NotFoud }
+            component={ NotFound }
           />
         </Switch>
       </Router>
