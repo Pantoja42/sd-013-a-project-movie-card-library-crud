@@ -1,5 +1,52 @@
 body {
   background-color: whitesmoke;
+  box-shadow: 10px 20px 40px gray;
   box-sizing: border-box;
+  display: flex;
+  margin: auto;
+  text-align: center;
+  width: 80%;
+}
+
+.movie-card {
+  border-radius: 9px;
+  box-shadow: 10px 20px 40px gray;
+  margin: 20px;
+  padding: 20px;
+  width: 400px;
+}
+
+.movie-card:hover {
+  border-radius: 9px;
+  box-shadow: 10px 20px 40px black;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  transform: scale(1.1);
+  transition: 10s;
+}
+
+.movie-card-img {
+  border-radius: 9px;
+  max-width: 300px;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.movie-list-btn {
+  background-color: aliceblue;
+  border-radius: 9px;
+  bottom: 0;
+  box-shadow: 1px 10px 5px gray;
+  color: black;
+  margin-bottom: 20px;
+  margin-right: 152px;
+  padding: 10px;
+  position: fixed;
+  right: 0;
 }
 
