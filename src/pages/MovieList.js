@@ -5,10 +5,10 @@ import MovieCard from '../components/MovieCard';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.catchMovie = this.catchMovie.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this);
 
     this.state = {
       loading: true,
@@ -17,11 +17,10 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    this.catchMovie();
+    this.fetchMovie();
   }
 
-  async catchMovie() {
-    this.setState({ loading: true });
+  async fetchMovie() {
     movieAPI.getMovies()
       .then((resolve) => this.setState({ movies: resolve, loading: false }));
   }
@@ -29,10 +28,11 @@ class MovieList extends Component {
   render() {
     const { movies, loading } = this.state;
     const carregamento = <Loading />;
+    const arrayMovies = movies
+      .map((movie) => <MovieCard key={ movie.title } movie={ movie } />);
     return (
       <div data-testid="movie-list">
-        { loading ? carregamento : movies }
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        { loading ? carregamento : arrayMovies }
       </div>
     );
   }
