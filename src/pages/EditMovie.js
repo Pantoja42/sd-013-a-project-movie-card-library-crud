@@ -13,12 +13,8 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async componentDidMount(){
-    const { match: {params: {id}}} = this.props;
-    const movieDetails = await movieAPI.getMovie(id);
-    this.setState({
-      movie: movieDetails,      
-    })
+  async componentDidMount() {
+    this.fetchDetails();
   }
 
   async handleSubmit(updatedMovie) {
@@ -26,12 +22,20 @@ class EditMovie extends Component {
     this.setState({
       movie: updatedMovie,
       shouldRedirect: true,
-    })
+    });
+  }
+
+  fetchDetails = async () => {
+    const { match: { params: { id } } } = this.props;
+    const movieDetails = await movieAPI.getMovie(id);
+    this.setState({
+      movie: movieDetails,
+    });
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;
-    if (shouldRedirect) return <Redirect to="/"/>
+    const { shouldRedirect, movie } = this.state;
+    if (shouldRedirect) return <Redirect to="/" />;
 
     if (movie === '') return <Loading />;
 

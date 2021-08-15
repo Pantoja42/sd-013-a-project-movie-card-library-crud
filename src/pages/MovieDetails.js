@@ -5,26 +5,30 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state= {
+    this.state = {
       movie: '',
-    }
+    };
   }
 
   async componentDidMount() {
-    const {match: {params: {id}}} = this.props;
+    this.fetchDetails();
+  }
+
+  fetchDetails = async () => {
+    const { match: { params: { id } } } = this.props;
     const movieDetails = await movieAPI.getMovie(id);
     this.setState({
       movie: movieDetails,
-    })
+    });
   }
 
   render() {
     // Change the condition to check the state
-
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
+    const { movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     if (!title) return <Loading />;
 
     return (
@@ -36,7 +40,7 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
-        <Link to={`${id}/edit`}>EDITAR</Link>
+        <Link to={ `${id}/edit` }>EDITAR</Link>
       </div>
     );
   }
