@@ -34,24 +34,28 @@ class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     return (
       <div data-testid="movie-details">
-      <img alt="Movie Cover" src={ `../${imagePath}` } />
-      <p>{`Title: ${title}`}</p>
-      <p>{ `Subtitle: ${subtitle}` }</p>
-      <p>{ `Storyline: ${storyline}` }</p>
-      <p>{ `Genre: ${genre}` }</p>
-      <p>{ `Rating: ${rating}` }</p>
-      <Link to="/">VOLTAR</Link> <br />
-      <Link to={ `/movies/${id}/edit` }>EDITAR</Link> <br />
-      <Link to="/" onClick={ () => this.delMovie(id) }>DELETAR</Link>
-    </div>
-    )
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{`Title: ${title}`}</p>
+        <p>{ `Subtitle: ${subtitle}` }</p>
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
+        <Link to="/">VOLTAR</Link>
+        {' '}
+        <br />
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        {' '}
+        <br />
+        <Link to="/" onClick={ () => this.delMovie(id) }>DELETAR</Link>
+      </div>
+    );
   }
 
   render() {
     const { loading, movie } = this.state;
     return (
       loading ? <Loading /> : this.buildCard(movie)
-    )
+    );
   }
 }
 
