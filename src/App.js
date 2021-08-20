@@ -15,7 +15,7 @@ function App() {
       <Switch>
         <Route component={ NewMovie } path="/movies/new" />
         <Route component={ MovieList } path="/" exact />
-        <Route component={ MovieDetails } path="/movies/:id" exact />
+        <Route render={ (props) => <MovieDetails { ...props } /> } path="/movies/:id" />
         <Route component={ EditMovie } path="/movies/:id/edit" exact />
         <Route component={ NotFound } path="/notfound" />
         <Redirect from="*" to="/notfound" />
