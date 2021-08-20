@@ -10,6 +10,7 @@ class MovieCard extends React.Component {
         <p>{ title }</p>
         <p>{ storyline }</p>
         <Link to={ `movies/${id}` }>VER DETALHES</Link>
+        {console.log(this.props)}
       </div>
     );
   }
