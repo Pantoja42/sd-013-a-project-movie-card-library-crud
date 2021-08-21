@@ -1,15 +1,15 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { ...props.movie };
+    this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit() {
-    // const { onSubmit } = this.props;
+    const { onSubmit } = this.props;
     onSubmit(this.state);
   }
 
@@ -80,9 +80,9 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        <label htmlFor="movie_storyline">
+        <label htmlFor="storyline">
           <textarea
-            id="movie_storyline"
+            id="storyline"
             value={ storyline }
             onChange={ (event) => this.updateMovie('storyline', event.target.value) }
           />
@@ -96,10 +96,10 @@ class MovieForm extends React.Component {
     const { genre } = this.state;
     return (
       <div>
-        <label htmlFor="movie_genre">
+        <label htmlFor="genre">
           Gênero
           <select
-            id="movie_genre"
+            id="genre"
             value={ genre }
             onChange={ (event) => this.updateMovie('genre', event.target.value) }
           >
@@ -117,10 +117,10 @@ class MovieForm extends React.Component {
     const { rating } = this.state;
     return (
       <div>
-        <label htmlFor="movie_rating">
+        <label htmlFor="rating">
           <input
             placeholder="Dê a avaliação do filme"
-            id="movie_rating"
+            id="rating"
             type="number"
             step={ 0.1 }
             min={ 0 }
@@ -134,6 +134,7 @@ class MovieForm extends React.Component {
     );
   }
 
+  // botão que chama a função 'handdleSubmit'
   renderSubmitButton() {
     return (
       <div>
@@ -147,6 +148,7 @@ class MovieForm extends React.Component {
     );
   }
 
+  // renderização do form
   render() {
     return (
       <div>
@@ -163,5 +165,11 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+// fazendo os prop-types
+MovieForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  movie: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default MovieForm;
