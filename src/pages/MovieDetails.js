@@ -5,17 +5,23 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 export default class MovieDetails extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       loading: true,
       movie: {},
     };
     this.requestChangeState = this.requestChangeState.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
     this.requestChangeState();
+  }
+
+  async handleDelete() {
+    const { match: { params: { id } } } = this.props;
+    await movieAPI.deleteMovie(id);
   }
 
   async requestChangeState() {
@@ -45,6 +51,7 @@ export default class MovieDetails extends Component {
               <p>{ `Rating: ${rating}` }</p>
               <Link to={ `/movies/${id}/edit` }> EDITAR </Link>
               <Link to="/"> VOLTAR </Link>
+              <Link to="/" onClick={ this.handleDelete }> DELETAR </Link>
             </section>)}
       </div>
     );

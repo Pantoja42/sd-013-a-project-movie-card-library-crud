@@ -12,6 +12,7 @@ export default class EditMovie extends Component {
       status: 'loading',
       shouldRedirect: false,
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.changeState = this.changeState.bind(this);
   }
 
