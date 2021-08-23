@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -29,7 +30,16 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
     const { deleteMovie } = movieAPI;
-    const { movie: { title, storyline, imagePath, genre, rating, subtitle } } = this.state;
+    const {
+      movie:
+        {
+          title,
+          storyline,
+          imagePath,
+          genre,
+          rating,
+          subtitle,
+        } } = this.state;
     const { match: { params: { id } } } = this.props;
     const { loading } = this.state;
 
@@ -58,3 +68,18 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.objectOf(PropTypes.string),
+  }).isRequired,
+
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    storyline: PropTypes.string.isRequired,
+    imagePath: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    subtitle: PropTypes.string.isRequired,
+  }).isRequired,
+};
