@@ -30,6 +30,7 @@ class MovieDetails extends Component {
     // if (true) return <Loading />;
 
     const { movies, loading } = this.state;
+    console.log(movies);
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movies;
 
     return (
