@@ -29,7 +29,7 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
     const { deleteMovie } = movieAPI;
-    const { movie: title, storyline, imagePath, genre, rating, subtitle } = this.state;
+    const { movie: { title, storyline, imagePath, genre, rating, subtitle } } = this.state;
     const { match: { params: { id } } } = this.props;
     const { loading } = this.state;
 
