@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 import { Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
-import { throwStatement } from '@babel/types';
 
 class MovieList extends Component {
   constructor() {
@@ -19,8 +18,8 @@ class MovieList extends Component {
       this.setState({
         movies: data,
         load: false,
-      })
-    })
+      });
+    });
   }
 
   render() {
@@ -33,6 +32,5 @@ class MovieList extends Component {
     );
   }
 }
-
 
 export default MovieList;
