@@ -9,7 +9,7 @@ class EditMovie extends Component {
     super(props);
     this.state = {
       movie: {},
-      loading: false,
+      loading: true,
       shouldRedirect: false,
     };
   }
@@ -34,14 +34,8 @@ class EditMovie extends Component {
 
   render() {
     const { shouldRedirect, movie, loading } = this.state;
-    if (shouldRedirect) {
-      return <Redirect to="/" />;
-    }
-
-    if (loading) {
-      return <Loading />;
-    }
-
+    if (shouldRedirect) return <Redirect to="/" />;
+    if (loading) return <Loading />;
     return (
       <div data-testid="edit-movie">
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
