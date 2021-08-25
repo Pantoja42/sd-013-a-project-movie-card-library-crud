@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Proptypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -8,6 +9,7 @@ class MovieDetails extends Component {
     super(props);
     this.state = {
       loading: true,
+      movies: {},
     };
   }
 
@@ -15,47 +17,54 @@ class MovieDetails extends Component {
     this.fetchMovieId();
   }
 
-  fetchMovieId = async () => {
-    const { location } = this.props;
-    const { state } = location;
-    const { id } = state;
-    const movieId = await movieAPI.getMovie(id);
-    this.setState({ loading: false });
-    return movieId;
-  }
+    fetchMovieId = async () => {
+      const { match: { params: { id } } } = this.props;
+      const movieId = await movieAPI.getMovie(id);
+      this.setState({
+        loading: false,
+        movies: movieId });
+    }
 
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-    const { location } = this.props;
-    const { state } = location;
+    render() {
+      const { movies } = this.state;
+      const {
+        title,
+        subtitle,
+        imagePath,
+        genre,
+        rating,
+        storyline,
+        id,
+      } = movies;
 
-    const {
-      subtitle,
-      imagePath,
-      genre,
-      rating,
-      storyline } = state;
+      const { loading } = this.state;
+      // Change the condition to check the state
+      // if (true) return <Loading />;
+      if (loading) {
+        return (<Loading />);
+      }
 
-    const { loading } = this.state;
+      return (
 
-    return (
-      <div>
-        {loading ? (
-          <Loading />
-        ) : (
-          <div data-testid="movie-details">
-            <img alt="Movie Cover" src={ `../${imagePath}` } />
-            <p>{`Subtitle: ${subtitle}`}</p>
-            <p>{`Storyline: ${storyline}`}</p>
-            <p>{`Genre: ${genre}`}</p>
-            <p>{`Rating: ${rating}`}</p>
-          </div>
-        )}
-      </div>
-    );
-  }
+        <div data-testid="movie-details">
+          <Link to="/">VOLTAR</Link>
+          <img alt="Movie Cover" src={ `../${imagePath}` } />
+          <p>{`Title: ${title}`}</p>
+          <p>{`Subtitle: ${subtitle}`}</p>
+          <p>{`Storyline: ${storyline}`}</p>
+          <p>{`Genre: ${genre}`}</p>
+          <p>{`Rating: ${rating}`}</p>
+          <Link
+            to={`/movies/${id}/edit`}
+          >
+            EDITAR
+          </Link>
+        </div>
+
+      );
+    }
 }
+
 MovieDetails.propTypes = {
   location: Proptypes.shape({
     state: Proptypes.shape({
