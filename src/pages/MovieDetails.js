@@ -1,25 +1,66 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor(props) {
+    super(props);
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    this.state = {
+      movie: [],
+      loading: true,
+    };
+  }
+
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
+  fetchMovie = async () => {
+    const { match: {params: { id }}} = this.props;
+
+    const resolveMovie = await movieAPI.getMovie(id);
+    this.setState({
+      movie: resolveMovie,
+      loading: false,
+    });
+  }
+
+  render() {
+    const { movie, loading } = this.state;
+    if (loading) return <Loading />;
+
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${id}/edit` }>
+          EDITAR
+        </Link>
+        {' ____ '}
+        <Link to="/">
+          VOLTAR
+        </Link>
       </div>
     );
   }
 }
+
+MovieDetails.propTypes = {
+  genre: PropTypes.string.isRequired,
+  imagePath: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  storyline: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 export default MovieDetails;
