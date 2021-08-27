@@ -15,7 +15,6 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // fazendo a requisição
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((editMovie) => {

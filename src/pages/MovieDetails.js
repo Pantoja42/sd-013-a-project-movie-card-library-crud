@@ -11,12 +11,12 @@ class MovieDetails extends Component {
       movie: {},
       load: true,
     };
+    this.delMovie = this.delMovie.bind(this);
   }
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id)
-    // .then((data) => data.json)
       .then((data) => {
         this.setState({
           movie: data,
@@ -25,11 +25,17 @@ class MovieDetails extends Component {
       });
   }
 
+  delMovie() {
+    const { match: { params: { id } } } = this.props;
+    const movieDel = movieAPI.deleteMovie(id);
+    return movieDel;
+  }
+
   render() {
     const { movie, load } = this.state;
-    console.log(movie);
-    if (load) return <Loading />;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+
+    if (load) return <Loading />;
 
     return (
       <div data-testid="movie-details">
@@ -41,6 +47,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link onClick={ this.delMovie } to="/">DELETAR</Link>
       </div>
     );
   }
