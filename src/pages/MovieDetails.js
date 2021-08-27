@@ -25,44 +25,50 @@ class MovieDetails extends Component {
         movie: movieId });
     }
 
-    render() {
-      const { movie } = this.state;
-      const {
-        title,
-        subtitle,
-        imagePath,
-        genre,
-        rating,
-        storyline,
-        id,
-      } = movie;
+handleClick= () => {
+  const { movie: { id } } = this.state;
+  movieAPI.deleteMovie(id);
+}
 
-      const { loading } = this.state;
-      // Change the condition to check the state
-      // if (true) return <Loading />;
-      if (loading) {
-        return (<Loading />);
-      }
+render() {
+  const { movie } = this.state;
+  const {
+    title,
+    subtitle,
+    imagePath,
+    genre,
+    rating,
+    storyline,
+    id,
+  } = movie;
 
-      return (
+  const { loading } = this.state;
+  // Change the condition to check the state
+  // if (true) return <Loading />;
+  if (loading) {
+    return (<Loading />);
+  }
 
-        <div data-testid="movie-details">
-          <Link to="/">VOLTAR</Link>
-          <img alt="Movie Cover" src={ `../${imagePath}` } />
-          <p>{`Title: ${title}`}</p>
-          <p>{`Subtitle: ${subtitle}`}</p>
-          <p>{`Storyline: ${storyline}`}</p>
-          <p>{`Genre: ${genre}`}</p>
-          <p>{`Rating: ${rating}`}</p>
-          <Link
-            to={ `/movies/${id}/edit` }
-          >
-            EDITAR
-          </Link>
-        </div>
+  return (
 
-      );
-    }
+    <div data-testid="movie-details">
+      <Link to="/">VOLTAR</Link>
+      <img alt="Movie Cover" src={ `../${imagePath}` } />
+      <p>{`Title: ${title}`}</p>
+      <p>{`Subtitle: ${subtitle}`}</p>
+      <p>{`Storyline: ${storyline}`}</p>
+      <p>{`Genre: ${genre}`}</p>
+      <p>{`Rating: ${rating}`}</p>
+      <Link
+        to={ `/movies/${id}/edit` }
+      >
+        EDITAR
+      </Link>
+      <Link onClick={ this.handleClick } to="/">DELETAR</Link>
+    </div>
+
+  );
+}
 }
 
 MovieDetails.propTypes = {
