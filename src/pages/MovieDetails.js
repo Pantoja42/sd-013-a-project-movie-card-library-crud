@@ -8,25 +8,28 @@ class MovieDetails extends Component {
   constructor() {
     super();
     this.state = {
-      movieDetail: {},
+      movie: {},
       load: true,
     };
   }
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    movieAPI.getMovie(id).then((item) => {
-      this.setState({
-        movieDetail: item,
-        load: false,
+    movieAPI.getMovie(id)
+    // .then((data) => data.json)
+      .then((data) => {
+        this.setState({
+          movie: data,
+          load: false,
+        });
       });
-    });
   }
 
   render() {
-    const { movieDetail, load } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movieDetail;
+    const { movie, load } = this.state;
+    console.log(movie);
     if (load) return <Loading />;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     return (
       <div data-testid="movie-details">

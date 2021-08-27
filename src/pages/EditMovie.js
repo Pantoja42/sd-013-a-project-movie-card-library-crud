@@ -19,6 +19,7 @@ class EditMovie extends Component {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((editMovie) => {
+      console.log(editMovie);
       this.setState({
         movie: editMovie,
         status: '',
