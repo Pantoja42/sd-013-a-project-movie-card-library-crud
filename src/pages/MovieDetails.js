@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
     super();
-
     this.state = {
-      movies: [],
+      movieDetail: {},
       load: true,
     };
   }
 
   componentDidMount() {
-    const { match: { params: { id } } } = this.props; 
+    const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((item) => {
       this.setState({
-        movies: item,
+        movieDetail: item,
         load: false,
       });
     });
   }
+
   render() {
-    const { movies, load } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movies;
+    const { movieDetail, load } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movieDetail;
+    if (load) return <Loading />;
 
     return (
       <div data-testid="movie-details">
-        {load && <Loading />}
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{ `Título: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
@@ -42,4 +43,15 @@ class MovieDetails extends Component {
   }
 }
 
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
+
 export default MovieDetails;
+
+/* Referências: Link consultado:
+https://scotch.io/courses/using-react-router-4/route-params */

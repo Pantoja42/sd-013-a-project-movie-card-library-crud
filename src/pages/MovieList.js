@@ -6,7 +6,6 @@ import * as movieAPI from '../services/movieAPI';
 class MovieList extends Component {
   constructor() {
     super();
-
     this.state = {
       movies: [],
       load: true,
@@ -24,10 +23,11 @@ class MovieList extends Component {
 
   render() {
     const { movies, load } = this.state;
+    if (load) return <Loading />;
     return (
       <div data-testid="movie-list">
-        {load && <Loading />}
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        {movies
+          .map((movieItem) => <MovieCard key={ movieItem.title } movie={ movieItem } />)}
       </div>
     );
   }
