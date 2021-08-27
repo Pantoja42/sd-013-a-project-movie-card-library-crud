@@ -31,6 +31,7 @@ MovieCard.propTypes = {
     storyline: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 };
 
