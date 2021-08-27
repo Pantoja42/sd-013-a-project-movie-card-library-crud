@@ -19,7 +19,7 @@ class MovieDetails extends Component {
   }
 
   fetchMovie = async () => {
-    const { match: {params: { id }}} = this.props;
+    const { match: { params: { id } } } = this.props;
 
     const resolveMovie = await movieAPI.getMovie(id);
     this.setState({
@@ -55,12 +55,11 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  genre: PropTypes.string.isRequired,
-  imagePath: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  storyline: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
 };
 
 export default MovieDetails;
