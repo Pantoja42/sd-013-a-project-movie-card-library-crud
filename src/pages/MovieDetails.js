@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -66,17 +66,16 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  location: Proptypes.shape({
-    state: Proptypes.shape({
-      title: Proptypes.string,
-      subtitle: Proptypes.string,
-      imagePath: Proptypes.string,
-      genre: Proptypes.string,
-      rating: Proptypes.number,
-      storyline: Proptypes.string,
-      id: Proptypes.number,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+      imagePath: PropTypes.string,
+      genre: PropTypes.string,
+      rating: PropTypes.number,
+      storyline: PropTypes.string,
+      id: PropTypes.number,
     }),
   }).isRequired,
-
 };
 export default MovieDetails;
