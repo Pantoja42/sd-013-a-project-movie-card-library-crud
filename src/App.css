@@ -10,7 +10,6 @@
   background-color: #5d86a8;
   display: flex;
   flex-wrap: wrap;
- 
 }
 
 
@@ -30,11 +29,9 @@
 }
 
 .movie_image {
-  
   max-width: 100%;
 }
 
 .movie-card h1 {
   margin-top: -0px;
-
 } */
