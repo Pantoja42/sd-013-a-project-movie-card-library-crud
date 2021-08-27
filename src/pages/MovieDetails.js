@@ -9,7 +9,7 @@ class MovieDetails extends Component {
     super(props);
     this.state = {
       loading: true,
-      movies: {},
+      movie: {},
     };
   }
 
@@ -22,11 +22,11 @@ class MovieDetails extends Component {
       const movieId = await movieAPI.getMovie(id);
       this.setState({
         loading: false,
-        movies: movieId });
+        movie: movieId });
     }
 
     render() {
-      const { movies } = this.state;
+      const { movie } = this.state;
       const {
         title,
         subtitle,
@@ -35,7 +35,7 @@ class MovieDetails extends Component {
         rating,
         storyline,
         id,
-      } = movies;
+      } = movie;
 
       const { loading } = this.state;
       // Change the condition to check the state
@@ -55,7 +55,7 @@ class MovieDetails extends Component {
           <p>{`Genre: ${genre}`}</p>
           <p>{`Rating: ${rating}`}</p>
           <Link
-            to={`/movies/${id}/edit`}
+            to={ `/movies/${id}/edit` }
           >
             EDITAR
           </Link>

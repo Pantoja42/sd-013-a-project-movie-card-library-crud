@@ -11,13 +11,15 @@ class MovieCard extends React.Component {
       subtitle,
       genre,
       rating,
-      id } = movie;
+      id,
+      storyline } = movie;
 
     return (
       <div data-testid="movie-card" className="movie-card">
         <img className="movie_image" src={ imagePath } alt={ title } />
         <h1 className="movie_title">{ title }</h1>
         <h2 className="movie_subtitle">{subtitle}</h2>
+        <p className="movie_storyline">{storyline}</p>
         <h4>{genre}</h4>
         <h4>{rating}</h4>
         <div className="verDetalhe">
