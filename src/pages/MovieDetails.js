@@ -28,6 +28,11 @@ class MovieDetails extends Component {
     });
   }
 
+  handleClick = () => {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
   render() {
     const { movie, loading } = this.state;
     if (loading) return <Loading />;
@@ -44,6 +49,10 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>
           EDITAR
+        </Link>
+        {' ____ '}
+        <Link onClick={ this.handleClick } to="/">
+          DELETAR
         </Link>
         {' ____ '}
         <Link to="/">
