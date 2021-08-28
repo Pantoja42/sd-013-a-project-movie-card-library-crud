@@ -65,3 +65,6 @@ export default MovieDetails;
 
 /* Referências: Link consultado:
 https://scotch.io/courses/using-react-router-4/route-params */
+
+/* Referências: Pessoas estudantes Lanai Caroline Turma 13 Tribo A, Isabella Antunes turma 13 Tribo A
+e summer de Instrução João Lima Tuma 11. */

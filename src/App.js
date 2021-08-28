@@ -19,3 +19,6 @@ function App() {
 }
 
 export default App;
+
+/* Referências: Pessoas estudantes Lanai Caroline Turma 13 Tribo A, Isabella Antunes turma 13 Tribo A
+e summer de Instrução João Lima Tuma 11. */

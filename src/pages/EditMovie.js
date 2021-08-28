@@ -27,9 +27,10 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
-    movieAPI.updateMovie(updatedMovie).then(
-      this.setState({ shouldRedirect: true }),
-    );
+    movieAPI.updateMovie(updatedMovie).then(() => {
+      this.setState({ shouldRedirect: true,
+       });
+    });
   }
 
   render() {
@@ -62,3 +63,6 @@ export default EditMovie;
 
 /* Referências: Link consultado:
 https://reactrouter.com/web/api/Redirect */
+
+/* Referências: Pessoas estudantes Lanai Caroline Turma 13 Tribo A, Isabella Antunes turma 13 Tribo A
+e summer de Instrução João Lima Tuma 11. */
