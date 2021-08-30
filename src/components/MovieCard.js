@@ -1,3 +1,4 @@
+import { string, shape } from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -32,5 +33,14 @@ class MovieCard extends React.Component {
     );
   }
 }
+
+MovieCard.propTypes = {
+  movie: shape({
+    id: string.isRequired,
+    imagePath: string.isRequired,
+    storyline: string.isRequired,
+    title: string.isRequired,
+  }).isRequired,
+};
 
 export default MovieCard;
