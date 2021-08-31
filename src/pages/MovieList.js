@@ -1,4 +1,7 @@
 // Requisito 2
+// Referências:
+// https://github.com/tryber/sd-013-a-project-movie-card-library-crud/pull/51
+// https://github.dev/tryber/sd-013-a-live-lectures/tree/lecture/11.2
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -35,9 +38,9 @@ class MovieList extends Component {
   }
 
   // Passo 4 -
-  // (Linha 45) - {loading && <Loading />} -> Sempre que o estado loading for true, renderizamos <Loading />
-  // (Linha 46) - o .map vai renderizar cada um dos filmes que vieram pela API
-  // (Linha 47) - o "Link" irá direcionar para a página de adicionar um novo filme ao clicar em "ADICIONAR CARTÃO"
+  // Linha 45 - {loading && <Loading />} -> Sempre que o estado loading for true, renderizamos <Loading />
+  // Linha 46 - o .map vai renderizar cada um dos filmes que vieram pela API
+  // Linha 47 - o "Link" irá direcionar para a página de adicionar um novo filme ao clicar em "ADICIONAR CARTÃO"
   render() {
     const { loading, movies } = this.state;
     return (

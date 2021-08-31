@@ -1,4 +1,7 @@
 // Requisito 1
+// Referências:
+// https://github.com/tryber/sd-013-a-project-movie-card-library-crud/pull/51
+// https://github.dev/tryber/sd-013-a-live-lectures/tree/lecture/11.2
 
 // Precisa importar todos os componentes que irão utilizar rotas, como: MovieList, MovieDetails, NewMovie, EditMovie e NotFound
 import React from 'react';
