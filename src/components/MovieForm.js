@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -166,14 +166,14 @@ class MovieForm extends React.Component {
 
 MovieForm.propTypes = {
   movie: PropTypes.shape({
-    // id: PropTypes.number,
+    id: PropTypes.number,
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    imagePath: PropTypes.string,
     storyline: PropTypes.string,
-    genre: PropTypes.string,
     rating: PropTypes.number,
-    // bookmarked: PropTypes.bool,
+    imagePath: PropTypes.string,
+    bookmarked: PropTypes.bool,
+    genre: PropTypes.string,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
