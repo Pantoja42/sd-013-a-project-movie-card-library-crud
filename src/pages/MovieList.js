@@ -1,17 +1,5 @@
 // Requisito 2
 
-// Faça uma requisição para buscar e mostrar a lista de filmes quando MovieList for montado
-// Para buscar a lista, você deve utilizar a função getMovies importada do módulo movieAPI em MovieList. Essa função retorna uma promise. A requisição deve ser feita no momento em que o MovieList for montado no DOM. Enquanto a requisição estiver em curso, MovieList deve renderizar o componente Loading, como ilustrado na imagem a seguir.
-
-// Obs: O componente Loading deve conter o texto Carregando...
-// Uma vez que a requisição retornar, o resultado deve ser renderizado. Para cada filme, renderize um componente MovieCard, como ilustrado abaixo.
-
-// Você precisará adicionar um estado em MovieList para controlar o que será exibido.
-
-// O que será verificado:
-// Será validado se a página MovieList exibe o texto Carregando... enquanto estiver fazendo a requisição
-// Será validado se a página MovieList exibe um MovieCard para cada filme retornado pela API
-
 // Referências:
 // https://github.com/tryber/sd-013-a-project-movie-card-library-crud/pull/51
 // https://github.dev/tryber/sd-013-a-live-lectures/tree/lecture/11.2
@@ -29,9 +17,10 @@ class MovieList extends Component {
   constructor() {
     super();
 
+    // Passo 1 - Setar o estado inicial
     this.state = {
       movies: [],
-      loading: true, // Passo 1 - Setar o estado inicial
+      loading: true,
     };
 
     this.handleState = this.handleState.bind(this); // O principal objetivo do método bind é alterar o contexto this de uma função independente de onde a mesma esteja sendo chamada.

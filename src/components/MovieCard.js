@@ -1,12 +1,5 @@
 // Requisito 3
 
-// Insira um link para a página de detalhes de um filme dentro de MovieCard
-// Todos os MovieCards devem possuir em seu conteúdo, pelo menos, o título, a sinopse e um link com o texto "VER DETALHES" que aponta para a rota movies/:id, onde :id é o id do filme. Esta rota exibirá informações detalhadas de um filme.
-
-// O que será verificado:
-// Será validado se cada MovieCard exibe pelo menos o título e a sinopse de seu respectivo filme
-// Será validado se cada MovieCard contém um link com o texto VER DETALHES que redireciona para a página de detalhes do filme
-
 // Referências:
 // https://github.com/tryber/sd-013-a-project-movie-card-library-crud/pull/51
 // https://github.dev/tryber/sd-013-a-live-lectures/tree/lecture/11.2

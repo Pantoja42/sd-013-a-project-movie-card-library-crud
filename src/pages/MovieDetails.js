@@ -1,3 +1,5 @@
+// Requisito 4
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -8,16 +10,19 @@ class MovieDetails extends Component {
   constructor() {
     super();
 
-    this.state = { // Passo 1 - Setar o estado inicial
+    // Passo 1 - Setar o estado inicial
+    this.state = {
       movie: {},
       loading: 'loading', // PQ AQUI O ESTADO INICIAL É 'loading' E NÃO TRUE?
     };
 
-    this.fetchMovies = this.fetchMovies.bind(this); // Passo 3 - fazemos o bind pois não foi usado uma arrow function para fazer a requisição à API (Passo 2)
+    // Passo 3 - fazemos o bind pois não foi usado uma arrow function para fazer a requisição à API (Passo 2)
+    this.fetchMovies = this.fetchMovies.bind(this);
   }
 
+  // Passo 4 - Fazendo com a que função fetchMovies seja chamada durante a atualização do componente.
   componentDidMount() {
-    this.fetchMovies(); // Passo 4 - Fazendo com a que função fetchMovies seja chamada durante a atualização do componente.
+    this.fetchMovies();
   }
 
   // Passo 2 - Função que faz o fetch nos filmes, essa função está em src/services/movieAPI (Linha 32 a 38)
@@ -33,9 +38,9 @@ class MovieDetails extends Component {
 
   render() {
     const { movie: { id, title, storyline, imagePath, genre, rating, subtitle },
-      loading } = this.state; // NÃO ENTENDI ESSE LINHA
+      loading } = this.state; // NÃO ENTENDI ESSA LINHA
 
-    // // Passo 5 - {loading && <Loading />} se loading for verdadeiro executa <Loading />
+    // Passo 5 - {loading && <Loading />} se loading for verdadeiro executa <Loading />
     return (
       <div data-testid="movie-details">
         {loading && <Loading />}
