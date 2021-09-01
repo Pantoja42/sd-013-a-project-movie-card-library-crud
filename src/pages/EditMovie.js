@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 
 import { MovieForm } from '../components';
-// import * as movieAPI from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    movieAPI.getMovies()
+      .then((response) => console.log(response.length));
   }
 
   handleSubmit(updatedMovie) {
