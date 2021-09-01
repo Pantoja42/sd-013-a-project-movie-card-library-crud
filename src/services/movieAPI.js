@@ -29,6 +29,7 @@ export const getMovies = () => (
   })
 );
 
+// Função utilizada no requisito 4 - Page MovieDetails
 export const getMovie = (movieId) => {
   const movie = readMovies().find((mov) => mov.id === parseInt(movieId, 10));
   return new Promise((resolve) => {
