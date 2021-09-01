@@ -10,8 +10,9 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // handleSubmit(updatedMovie) {
-  // }
+  handleSubmit(updatedMovie) {
+    console.log(updatedMovie);
+  }
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
@@ -25,6 +26,7 @@ class EditMovie extends Component {
 
     return (
       <div data-testid="edit-movie">
+        <p>EditMovie</p>
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
