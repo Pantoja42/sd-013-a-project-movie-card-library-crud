@@ -1,16 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages';
 
 function App() {
   return (
+  /* caso o Switch não seja utilisado a pagina Not Found sempre será renderizada */
     <Router>
-      <Route path="*" component={ NotFound } />
-      <Route exact path="/" component={ MovieList } />
-      <Route path="/movies/:id" component={ MovieDetails } />
-      <Route path="/movies/new" component={ NewMovie } />
-      <Route path="/movies/:id/edit" component={ EditMovie } />
+      <Switch>
+        <Route exact path="/" component={ MovieList } />
+        <Route path="/movies/:id" component={ MovieDetails } />
+        <Route path="/movies/new" component={ NewMovie } />
+        <Route path="/movies/:id/edit" component={ EditMovie } />
+        <Route path="*" component={ NotFound } />
+      </Switch>
     </Router>
   );
 }
