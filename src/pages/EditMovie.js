@@ -50,12 +50,12 @@ class EditMovie extends Component {
     const { status, shouldRedirect, movie } = this.state;
 
     if (shouldRedirect) {
-      // Passo 5: if do shoulRedirect
+      // Passo 5 - if do shoulRedirect
       return <Redirect to="/" />;
     }
 
     if (status === 'loading') {
-      // Passo 3: if de Loading
+      // Passo 3 - if de Loading
       return <Loading />;
     }
 
@@ -67,7 +67,7 @@ class EditMovie extends Component {
   }
 }
 
-// Passo 6: Fazer o propTypes
+// Passo 6 - Fazer o propTypes
 EditMovie.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({

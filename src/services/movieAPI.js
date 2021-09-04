@@ -51,6 +51,7 @@ export const updateMovie = (updatedMovie) => (
   })
 );
 
+// Função utilizado no requisito 6 - Page 'NewMovie'
 export const createMovie = (movieData) => (
   new Promise((resolve) => {
     let movies = readMovies();
