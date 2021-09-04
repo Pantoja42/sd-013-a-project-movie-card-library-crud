@@ -1,4 +1,5 @@
 // Requisito 4
+// Referência: https://github.com/tryber/sd-013-a-project-movie-card-library-crud/pull/51
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';

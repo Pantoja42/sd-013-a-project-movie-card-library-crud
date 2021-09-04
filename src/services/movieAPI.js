@@ -37,7 +37,7 @@ export const getMovie = (movieId) => {
   });
 };
 
-// Função utilizado no requisito 4 - Page EditMovie
+// Função utilizado no requisito 5 - Page EditMovie
 export const updateMovie = (updatedMovie) => (
   new Promise((resolve) => {
     const movies = readMovies().map((movie) => {
