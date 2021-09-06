@@ -1,61 +1,52 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router';
-import '../App.css';
-
-import { Loading, MovieForm } from '../components';
+import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: 'loading',
-      shouldRedirect: 'false',
-      movie: {},
+      redirect: false,
+      filme: {},
+      loading: true,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getMovieData = this.getMovieData.bind(this);
   }
 
-  async componentDidMount() {
-    const { match: { params: { id } } } = this.props;
-
-    const movie = await movieAPI.getMovie(id);
-    this.getMovieEdit(id);
+  componentDidMount() {
+    this.getMovieData();
   }
 
   async handleSubmit(updatedMovie) {
-    this.setState({
-      shouldRedirect: true,
-      status: 'loading',
-    });
     await movieAPI.updateMovie(updatedMovie);
+    this.setState({
+      redirect: true,
+    });
   }
 
-  async getMovieEdit(movieId) {
-
+  async getMovieData() {
+    const { match: { params: { id } } } = this.props;
+    const filme = await movieAPI.getMovie(id);
     this.setState({
-      status: 'ready',
-      movie,
+      loading: false,
+      filme,
     });
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;
-    if (shouldRedirect) {
-      return (
-        <Redirect to="/" />
-      );
-    }
-
-    if (status === 'loading') {
-      return <Loading />;
-    }
-
-    return (
+    const { loading, redirect, filme } = this.state;
+    const formulario = (
       <div data-testid="edit-movie">
-        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
+        <MovieForm movie={ filme } onSubmit={ this.handleSubmit } />
       </div>
+    );
+    if (redirect) { return <Redirect to="/" />; }
+    if (loading) { return <Loading />; }
+    return (
+      formulario
     );
   }
 }
@@ -63,8 +54,8 @@ class EditMovie extends Component {
 EditMovie.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    }).isRequired,
+      id: PropTypes.string,
+    }),
   }).isRequired,
 };
 
