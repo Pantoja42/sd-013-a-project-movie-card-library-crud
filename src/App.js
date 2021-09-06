@@ -26,3 +26,7 @@ class App extends Component {
 }
 
 export default App;
+
+// Referências:
+// https://pt-br.reactjs.org/docs/getting-started.html
+// https://app.betrybe.com/course/front-end/ciclo-de-vida-de-componentes-e-react-router/react-router/22d8da78-d744-421e-b669-d72ff189e506/o-que-vamos-aprender/100e758a-a080-4726-a460-a68620a175ae?use_case=calendar
