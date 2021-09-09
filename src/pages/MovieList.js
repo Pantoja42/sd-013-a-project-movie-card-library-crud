@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Loading, MovieCard } from '../components';
 
 import * as movieAPI from '../services/movieAPI';
@@ -19,10 +20,11 @@ class MovieList extends Component {
 
   render() {
     const { movies, loading } = this.state;
-    if (loading) return <Loading />; // Render Loading here if the request is still happening
+    if (loading) return <Loading />; // Essa linha renderiza o componente loading enquanto a requisição esta em andamento.
 
     return (
       <div data-testid="movie-list" className="movie-list">
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
         {movies.map((movie) => <MovieCard key={ movie.id } movie={ movie } />)}
       </div>
     );

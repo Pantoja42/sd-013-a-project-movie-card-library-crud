@@ -42,6 +42,9 @@ class MovieDetails extends Component {
           <Link to={ editRout }>
             EDITAR
           </Link>
+          <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>
+            DELETAR
+          </Link>
         </div>
       </div>
     );
