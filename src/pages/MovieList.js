@@ -22,7 +22,7 @@ class MovieList extends Component {
     if (loading) return <Loading />; // Render Loading here if the request is still happening
 
     return (
-      <div data-testid="movie-list">
+      <div data-testid="movie-list" className="movie-list">
         {movies.map((movie) => <MovieCard key={ movie.id } movie={ movie } />)}
       </div>
     );
