@@ -40,6 +40,8 @@ class MovieDetails extends Component {
       movie: { title, id, storyline, imagePath, genre, rating, subtitle },
     } = this.state;
 
+    const deleteMov = () => movieAPI.deleteMovie(id);
+
     if (loading) return <Loading />;
 
     return (
@@ -55,6 +57,7 @@ class MovieDetails extends Component {
         >
           EDITAR
         </Link>
+        <Link onClick={ deleteMov } to="/">DELETAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
